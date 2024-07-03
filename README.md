@@ -38,7 +38,7 @@ coding!
 - Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Oleg Klyufinskyy: [GitHub](https://github.com/olegklyufinskyy) / [LinkedIn](https://www.linkedin.com/in/oleg-klyufinskyy/)
 
 - Ross: [GitHub](https://github.com/RossaMania) / [LinkedIn](https://www.linkedin.com/in/ross-clettenberg/)
 
