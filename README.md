@@ -42,3 +42,4 @@ coding!
 
 - Ross: [GitHub](https://github.com/RossaMania) / [LinkedIn](https://www.linkedin.com/in/ross-clettenberg/)
 
+- John Knight: [GitHub](https://github.com/knightjohnd) / [LinkedIn](https://www.linkedin.com/in/john-knight-jk/)
