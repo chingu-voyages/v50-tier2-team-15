@@ -2,7 +2,6 @@
 //Other components we will need over the next couple of days have been made.
 //This one is important too.
 
-import React from "react";
 
 const Footer = () => {
   return (
