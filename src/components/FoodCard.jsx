@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import foodMenuFetch from "../foodMenuFetch";
+import foodMenuFetch from "../utils/foodMenuFetch";
 
 const FoodCard = () => {
   const [foodMenuData, setFoodMenuData] = useState();
