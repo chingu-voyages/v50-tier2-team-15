@@ -44,4 +44,3 @@ coding!
 - Ross: [GitHub](https://github.com/RossaMania) / [LinkedIn](https://www.linkedin.com/in/ross-clettenberg/)
 
 - Nandhini Ravichandran: [GitHub](https://github.com/Nandhini0123) / [LinkedIn](https://www.linkedin.com/in/nandhini-ravichandran-9b11272b1/)
-
