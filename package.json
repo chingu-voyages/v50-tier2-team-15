@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "./run-tests.sh",
+    "test": "node run-tests.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
