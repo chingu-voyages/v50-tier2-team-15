@@ -4,7 +4,7 @@ const foodMenuFetch = async () => {
       "https://tiny-blue-vulture-shoe.cyclic.app/our-foods"
     );
     const data = await response.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.error(error);
   }
