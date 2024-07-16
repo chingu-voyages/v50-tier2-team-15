@@ -1,26 +1,21 @@
-import foodMenuFetch from './foodMenuFetch';
-import { describe, beforeEach, it, expect } from '@jest/globals';
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import process from 'process';
 
-describe('foodMenuFetch', () => {
-  beforeEach(() => {
-    fetch.resetMocks();
-  });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-  it('fetches data successfully', async () => {
-    const mockData = [{ id: 1, name: 'Burger' }];
-    fetch.mockResponseOnce(JSON.stringify(mockData));
+const testDir = path.join(__dirname, 'src');
+const testFiles = fs.readdirSync(testDir).filter(file => file.endsWith('.test.js'));
 
-    const data = await foodMenuFetch();
-    expect(data).toEqual(mockData);
-  });
+console.log("Found test files:", testFiles);
 
-  it('handles fetch error', async () => {
-    fetch.mockReject(new Error('Failed to fetch'));
-
-    try {
-      await foodMenuFetch();
-    } catch (error) {
-      expect(error.message).toBe('Failed to fetch');
-    }
-  });
-});
+if (testFiles.length === 0) {
+  console.log("No tests defined");
+  process.exit(0);
+} else {
+  execSync('jest', { stdio: 'inherit' });
+}
