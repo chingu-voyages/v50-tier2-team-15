@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import foodMenuFetch from "../../utils/foodMenuFetch";
+import foodMenuFetch from "../utils/foodMenuFetch";
 
 export const fetchFoodData = createAsyncThunk(
   "foodData/fetchFoodData",
