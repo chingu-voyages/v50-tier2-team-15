@@ -1,34 +1,14 @@
-import { useEffect, useState } from "react";
-import foodMenuFetch from "../utils/foodMenuFetch";
-
-const FoodCard = () => {
-  const [foodMenuData, setFoodMenuData] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await foodMenuFetch();
-      setFoodMenuData(data);
-    };
-    fetchData();
-  }, []);
+const FoodCard = ({ food }) => {
+  if (!food) return <div>Select a food item to see details</div>;
 
   return (
     <div>
-      <h1>Food Card</h1>
-      <h3>This is for individual food.</h3>
-      <div>
-        {foodMenuData &&
-          foodMenuData.map((food) => (
-            <div key={food.id}>
-              <img src={food.img} alt={food.name} />
-              <h4>{food.name}</h4>
-              <p>{food.dsc}</p>
-              <p>{food.price}</p>
-              <p>{food.rate}</p>
-              <p>{food.country}</p>
-            </div>
-          ))}
-      </div>
+      <h1>{food.name}</h1>
+      <img src={food.img} alt={food.name} />
+      <p>{food.dsc}</p>
+      <p>{food.price}</p>
+      <p>{food.rate}</p>
+      <p>{food.country}</p>
     </div>
   );
 };
