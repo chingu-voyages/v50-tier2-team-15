@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
 const FoodMenu = ( {selectedCategory} ) => {
@@ -16,6 +17,10 @@ const FoodMenu = ( {selectedCategory} ) => {
       ))}
     </div>
   );
+};
+
+FoodMenu.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
 };
 
 export default FoodMenu;

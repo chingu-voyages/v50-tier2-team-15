@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
 const FoodRibbon = ({ onCategorySelect }) => {
@@ -17,6 +18,10 @@ const FoodRibbon = ({ onCategorySelect }) => {
       ))}
     </div>
   );
+};
+
+FoodRibbon.propTypes = {
+  onCategorySelect: PropTypes.func.isRequired,
 };
 
 export default FoodRibbon;
