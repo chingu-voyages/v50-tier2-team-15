@@ -8,6 +8,7 @@ import FoodCard from "./components/FoodCard";
 import FoodRibbon from "./components/FoodRibbon";
 import FoodMenu from "./components/FoodMenu";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,9 +43,9 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* added extra padding in here to see what it looks like past 100vh. Delete once the homepage has more sections */}
+      <div className="py-[100px]"></div>
+      <Footer />
     </>
   );
 }
