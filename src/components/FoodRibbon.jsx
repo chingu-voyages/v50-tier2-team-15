@@ -10,7 +10,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
   return (
     <div>
-      <h1>Food Ribbon</h1>
+     
       {Object.keys(foodData).map((category) => (
         <button key={category} onClick={() => handleCategoryClick(category)}>
           {category}
