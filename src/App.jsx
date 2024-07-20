@@ -22,11 +22,11 @@ function App() {
   return (
     <>  
       <HomeScreen />
-      <Navbar />
+      {/* <Navbar />
       <FoodRibbon onCategorySelect={setSelectedCategory} />
       {selectedCategory && <FoodMenu selectedCategory={selectedCategory} />}
       <FoodCard />
-      <Footer />
+      <Footer /> */}
       
       <div className="card">
         <p>
