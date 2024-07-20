@@ -16,7 +16,11 @@ const foodDataSlice = createSlice({
     status: "ready",
     error: null,
   },
-  reducers: {},
+    reducers: {
+    selectFood(state, action) {
+      state.selectedFood = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFoodData.pending, (state) => {
@@ -32,5 +36,7 @@ const foodDataSlice = createSlice({
       });
   },
 });
+
+export const { selectFood } = foodDataSlice.actions;
 
 export default foodDataSlice.reducer;
