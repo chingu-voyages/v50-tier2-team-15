@@ -2,12 +2,14 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFood } from "../slices/foodDataApiSlice";
 
-const FoodMenu = ( {selectedCategory} ) => {
+const FoodMenu = ({ selectedCategory }) => {
   const dispatch = useDispatch();
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[selectedCategory] || [];
 
-   const handleFoodClick = (food) => {
+  console.log("Foods in selected category:", foods); // Log foods in the selected category
+
+  const handleFoodClick = (food) => {
     dispatch(selectFood(food));
   };
 
