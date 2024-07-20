@@ -7,10 +7,12 @@ import FoodRibbon from "./components/FoodRibbon";
 import FoodMenu from "./components/FoodMenu";
 import Navbar from "./components/Navbar";
 import HomeScreen from './screens/HomeScreen';
+import Footer from "./components/Footer";
+
+
 function App() {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
-
 
 
   useEffect(() => {
@@ -18,14 +20,24 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      
+    <>  
       <HomeScreen />
       <Navbar />
       <FoodRibbon onCategorySelect={setSelectedCategory} />
       {selectedCategory && <FoodMenu selectedCategory={selectedCategory} />}
       <FoodCard />
       
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      {/* added extra padding in here to see what it looks like past 100vh. Delete once the homepage has more sections */}
+      <div className="py-[100px]"></div>
+      <Footer />
     </>
   );
 }
