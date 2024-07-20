@@ -26,6 +26,7 @@ function App() {
       <FoodRibbon onCategorySelect={setSelectedCategory} />
       {selectedCategory && <FoodMenu selectedCategory={selectedCategory} />}
       <FoodCard />
+      <Footer />
       
       <div className="card">
         <p>

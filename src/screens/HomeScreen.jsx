@@ -7,6 +7,9 @@ import FoodRibbon from "../components/FoodRibbon";
 import FoodMenu from "../components/FoodMenu";
 import { Icon } from '@iconify/react';
 import diagonalArrowRightUpFill from '@iconify-icons/eva/diagonal-arrow-right-up-fill';
+import heroImage from '../assets/HomeHero.svg'
+import categoriesLeft from '../assets/categories-left.jpg'
+import categoriesRight from '../assets/categories-right.jpg'
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -26,7 +29,7 @@ const HomeScreen = () => {
      
       <section className="flex items-center justify-between py-10">
   <div className="w-1/4">
-    <img src="src/assets/home-hero-image.png" alt="Hero" className="rounded-lg shadow-lg" />
+    <img src={heroImage} alt="Hero" className="" />
   </div>
   <div className="w-3/4   pr-4">
     <h1 className="text-5xl font-bold  text-center flex-col text-purple-900 mt-4">FlavorFinder</h1>
@@ -82,7 +85,7 @@ const HomeScreen = () => {
   <h2 className="text-3xl font-bold mb-6" style={{ color: '#8B0000' }}>Our Categories</h2>
   <div className="flex justify-between items-center mx-auto" style={{ maxWidth: '1200px' }}>
     <div className="flex-shrink-0 w-1/4 px-4">
-      <img src="src/assets/alex-munsell-auIbTAcSH6E-unsplash 2.jpg" alt="Category 1" className="rounded-lg shadow-lg" />
+      <img src={categoriesLeft} alt="Image of Steak" className="" />
     </div>
     <div className="flex-grow text-left px-4">
       <ul className="grid grid-cols-2 gap-4 text-lg">
@@ -113,7 +116,7 @@ const HomeScreen = () => {
       </ul>
     </div>
     <div className="flex-shrink-0 w-1/4 px-4">
-      <img src="src/assets/eaters-collective-pLKgCsBOiw4-unsplash 2.jpg" alt="Category 2" className="rounded-lg shadow-lg" />
+      <img src={categoriesRight} alt="Image of hamburger" className="" />
     </div>
   </div>
 </section>
