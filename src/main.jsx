@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/food" element={<ShowFoodMenu />} />
-      <Route path="/food/:id" component={FoodCard} />
+      <Route path="/food/:id" element={<FoodCard />} />
     </Route>
   )
 );

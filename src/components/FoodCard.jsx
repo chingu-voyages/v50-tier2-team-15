@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const FoodCard = ({ food }) => {
+const FoodCard = () => {
+  const { id } = useParams();
+  const foodData = useSelector((state) => state.foodData.data);
+  const food = Object.values(foodData).flat().find((item) => item.id === id);
   if (!food) return <div>Select a food item to see details</div>;
 
   return (
