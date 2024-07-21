@@ -1,13 +1,16 @@
-import FoodRibbon from '../components/FoodRibbon';
-import FoodMenu from '../components/FoodMenu';
-import { useSelector } from 'react-redux';
+import { useState } from "react";
+import FoodRibbon from "../components/FoodRibbon";
+import FoodMenu from "../components/FoodMenu";
 
 const ShowFoodMenu = () => {
-  const selectedCategory = useSelector(state => state.food.selectedCategory);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  console.log("Selected Category in ShowFoodMenu:", selectedCategory); // Log selected category
+
   return (
     <div>
-      <FoodRibbon />
-      {selectedCategory && <FoodMenu category={selectedCategory} />}
+      <FoodRibbon onCategorySelect={setSelectedCategory} />
+      {selectedCategory && <FoodMenu selectedCategory={selectedCategory} />}
     </div>
   );
 };

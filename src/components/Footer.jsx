@@ -2,10 +2,6 @@ import logo from "../assets/logo-purple.png";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { FaXTwitter, FaSquareInstagram, FaHeart } from "react-icons/fa6";
 
-//Making this component because GitHbu is not allowing me to push empty folders.
-//Other components we will need over the next couple of days have been made.
-//This one is important too.
-
 const Footer = () => {
   return (
     <footer>

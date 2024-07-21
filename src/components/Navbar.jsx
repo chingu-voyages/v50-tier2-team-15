@@ -1,5 +1,7 @@
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo-purple.png";
 //Making this component because GitHbu is not allowing me to push empty folders.
+
 
 const Navbar = () => {
   return (
@@ -10,14 +12,12 @@ const Navbar = () => {
             <img className="w-[160px] h-[160px]" src={logo} alt="Logo" />
           </a>
         </div>
-        <div className="flex items-center justify-center space-x-8 ml-auto text-purple-900">
-          <a href="#home">Home</a>
-          <a>Our Foods</a>
-          <a href="#about">About</a>
-          <a href="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
-            Chingu
-          </a>
-          <button className="text-darkOrange">Get Started</button>
+        <div className="flex items-center justify-center space-x-8 ml-auto">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/foods">Our Foods</NavLink>
+          <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">About</NavLink>
+          <NavLink to="https://www.chingu.io/">Chingu</NavLink>
+          <button>Get Started</button>
         </div>
       </div>
     </header>

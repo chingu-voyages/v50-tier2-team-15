@@ -1,16 +1,29 @@
-const FoodCard = () => { // { food } put this back in the brackets. Food is passed as a prop from the parent component.
-  // if (!food) return <div>Select a food item to see details</div>;
+import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-  // return (
-  //   <div>
-  //     <h1>{food.name}</h1>
-  //     <img src={food.img} alt={food.name} />
-  //     <p>{food.dsc}</p>
-  //     <p>{food.price}</p>
-  //     <p>{food.rate}</p>
-  //     <p>{food.country}</p>
-  //   </div>
-  // );
+const FoodCard = () => {
+  const { id } = useParams();
+  const foodData = useSelector((state) => state.foodData.data);
+  const food = Object.values(foodData).flat().find((item) => item.id === id);
+  if (!food) return <div>Select a food item to see details</div>;
+
+  return (
+    <div>
+      <div><h1>{food.name}</h1></div>
+      <div className="flex flex-row">
+      <div className="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>
+      <div><p>{food.dsc}</p></div>
+      <div><p>{food.price}</p></div>
+      <div><p>{food.rate}</p></div>
+      <div><p>{food.country}</p></div>
+      </div>
+    </div>
+  );
+};
+
+FoodCard.propTypes = {
+  food: PropTypes.object,
 };
 
 export default FoodCard;
