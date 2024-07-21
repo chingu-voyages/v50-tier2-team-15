@@ -10,6 +10,8 @@ import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up
 import heroImage from "../assets/HomeHero.svg";
 import categoriesLeft from "../assets/categories-left.jpg";
 import categoriesRight from "../assets/categories-right.jpg";
+import mapTemp from "../assets/map-temp.jpg";
+import homeBottom from "../assets/home-bottom-image.svg";
 import Footer from "../components/Footer";
 
 const HomeScreen = () => {
@@ -216,9 +218,9 @@ const HomeScreen = () => {
         <span className="block w-16 h-1 bg-[#8B0000] mt-2 mx-auto"></span>
         <div className="map-container mx-auto w-2/3 h-64">
           <img
-            src="src/assets/image 3.jpg"
+            src={mapTemp}
             alt="Map"
-            className="w-full h-full object-cover rounded-lg shadow-lg"
+            className="w-full h-full object-cover"
           />
         </div>
       </section>
@@ -233,9 +235,9 @@ const HomeScreen = () => {
           </div>
           <div className="w-1/4 flex justify-center">
             <img
-              src="src/assets/Group 20.jpg"
+              src={homeBottom}
               alt="Explore"
-              className="rounded-lg shadow-lg"
+              className=""
             />
           </div>
           <div className="w-1/4 ml-10 text-left">
