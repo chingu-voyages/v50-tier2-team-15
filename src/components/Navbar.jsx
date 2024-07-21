@@ -1,4 +1,4 @@
-//Making this component because GitHbu is not allowing me to push empty folders.
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -9,10 +9,10 @@ const Navbar = () => {
         <a>logo</a>
         </div>
         <div className="flex items-center justify-center space-x-8 ml-auto">
-          <a href="#home">Home</a>
-          <a>Our Foods</a>
-          <a href="#about">About</a>
-          <a href="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">Chingu</a>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/foods">Our Foods</NavLink>
+          <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">About</NavLink>
+          <NavLink to="https://www.chingu.io/">Chingu</NavLink>
           <button>Get Started</button>
         </div>
       </div>
