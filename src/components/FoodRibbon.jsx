@@ -14,6 +14,27 @@ const FoodRibbon = ({ onCategorySelect }) => {
   const status = useSelector((state) => state.foodData.status);
   const error = useSelector((state) => state.foodData.error);
 
+    const desiredCategories = [
+    "bbqs",
+    "best-foods",
+    "breads",
+    "burgers",
+    "chocolates",
+    "desserts",
+    "drinks",
+    "fried-chicken",
+    "ice-cream",
+    "pizzas",
+    "porks",
+    "sandwiches",
+    "sausages",
+    "steaks"
+  ];
+
+  const filteredCategories = Object.keys(foodData).filter(category =>
+    desiredCategories.includes(category)
+  );
+
   console.log("Food Data:", foodData); // Log fetched data
   console.log("Fetch Status:", status); // Log fetch status
   if (error) console.log("Fetch Error:", error); // Log any fetch errors
@@ -27,7 +48,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
       <h1>Food Ribbon</h1>
       {status === "loading" && <p>Loading...</p>}
       {status === "failed" && <p>Error fetching data</p>}
-      {status === "succeeded" && Object.keys(foodData).map((category) => (
+      {status === "succeeded" && filteredCategories.map((category) => (
         <button key={category} onClick={() => handleCategoryClick(category)}>
           {category}
         </button>

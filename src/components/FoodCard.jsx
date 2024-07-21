@@ -10,12 +10,14 @@ const FoodCard = () => {
 
   return (
     <div>
-      <h1>{food.name}</h1>
-      <img src={food.img} alt={food.name} />
-      <p>{food.dsc}</p>
-      <p>{food.price}</p>
-      <p>{food.rate}</p>
-      <p>{food.country}</p>
+      <div><h1>{food.name}</h1></div>
+      <div class="flex flex-row">
+      <div class="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>
+      <div><p>{food.dsc}</p></div>
+      <div><p>{food.price}</p></div>
+      <div><p>{food.rate}</p></div>
+      <div><p>{food.country}</p></div>
+      </div>
     </div>
   );
 };

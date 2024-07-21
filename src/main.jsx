@@ -17,14 +17,17 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ShowFoodMenu from "./screens/ShowFoodMenu.jsx";
 import FoodCard from "./components/FoodCard";
+import OurFoodsList from "./screens/OurFoodsList.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
-      <Route path="/foods" element={<ShowFoodMenu />} />
-      <Route path="/foods/:id" element={<FoodCard />} />
+      <Route path="/foods" element={<OurFoodsList />} />
+      <Route path="/foods/:category" element={<ShowFoodMenu />} />
+      <Route path="/food/:id" element={<FoodCard />} />
+
     </Route>
   )
 );
