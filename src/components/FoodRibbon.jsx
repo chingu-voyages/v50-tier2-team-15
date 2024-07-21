@@ -49,6 +49,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
       {status === "loading" && <p>Loading...</p>}
       {status === "failed" && <p>Error fetching data</p>}
       {status === "succeeded" && filteredCategories.map((category) => (
+
         <button key={category} onClick={() => handleCategoryClick(category)}>
           {category}
         </button>
