@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
 import Navbar from "../components/Navbar";
-import FoodCard from "../components/FoodCard";
 import FoodRibbon from "../components/FoodRibbon";
-import FoodMenu from "../components/FoodMenu";
 import { Icon } from "@iconify/react";
 import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up-fill";
 import heroImage from "../assets/HomeHero.svg";

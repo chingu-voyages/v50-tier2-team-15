@@ -11,8 +11,8 @@ const FoodCard = () => {
   return (
     <div>
       <div><h1>{food.name}</h1></div>
-      <div class="flex flex-row">
-      <div class="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>
+      <div className="flex flex-row">
+      <div className="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>
       <div><p>{food.dsc}</p></div>
       <div><p>{food.price}</p></div>
       <div><p>{food.rate}</p></div>

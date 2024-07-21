@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { fetchFoodData } from "./slices/foodDataApiSlice";
 import "./App.css";
 import { Outlet } from "react-router-dom";
 
@@ -12,6 +9,7 @@ function App() {
     <>
       <Navbar />
       <Outlet />
+      <div className="container mx-auto py-100"></div>
       <Footer />
     </>
   );
