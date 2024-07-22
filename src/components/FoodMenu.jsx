@@ -18,11 +18,18 @@ const FoodMenu = ({ selectedCategory }) => {
   };
 
   return (
-    <div>
+    <div className="cursor-pointer sm:p-2 sm:hover:shadow-slate-400 sm:shadow-md sm:border sm:border-slate-400 sm:m-1 transition-shadow duration-200 group">
       <h1>Food Menu</h1>
       {foods.map((food) => (
-        <div key={food.id} onClick={() => handleFoodClick(food)} >
-          <img src={food.img} alt={food.name} />
+        <div key={food.id} onClick={() => handleFoodClick(food)}>
+          <img
+            src={food.img}
+            width={342}
+            height={542}
+            alt={food.name}
+            className="group-hover:opacity-80 transition-opacity duration-200"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
           <h4>{food.name}</h4>
           <p>{food.price}</p>
         </div>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
-import FoodRibbon from "../components/FoodRibbon";
+// import FoodRibbon from "../components/FoodRibbon";
 import { Icon } from "@iconify/react";
 import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up-fill";
 import heroImage from "../assets/HomeHero.svg";
@@ -13,7 +13,7 @@ import homeBottom from "../assets/home-bottom-image.svg";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState("");
+  // const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     dispatch(fetchFoodData());
