@@ -4,10 +4,15 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FoodRibbon from "./components/FoodRibbon";
 
+import { useNavigate } from "react-router-dom";
+
 function App() {
+  const navigate = useNavigate();
   const handleCategorySelect = (category) => {
-    // Implement what should happen when a category is selected
+    // Console log the selected category.
     console.log("Selected category:", category);
+    // Navigate to the selected category's page.
+    navigate(`/foods/${category}`);
   };
 
   return (
