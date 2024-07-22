@@ -8,8 +8,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Outlet />
-      <div className="container mx-auto py-100"></div>
+      <main className="mx-auto py-10">
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
