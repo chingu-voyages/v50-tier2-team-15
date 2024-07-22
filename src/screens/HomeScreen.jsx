@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
-import Navbar from "../components/Navbar";
 import FoodRibbon from "../components/FoodRibbon";
 import { Icon } from "@iconify/react";
 import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up-fill";
@@ -10,7 +9,6 @@ import categoriesLeft from "../assets/categories-left.jpg";
 import categoriesRight from "../assets/categories-right.jpg";
 import mapTemp from "../assets/map-temp.jpg";
 import homeBottom from "../assets/home-bottom-image.svg";
-import Footer from "../components/Footer";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -251,7 +249,6 @@ const HomeScreen = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };
