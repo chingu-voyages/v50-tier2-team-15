@@ -14,7 +14,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
   const foodData = useSelector((state) => state.foodData.data);
   const status = useSelector((state) => state.foodData.status);
-  const error = useSelector((state) => state.foodData.error);
+  // const error = useSelector((state) => state.foodData.error);
 
   const desiredCategories = [
     "bbqs", "best-foods", "breads", "burgers",
