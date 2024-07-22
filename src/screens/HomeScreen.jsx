@@ -33,7 +33,7 @@ const HomeScreen = () => {
             Discover bold flavors and hidden culinary gems with FlavorFinder!
           </p>
           <div className="mt-4">
-            <div className="flex justify-end items-center space-x-4">
+            {/* <div className="flex justify-end items-center space-x-4">
               <button className="bg-gray-300 rounded-full p-2">
                 <svg
                   className="w-6 h-6 text-gray-600"
@@ -65,7 +65,7 @@ const HomeScreen = () => {
                   />
                 </svg>
               </button>
-            </div>
+            </div> */}
             <div className="mt-4 ">
               <a
                 href="your-link-url"
