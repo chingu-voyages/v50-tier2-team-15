@@ -9,7 +9,7 @@ const FoodCard = () => {
   if (!food) return <div>Select a food item to see details</div>;
 
   return (
-    <div>
+    <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
       <div><h1>{food.name}</h1></div>
       <div className="flex flex-row">
       <div className="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>

@@ -1,9 +1,17 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo-purple.png";
-//Making this component because GitHbu is not allowing me to push empty folders.
+
+import { useNavigate } from "react-router-dom";
+
 
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+  navigate("/login");
+};
+
   return (
     <header>
       <div className="flex items-center justify-center mb-8 mr-25 ml-25">
@@ -17,7 +25,7 @@ const Navbar = () => {
           <NavLink to="/foods">Our Foods</NavLink>
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">About</NavLink>
           <NavLink to="https://www.chingu.io/">Chingu</NavLink>
-          <button>Get Started</button>
+          <button onClick={goToLogin}>Get Started</button>
         </div>
       </div>
     </header>
