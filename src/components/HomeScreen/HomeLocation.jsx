@@ -1,4 +1,3 @@
-import React from "react";
 import mapTemp from "../../assets/map-temp.svg";
 
 const HomeLocation = () => {

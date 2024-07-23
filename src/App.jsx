@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 // import Footer from "./components/Footer";
 // import FoodRibbon from "./components/FoodRibbon";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function App() {
   // const navigate = useNavigate();

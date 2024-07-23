@@ -1,4 +1,3 @@
-import React from "react";
 import { Icon } from "@iconify/react";
 import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up-fill";
 import categoriesLeft from "../../assets/categories-left.svg";

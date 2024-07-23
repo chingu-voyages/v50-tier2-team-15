@@ -1,4 +1,3 @@
-import React from "react";
 import homeBottom from "../../assets/home-bottom-image.svg";
 
 const HomeBottom = () => {
