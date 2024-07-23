@@ -20,12 +20,12 @@ const Navbar = () => {
             <img className="w-[160px] h-[160px]" src={logo} alt="Logo" />
           </a>
         </div>
-        <div className="flex items-center justify-center space-x-8 ml-auto">
+        <div className="flex items-center justify-center gap-14 ml-auto text-xl">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/foods">Our Foods</NavLink>
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">About</NavLink>
           <NavLink to="https://www.chingu.io/">Chingu</NavLink>
-          <button onClick={goToLogin}>Get Started</button>
+          <button className="text-darkOrange text-bold" onClick={goToLogin}>Get Started</button>
         </div>
       </div>
     </header>
