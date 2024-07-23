@@ -1,4 +1,3 @@
-import React from "react";
 import heroImage from "../../assets/HomeHero.svg";
 import logoOrange from "../../assets/logo-orange.svg";
 
