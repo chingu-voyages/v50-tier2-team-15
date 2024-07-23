@@ -5,7 +5,7 @@ import { FaXTwitter, FaSquareInstagram, FaHeart } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer>
-      <div className="flex items-center justify-between text-purple w-full font-para text-lg">
+      <div className="flex items-center justify-between text-purple w-full font-para text-lg mt-14">
         <div className="flex justify-center gap-8 w-1/3">
           <a href="#"><FaFacebook /></a>
           <a href="#"><FaGithub /></a>
