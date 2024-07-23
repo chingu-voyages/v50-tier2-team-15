@@ -45,3 +45,4 @@ coding!
 
 - Nandhini Ravichandran: [GitHub](https://github.com/Nandhini0123) / [LinkedIn](https://www.linkedin.com/in/nandhini-ravichandran-9b11272b1/)
 
+- Kayla Kenney: [GitHub](https://github.com/k-kenney) / [LinkedIn](https://www.linkedin.com/in/teachertotechie/)

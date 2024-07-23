@@ -1,12 +1,29 @@
-// This is the component to test the fetch request to the API.
-// All food info will be displayed here.
+import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const FoodCard = () => {
+  const { id } = useParams();
+  const foodData = useSelector((state) => state.foodData.data);
+  const food = Object.values(foodData).flat().find((item) => item.id === id);
+  if (!food) return <div>Select a food item to see details</div>;
+
   return (
-    <div>
-      <h1>Food Card</h1>
+    <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
+      <div><h1>{food.name}</h1></div>
+      <div className="flex flex-row">
+      <div className="basis-1/2 grow"><img src={food.img} alt={food.name} /></div>
+      <div><p>{food.dsc}</p></div>
+      <div><p>{food.price}</p></div>
+      <div><p>{food.rate}</p></div>
+      <div><p>{food.country}</p></div>
+      </div>
     </div>
   );
-}
+};
+
+FoodCard.propTypes = {
+  food: PropTypes.object,
+};
 
 export default FoodCard;
