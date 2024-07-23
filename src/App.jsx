@@ -19,7 +19,7 @@ function App() {
     <>
       {/* <Navbar /> */}
       {/* <FoodRibbon onCategorySelect={handleCategorySelect} /> */}
-      <main className="mx-auto py-5">
+      <main className="mx-auto">
         <Outlet />
       </main>
       {/* <Footer /> */}
