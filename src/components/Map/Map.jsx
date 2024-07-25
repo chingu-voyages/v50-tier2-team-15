@@ -24,7 +24,7 @@ export default function Intro() {
 
   return (
     <APIProvider apiKey={import.meta.env.VITE_MAP_API}>
-      <div className="mt-14" style={{ height: "65vh", width: "100%", borderRadius: '15px', overflow: 'hidden' }}>
+      <div className="mt-14" style={{ height: "75vh", width: "100%", borderRadius: '15px', overflow: 'hidden' }}>
         <Map zoom={7} center={{ lat: 40.7128, lng: -74.006 }} mapId={import.meta.env.VITE_MAP_ID}>
           {Object.keys(categories).map((categoryKey) =>
             Array.isArray(categories[categoryKey]) && categories[categoryKey].length > 0 ? (
@@ -50,6 +50,7 @@ export default function Intro() {
             >
               <div>
                 <h3>{selectedItem.name}</h3>
+                <p>Where: {selectedItem.country}</p>
                 <p>Rating: {selectedItem.rate}</p>
                 <p>Discount: {selectedItem.dsc}</p>
               </div>
