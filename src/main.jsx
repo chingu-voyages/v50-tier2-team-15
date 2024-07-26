@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import PrivateRoute from "./components/PrivateRoute";
 
 import {
   createBrowserRouter,
@@ -15,6 +16,7 @@ import "./index.css";
 
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
+import UserDashboard from "./screens/UserDashboard";
 import ShowFoodMenu from "./screens/ShowFoodMenu.jsx";
 import FoodCard from "./components/FoodCard";
 import OurFoodsList from "./screens/OurFoodsList.jsx";
@@ -27,6 +29,11 @@ const router = createBrowserRouter(
       <Route path="/foods" element={<OurFoodsList />} />
       <Route path="/foods/:category" element={<ShowFoodMenu />} />
       <Route path="/food/:id" element={<FoodCard />} />
+
+      <Route path="" element={<PrivateRoute />}>
+      <Route path="/user" element={<UserDashboard />} />
+      </Route>
+
     </Route>
   )
 );
