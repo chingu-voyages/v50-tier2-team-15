@@ -15,10 +15,18 @@ const foodDataSlice = createSlice({
     data: {},
     status: "ready",
     error: null,
+    searchTerm: "",
+    filteredFoods: [],
   },
     reducers: {
     selectFood(state, action) {
       state.selectedFood = action.payload;
+    },
+    filterFoods(state, action) {
+      const searchTerm = action.payload.toLowerCase();
+      state.filteredFoods = Object.values(state.data)
+        .flat()
+        .filter((food) => food.name && food.name.toLowerCase().includes(searchTerm));
     },
   },
   extraReducers: (builder) => {
@@ -29,6 +37,7 @@ const foodDataSlice = createSlice({
       .addCase(fetchFoodData.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
+        state.filteredFoods = Object.values(action.payload).flat();
       })
       .addCase(fetchFoodData.rejected, (state, action) => {
         state.status = "failed";
@@ -37,6 +46,6 @@ const foodDataSlice = createSlice({
   },
 });
 
-export const { selectFood } = foodDataSlice.actions;
+export const { selectFood, filterFoods} = foodDataSlice.actions;
 
 export default foodDataSlice.reducer;
