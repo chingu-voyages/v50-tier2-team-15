@@ -16,9 +16,9 @@ const Navbar = () => {
     <header>
       <div className="flex items-center justify-center mb-8 mr-25 ml-25">
         <div className="ml-0 pl-8 pr-14">
-          <a href="#home">
+          <NavLink to="/">
             <img className="w-[240px] h-[240px]" src={logo} alt="Logo" />
-          </a>
+          </NavLink>
         </div>
         <div className="flex items-center justify-center gap-14 ml-auto text-xl">
           <NavLink to="/">Home</NavLink>
