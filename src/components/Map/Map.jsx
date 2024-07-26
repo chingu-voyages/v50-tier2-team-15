@@ -51,8 +51,8 @@ export default function Intro() {
               <div>
                 <h3>{selectedItem.name}</h3>
                 <p>Where: {selectedItem.country}</p>
+                <p>{selectedItem.dsc}</p>
                 <p>Rating: {selectedItem.rate}</p>
-                <p>Discount: {selectedItem.dsc}</p>
               </div>
             </InfoWindow>
           )}
