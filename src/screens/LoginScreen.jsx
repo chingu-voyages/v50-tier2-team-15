@@ -3,12 +3,14 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/authSlice";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(""); // manage error messages.
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // Basic validation: check if the username is at least 3 characters long
@@ -22,6 +24,9 @@ const LoginScreen = () => {
 
     // Dispatch setCredentials action with the entered username
     dispatch(setCredentials({ username }));
+
+    // Navigate to the UserDashboard screen
+    navigate("/user");
   };
 
   return (
