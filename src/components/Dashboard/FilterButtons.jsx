@@ -22,11 +22,22 @@ const FilterButtons = () => {
 
 
   return (
-    <div>
-      <button onClick={handleSortByPriceHighToLow}>Sort by Price: High to Low</button>
-      <button onClick={handleSortByPriceLowToHigh}>Sort by Price: Low to High</button>
-      <button onClick={handleSortByRatingHighToLow}>Sort by Rating: High to Low</button>
-      <button onClick={handleSortByRatingLowToHigh}>Sort by Rating: Low to High</button>
+    <div className="mx-auto flex flex-grow">
+      <div>
+        <h3>Filter by:</h3>
+      </div>
+      <div className="m-6">
+        <button onClick={handleSortByPriceHighToLow}>Price: High to Low</button>
+      </div>
+      <div className="m-6">
+        <button onClick={handleSortByPriceLowToHigh}>Price: Low to High</button>
+      </div>
+      <div className="m-6">
+        <button onClick={handleSortByRatingHighToLow}>Rating: High to Low</button>
+      </div>
+      <div className="m-6">
+        <button onClick={handleSortByRatingLowToHigh}>Rating: Low to High</button>
+      </div>
     </div>
   );
 };
