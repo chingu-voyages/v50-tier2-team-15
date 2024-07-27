@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { selectFood } from "../slices/foodDataApiSlice";
+import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 
 const ShowFoodMenu = () => {
   const dispatch = useDispatch();
@@ -16,26 +17,29 @@ const ShowFoodMenu = () => {
     navigate(`/food/${food.id}`);
   };
 
+  const handleAddToCart = (food, e) => {
+    e.stopPropagation(); // Prevents triggering the handleFoodClick when adding to cart
+    dispatch(addToCart({ ...food, qty: 1 })); // Add food item to cart with initial quantity of 1
+  };
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Food Menu</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {foods.map((food) => (
-          <div
-            key={food.id}
-            onClick={() => handleFoodClick(food)}
-            className="border rounded-lg p-4 cursor-pointer hover:shadow-lg transition-shadow duration-200"
-          >
-            <img
-              src={food.img}
-              alt={food.name}
-              className="w-full h-48 object-cover mb-2"
-            />
-            <h4 className="text-lg font-semibold mb-1">{food.name}</h4>
-            <p className="text-gray-700">${food.price}</p>
-          </div>
-        ))}
-      </div>
+    <div className="cursor-pointer sm:p-2 sm:hover:shadow-slate-400 sm:shadow-md sm:border sm:border-slate-400 sm:m-1 transition-shadow duration-200 group">
+      <h1>Food Menu</h1>
+      {foods.map((food) => (
+        <div key={food.id} onClick={() => handleFoodClick(food)}>
+          <img
+            src={food.img}
+            width={342}
+            height={542}
+            alt={food.name}
+            className="group-hover:opacity-80 transition-opacity duration-200"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+          <h4>{food.name}</h4>
+          <p>{food.price}</p>
+          <button onClick={(e) => handleAddToCart(food, e)}>+</button> {/* "+" Button */}
+        </div>
+      ))}
     </div>
   );
 };
