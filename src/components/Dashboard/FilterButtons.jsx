@@ -1,18 +1,36 @@
 import { useDispatch } from "react-redux";
-// Import filter actions here
+import { sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh, sortAlphabetically } from "../../slices/foodDataApiSlice";
 
 const FilterButtons = () => {
   const dispatch = useDispatch();
 
-  const handleFilter = (filterType) => {
-    // Dispatch appropriate filter action here
+  const handleSortByPriceHighToLow = () => {
+    dispatch(sortByPriceHighToLow());
+  };
+
+  const handleSortByPriceLowToHigh = () => {
+    dispatch(sortByPriceLowToHigh());
+  };
+
+  const handleSortByRatingHighToLow = () => {
+    dispatch(sortByRatingHighToLow());
+  };
+
+  const handleSortByRatingLowToHigh = () => {
+    dispatch(sortByRatingLowToHigh());
+  };
+
+   const handleSortAlphabetically = () => {
+    dispatch(sortAlphabetically());
   };
 
   return (
     <div>
-      <button onClick={() => handleFilter("filter1")}>Filter 1</button>
-      <button onClick={() => handleFilter("filter2")}>Filter 2</button>
-      {/* Add more buttons as needed */}
+      <button onClick={handleSortByPriceHighToLow}>Sort by Price: High to Low</button>
+      <button onClick={handleSortByPriceLowToHigh}>Sort by Price: Low to High</button>
+      <button onClick={handleSortByRatingHighToLow}>Sort by Rating: High to Low</button>
+      <button onClick={handleSortByRatingLowToHigh}>Sort by Rating: Low to High</button>
+      <button onClick={handleSortAlphabetically}>A-Z</button>
     </div>
   );
 };
