@@ -3,7 +3,9 @@ import { removeFromCart, clearCartItems, addToCart } from "../../slices/cartSlic
 
 const Cart = () => {
   const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
@@ -26,11 +28,11 @@ const Cart = () => {
   return (
     <div>
       <h2>Shopping Cart</h2>
-      {!cart || !cart.cartItems || cart.cartItems.length === 0 ? (
+      {!cart || !cartItems || cartItems.length === 0 ? (
         <p>Oops! Your cart is empty!</p>
       ) : (
         <ul>
-          {cart.cartItems.map((item) => (
+          {cartItems.map((item) => (
             <li key={item._id}>
               {item.name} - {item.qty} x ${item.price}
               <button onClick={() => handleIncreaseQty(item)}>+</button>
