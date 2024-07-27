@@ -23,25 +23,35 @@ const FoodMenu = () => {
   };
 
   return (
-    <div className="cursor-pointer sm:p-2 sm:hover:shadow-slate-400 sm:shadow-md sm:border sm:border-slate-400 sm:m-1 transition-shadow duration-200 group">
-      <h1>Food Menu</h1>
-      {foods.map((food) => (
-        <div key={food.id} onClick={() => handleFoodClick(food)}>
-          <img
-            src={food.img}
-            width={342}
-            height={542}
-            alt={food.name}
-            className="group-hover:opacity-80 transition-opacity duration-200"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-          <h4>{food.name}</h4>
-          <p>{food.price}</p>
-          <button onClick={(e) => handleAddToCart(food, e)} className="add-to-cart-button">
-            +
-          </button>
-        </div>
-      ))}
+    <div className="p-5">
+      <h1 className="text-2xl font-bold mb-5">Food Menu</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {foods.map((food) => (
+          <div
+            key={food.id}
+            className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
+            onClick={() => handleFoodClick(food)}
+          >
+            <img
+              src={food.img}
+              alt={food.dsc}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4 flex flex-col justify-between h-full">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{food.dsc}</h4>
+                <p className="text-gray-600 mb-4">Price: {food.price}</p>
+              </div>
+              <button
+                onClick={(e) => handleAddToCart(food, e)}
+                className="absolute bottom-4 right-4 bg-purple-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
