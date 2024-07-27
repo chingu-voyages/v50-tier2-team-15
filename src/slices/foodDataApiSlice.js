@@ -18,7 +18,7 @@ const foodDataSlice = createSlice({
     searchTerm: "",
     filteredFoods: [],
   },
-    reducers: {
+  reducers: {
     selectFood(state, action) {
       state.selectedFood = action.payload;
     },
@@ -27,6 +27,18 @@ const foodDataSlice = createSlice({
       state.filteredFoods = Object.values(state.data)
         .flat()
         .filter((food) => food.name && food.name.toLowerCase().includes(searchTerm));
+    },
+    sortByPriceHighToLow: (state) => {
+      state.filteredFoods = [...state.filteredFoods].sort((a, b) => b.price - a.price);
+    },
+    sortByPriceLowToHigh: (state) => {
+      state.filteredFoods = [...state.filteredFoods].sort((a, b) => a.price - b.price);
+    },
+    sortByRatingHighToLow: (state) => {
+      state.filteredFoods = [...state.filteredFoods].sort((a, b) => b.rate - a.rate);
+    },
+    sortByRatingLowToHigh: (state) => {
+      state.filteredFoods = [...state.filteredFoods].sort((a, b) => a.rate - b.rate);
     },
   },
   extraReducers: (builder) => {
@@ -46,6 +58,6 @@ const foodDataSlice = createSlice({
   },
 });
 
-export const { selectFood, filterFoods} = foodDataSlice.actions;
+export const { selectFood, filterFoods, sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh } = foodDataSlice.actions;
 
 export default foodDataSlice.reducer;
