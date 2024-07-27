@@ -18,7 +18,7 @@ const foodDataSlice = createSlice({
     searchTerm: "",
     filteredFoods: [],
   },
-    reducers: {
+  reducers: {
     selectFood(state, action) {
       state.selectedFood = action.payload;
     },
@@ -40,9 +40,6 @@ const foodDataSlice = createSlice({
     sortByRatingLowToHigh: (state) => {
       state.filteredFoods = [...state.filteredFoods].sort((a, b) => a.rate - b.rate);
     },
-    sortAlphabetically: (state) => {
-      state.filteredFoods = [...state.filteredFoods].sort((a, b) => a.name.localeCompare(b.name));
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -61,6 +58,6 @@ const foodDataSlice = createSlice({
   },
 });
 
-export const { selectFood, filterFoods, sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh, sortAlphabetically } = foodDataSlice.actions;
+export const { selectFood, filterFoods, sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh } = foodDataSlice.actions;
 
 export default foodDataSlice.reducer;

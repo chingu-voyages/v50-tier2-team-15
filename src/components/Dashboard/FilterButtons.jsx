@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh, sortAlphabetically } from "../../slices/foodDataApiSlice";
+import { sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh } from "../../slices/foodDataApiSlice";
 
 const FilterButtons = () => {
   const dispatch = useDispatch();
@@ -20,9 +20,6 @@ const FilterButtons = () => {
     dispatch(sortByRatingLowToHigh());
   };
 
-   const handleSortAlphabetically = () => {
-    dispatch(sortAlphabetically());
-  };
 
   return (
     <div>
@@ -30,7 +27,6 @@ const FilterButtons = () => {
       <button onClick={handleSortByPriceLowToHigh}>Sort by Price: Low to High</button>
       <button onClick={handleSortByRatingHighToLow}>Sort by Rating: High to Low</button>
       <button onClick={handleSortByRatingLowToHigh}>Sort by Rating: Low to High</button>
-      <button onClick={handleSortAlphabetically}>A-Z</button>
     </div>
   );
 };
