@@ -5,51 +5,30 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFoodData, filterFoods } from "../slices/foodDataApiSlice";
+import { fetchFoodData } from "../slices/foodDataApiSlice";
+import Searchbar from "../components/Dashboard/Searchbar";
+import Results from "../components/Dashboard/Results";
+import FilterButtons from "../components/Dashboard/FilterButtons";
 
 const OurFoodsList = () => {
-
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     dispatch(fetchFoodData());
   }, [dispatch]);
 
-  //const foodData = useSelector((state) => state.foodData.data);
   const status = useSelector((state) => state.foodData.status);
   const error = useSelector((state) => state.foodData.error);
   const filteredFoods = useSelector((state) => state.foodData.filteredFoods);
-  
-  //const allFoods = Object.values(foodData).flat();
-  const handleSearch = () => {
-    dispatch(filterFoods(searchTerm));
-  };
 
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
   return (
     <div>
       <h1>Our Foods List</h1>
-      <input
-        type="text"
-        placeholder="Search for food..."
-        value={searchTerm}  
-        onChange={handleChange}
-      />
-      <button onClick={handleSearch}>Search</button>
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p>Error fetching data: {error}</p>}
-      {status === "succeeded" && (
-        <ul>
-          {filteredFoods.map((food, index) => (
-  <li key={`${food.id}-${index}`}>{food.name}</li>
-))}
-        </ul>
-      )}
+      <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <FilterButtons />
+      <Results filteredFoods={filteredFoods} status={status} error={error} />
     </div>
   );
-
 };
 
 export default OurFoodsList;
