@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, clearCartItems } from "../slices/cartSlice";
+import { removeFromCart, clearCartItems, addToCart } from "../slices/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -13,22 +13,34 @@ const Cart = () => {
     dispatch(clearCartItems());
   };
 
+  const handleIncreaseQty = (item) => {
+    dispatch(addToCart({ ...item, qty: item.qty + 1 }));
+  };
+
+  const handleDecreaseQty = (item) => {
+    if (item.qty > 1) {
+      dispatch(addToCart({ ...item, qty: item.qty - 1 }));
+    }
+  };
+
   return (
     <div>
       <h2>Shopping Cart</h2>
       {cart.cartItems.length === 0 ? (
-        <p>Oops! Your cart is empty!</p>
+        <p>Your cart is empty</p>
       ) : (
         <ul>
           {cart.cartItems.map((item) => (
             <li key={item._id}>
               {item.name} - {item.qty} x ${item.price}
-              <button onClick={() => handleRemoveFromCart(item._id)}>Remove!</button>
+              <button onClick={() => handleIncreaseQty(item)}>+</button>
+              <button onClick={() => handleDecreaseQty(item)}>-</button>
+              <button onClick={() => handleRemoveFromCart(item._id)}>Remove</button>
             </li>
           ))}
         </ul>
       )}
-      <button onClick={handleClearCart}>Clear Cart!</button>
+      <button onClick={handleClearCart}>Clear Cart</button>
     </div>
   );
 };
