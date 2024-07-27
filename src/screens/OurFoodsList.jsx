@@ -20,7 +20,7 @@ const OurFoodsList = () => {
   const error = useSelector((state) => state.foodData.error);
   const filteredFoods = useSelector((state) => state.foodData.filteredFoods);
   
-  const allFoods = Object.values(foodData).flat();
+  //const allFoods = Object.values(foodData).flat();
   const handleSearch = () => {
     dispatch(filterFoods(searchTerm));
   };
