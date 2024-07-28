@@ -8,7 +8,9 @@ const FoodMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { category } = useParams();
-
+    // Get the userInfo from the auth state. The userInfo has the username.
+  const { userInfo } = useSelector((state) => state.auth);
+  // Get the food data from the store state.
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[category] || [];
 
@@ -42,12 +44,14 @@ const FoodMenu = () => {
                 <h4 className="text-lg font-semibold mb-2">{food.dsc}</h4>
                 <p className="text-gray-600 mb-4">Price: {food.price}</p>
               </div>
-              <button
-                onClick={(e) => handleAddToCart(food, e)}
-                className="absolute bottom-4 right-4 bg-purple-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200"
-              >
-                +
-              </button>
+              {userInfo ? (
+      <button
+        onClick={(e) => handleAddToCart(food, e)}
+        className="absolute bottom-4 right-4 bg-purple-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200"
+      >
+        +
+      </button>
+    ) : null}
             </div>
           </div>
         ))}

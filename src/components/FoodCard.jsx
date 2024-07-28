@@ -6,8 +6,12 @@ import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 const FoodCard = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const foodData = useSelector((state) => state.foodData.data);
-  const food = Object.values(foodData).flat().find((item) => item.id === id);
+  // Get the userInfo from the auth state. The userInfo has the username.
+  const { userInfo } = useSelector((state) => state.auth);
+  const foodData = useSelector((state) => state.foodData.data); // Get the food data from the store state.
+  const food = Object.values(foodData)
+    .flat()
+    .find((item) => item.id === id);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -28,34 +32,42 @@ const FoodCard = () => {
       </div>
       <div className="flex flex-col md:flex-row items-center md:space-x-6">
         <div className="flex-1">
-          <img src={food.img} alt={food.dsc} className="w-full h-auto object-cover rounded-lg shadow-md" />
+          <img
+            src={food.img}
+            alt={food.dsc}
+            className="w-full h-auto object-cover rounded-lg shadow-md"
+          />
         </div>
         <div className="flex-1 mt-4 md:mt-0 flex flex-col justify-center space-y-6">
           <h3 className="text-xl font-semibold">Price: {food.price}</h3>
           <h3 className="text-xl font-semibold">Rating: {food.rate}</h3>
           <h3 className="text-xl font-semibold">{food.name}</h3>
           <h3 className="text-xl font-semibold">Location: {food.country}</h3>
-          <div className="flex items-center justify-center space-x-4 mt-4">
-            <button
-              onClick={() => handleQuantityChange(-1)}
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400"
-            >
-              -
-            </button>
-            <span className="text-xl font-semibold">{quantity}</span>
-            <button
-              onClick={() => handleQuantityChange(1)}
-              className="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400"
-            >
-              +
-            </button>
-          </div>
-          <button
-            onClick={handleAddToCart}
-            className="mt-4 bg-purple-700 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors duration-200 self-center"
-          >
-            Add to Cart
-          </button>
+          {userInfo ? (
+            <>
+              <div className="flex items-center justify-center space-x-4 mt-4">
+                <button
+                  onClick={() => handleQuantityChange(-1)}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400"
+                >
+                  -
+                </button>
+                <span className="text-xl font-semibold">{quantity}</span>
+                <button
+                  onClick={() => handleQuantityChange(1)}
+                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                onClick={handleAddToCart}
+                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-400"
+              >
+                Add to Cart
+              </button>
+            </>
+          ) : null}
         </div>
       </div>
     </div>
