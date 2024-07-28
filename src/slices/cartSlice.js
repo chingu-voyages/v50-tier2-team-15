@@ -47,14 +47,6 @@ const cartSlice = createSlice({
       //Update the cart in local storage with the shipping address using that updateCart export function in the /utils/cartUtils.js file.
       return updateCart(state);
     },
-
-    savePaymentMethod: (state, action) => {
-      //We update the payment method in the state with the payment method that is passed in the action payload data.
-      state.paymentMethod = action.payload;
-
-      //Update the cart in local storage with the payment method using that updateCart export function in the /utils/cartUtils.js file.
-      return updateCart(state);
-    },
     clearCartItems: (state) => {
       //Clear the cart items in the state by setting the cartItems array to an empty array.
       //Then we return the state of the empty cart with the updateCart export function in the /utils/cartUtils.js file.
