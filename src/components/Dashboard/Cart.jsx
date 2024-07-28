@@ -4,8 +4,11 @@ import { removeFromCart, clearCartItems, addToCart } from "../../slices/cartSlic
 const Cart = () => {
   const dispatch = useDispatch();
 
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart) || {};
   const { cartItems } = cart;
+
+  console.log("Cart State:", cart);
+  console.log("Cart Items:", cartItems);
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart(id));
@@ -27,20 +30,21 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Shopping Cart</h2>
-      {!cart || !cartItems || cartItems.length === 0 ? (
-        <p>Oops! Your cart is empty!</p>
+      {cartItems && cartItems.length > 0 ? (
+        cartItems.map(item => (
+          <div key={item.id}>
+            <img src={item.img} alt={item.name} />
+            <h3>{item.name}</h3>
+            <p>{item.dsc}</p>
+            <p>Price: ${item.price}</p>
+            <p>Quantity: {item.qty}</p>
+            <button onClick={() => handleIncreaseQty(item)}>+</button>
+            <button onClick={() => handleDecreaseQty(item)}>-</button>
+            <button onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
+          </div>
+        ))
       ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item._id}>
-              {item.name} - {item.qty} x ${item.price}
-              <button onClick={() => handleIncreaseQty(item)}>+</button>
-              <button onClick={() => handleDecreaseQty(item)}>-</button>
-              <button onClick={() => handleRemoveFromCart(item._id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
+        <p>Your cart is empty.</p>
       )}
       <button onClick={handleClearCart}>Clear Cart</button>
     </div>
