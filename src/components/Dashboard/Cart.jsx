@@ -63,7 +63,7 @@ const Cart = () => {
 </div>
         ))
       ) : (
-        <p>Your cart is empty.</p>
+        <p>Oops! Your cart is empty!</p>
       )}
       <button onClick={handleClearCart}>Clear Cart</button>
     </div>
