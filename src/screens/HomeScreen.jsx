@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
 import { useNavigate } from "react-router";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import HomeHero from "../components/HomeScreen/HomeHero";
 import FoodRibbon from "../components/FoodRibbon";
 import HomeSpecialties from "../components/HomeScreen/HomeSpecialties";
@@ -36,7 +36,7 @@ const HomeScreen = () => {
         <HomeCategories />
         <HomeLocation />
         <HomeBottom />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
