@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
@@ -6,7 +6,6 @@ import { fetchFoodData } from "../slices/foodDataApiSlice";
 const FoodRibbon = ({ onCategorySelect }) => {
   const dispatch = useDispatch();
   const ribbonRef = useRef(null); // Reference for the ribbon container
-  const [scrollAmount, setScrollAmount] = useState(0);
 
   useEffect(() => {
     dispatch(fetchFoodData());
@@ -14,7 +13,6 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
   const foodData = useSelector((state) => state.foodData.data);
   const status = useSelector((state) => state.foodData.status);
-  // const error = useSelector((state) => state.foodData.error);
 
   const desiredCategories = [
     "bbqs", "best-foods", "breads", "burgers",
@@ -32,13 +30,15 @@ const FoodRibbon = ({ onCategorySelect }) => {
   };
 
   const scrollLeft = () => {
-    setScrollAmount((prev) => Math.max(prev - 200, 0));
+    if (ribbonRef.current) {
+      ribbonRef.current.scrollBy({ left: -200, behavior: "smooth" });
+    }
   };
 
   const scrollRight = () => {
-    const container = ribbonRef.current;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    setScrollAmount((prev) => Math.min(prev + 200, maxScroll));
+    if (ribbonRef.current) {
+      ribbonRef.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
   };
 
   return (
@@ -64,8 +64,8 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
       <div
         ref={ribbonRef}
-        className="flex overflow-x-auto space-x-2 scrollbar-hide"
-        style={{ scrollLeft: scrollAmount }}
+        className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide"
+        style={{ scrollBehavior: 'smooth' }}
       >
         {status === "loading" && <p>Loading...</p>}
         {status === "failed" && <p>Error fetching data</p>}
@@ -74,7 +74,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className="px-4 py-2 bg-purple text-white rounded"
+              className="px-4 py-2 bg-purple text-white rounded whitespace-nowrap"
             >
               {category}
             </button>
@@ -108,126 +108,3 @@ FoodRibbon.propTypes = {
 };
 
 export default FoodRibbon;
-
-
-
-
-// import { useEffect } from "react";
-// import PropTypes from "prop-types";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchFoodData } from "../slices/foodDataApiSlice";
-
-// const FoodRibbon = ({ onCategorySelect }) => {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchFoodData());
-//   }, [dispatch]);
-
-//   const foodData = useSelector((state) => state.foodData.data);
-//   const status = useSelector((state) => state.foodData.status);
-//   const error = useSelector((state) => state.foodData.error);
-
-//   const desiredCategories = [
-//     "bbqs", "best-foods", "breads", "burgers",
-//     "chocolates", "desserts", "drinks", "fried-chicken",
-//     "ice-cream", "pizzas", "porks", "sandwiches",
-//     "sausages", "steaks"
-//   ];
-
-//   const filteredCategories = Object.keys(foodData).filter(category =>
-//     desiredCategories.includes(category)
-//   );
-
-//   const handleCategoryClick = (category) => {
-//     onCategorySelect(category);
-//   };
-
-//   return (
-//     <div>
-//       <h1>Food Ribbon</h1>
-//       {status === "loading" && <p>Loading...</p>}
-//       {status === "failed" && <p>Error fetching data</p>}
-//       {status === "succeeded" && filteredCategories.map((category) => (
-//         <button key={category} onClick={() => handleCategoryClick(category)}>
-//           {category}
-//         </button>
-//       ))}
-//     </div>
-//   );
-// };
-
-// FoodRibbon.propTypes = {
-//   onCategorySelect: PropTypes.func.isRequired,
-// };
-
-// export default FoodRibbon;
-
-
-
-
-// import { useEffect } from "react";
-// import PropTypes from "prop-types";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchFoodData } from "../slices/foodDataApiSlice";
-
-// const FoodRibbon = ({ onCategorySelect }) => {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchFoodData());
-//   }, [dispatch]);
-
-//   const foodData = useSelector((state) => state.foodData.data);
-//   const status = useSelector((state) => state.foodData.status);
-//   const error = useSelector((state) => state.foodData.error);
-
-//     const desiredCategories = [
-//     "bbqs",
-//     "best-foods",
-//     "breads",
-//     "burgers",
-//     "chocolates",
-//     "desserts",
-//     "drinks",
-//     "fried-chicken",
-//     "ice-cream",
-//     "pizzas",
-//     "porks",
-//     "sandwiches",
-//     "sausages",
-//     "steaks"
-//   ];
-
-//   const filteredCategories = Object.keys(foodData).filter(category =>
-//     desiredCategories.includes(category)
-//   );
-
-//   console.log("Food Data:", foodData); // Log fetched data
-//   console.log("Fetch Status:", status); // Log fetch status
-//   if (error) console.log("Fetch Error:", error); // Log any fetch errors
-
-//   const handleCategoryClick = (category) => {
-//     onCategorySelect(category);
-//   };
-
-//   return (
-//     <div>
-//       <h1>Food Ribbon</h1>
-//       {status === "loading" && <p>Loading...</p>}
-//       {status === "failed" && <p>Error fetching data</p>}
-//       {status === "succeeded" && filteredCategories.map((category) => (
-
-//         <button key={category} onClick={() => handleCategoryClick(category)}>
-//           {category}
-//         </button>
-//       ))}
-//     </div>
-//   );
-// };
-
-// FoodRibbon.propTypes = {
-//   onCategorySelect: PropTypes.func.isRequired,
-// };
-
-// export default FoodRibbon;

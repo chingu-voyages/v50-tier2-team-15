@@ -1,4 +1,5 @@
 import logo from "../assets/logo-purple.png";
+import { NavLink } from "react-router-dom";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { FaXTwitter, FaSquareInstagram, FaHeart } from "react-icons/fa6";
 
@@ -17,18 +18,16 @@ const Footer = () => {
         </div>
         <ul className="flex justify-center gap-7 w-1/3">
           <li>
-            <a href="#home">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a href="#our-foods">Our Foods</a>
+            <NavLink to="/foods">Our Foods</NavLink>
           </li>
           <li>
-            <a href="#about">About</a>
+            <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">About</NavLink>
           </li>
           <li>
-            <a href="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
-              Chingu
-            </a>
+            <NavLink to="https://www.chingu.io/">Chingu</NavLink>
           </li>
         </ul>
       </div>
