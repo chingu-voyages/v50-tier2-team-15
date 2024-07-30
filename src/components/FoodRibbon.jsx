@@ -44,7 +44,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
   };
 
   return (
-    <div className="flex times-center justify-center relative">
+    <div className="flex items-center justify-center relative">
       <button
         onClick={scrollLeft}
         className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 z-10"
@@ -66,8 +66,8 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
       <div
         ref={ribbonRef}
-        className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide"
-        style={{ scrollBehavior: "smooth", whiteSpace: "nowrap", width: "600px" }}
+        className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide mx-8"
+        style={{ scrollBehavior: "smooth", whiteSpace: "nowrap", width: "1330px" }}
       >
         {status === "loading" && <p>Loading...</p>}
         {status === "failed" && <p>Error fetching data</p>}
@@ -76,7 +76,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className="mx-auto flex flex-grow px-4 py-2 bg-purple text-white rounded whitespace-nowrap"
+              className="mx-auto flex flex-grow px-6 py-3 bg-purple text-white rounded-full text-lg whitespace-nowrap"
             >
               {category}
             </button>
