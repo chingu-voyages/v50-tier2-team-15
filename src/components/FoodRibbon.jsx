@@ -31,18 +31,20 @@ const FoodRibbon = ({ onCategorySelect }) => {
 
   const scrollLeft = () => {
     if (ribbonRef.current) {
+      console.log("Scrolling left");
       ribbonRef.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (ribbonRef.current) {
+      console.log("Scrolling right");
       ribbonRef.current.scrollBy({ left: 200, behavior: "smooth" });
     }
   };
 
   return (
-    <div className="relative">
+    <div className="flex times-center justify-center relative">
       <button
         onClick={scrollLeft}
         className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 z-10"
@@ -65,7 +67,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
       <div
         ref={ribbonRef}
         className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide"
-        style={{ scrollBehavior: "smooth" }}
+        style={{ scrollBehavior: "smooth", whiteSpace: "nowrap", width: "600px" }}
       >
         {status === "loading" && <p>Loading...</p>}
         {status === "failed" && <p>Error fetching data</p>}
