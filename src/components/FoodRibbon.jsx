@@ -65,7 +65,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
       <div
         ref={ribbonRef}
         className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide"
-        style={{ scrollBehavior: 'smooth' }}
+        style={{ scrollBehavior: "smooth" }}
       >
         {status === "loading" && <p>Loading...</p>}
         {status === "failed" && <p>Error fetching data</p>}
@@ -74,7 +74,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className="px-4 py-2 bg-purple text-white rounded whitespace-nowrap"
+              className="mx-auto flex flex-grow px-4 py-2 bg-purple text-white rounded whitespace-nowrap"
             >
               {category}
             </button>
