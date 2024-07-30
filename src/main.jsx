@@ -32,6 +32,7 @@ const router = createBrowserRouter(
 
       <Route path="" element={<PrivateRoute />}>
       <Route path="/user" element={<UserDashboard />} />
+      <Route path="/checkout" element={<UserDashboard />} />
       </Route>
 
     </Route>
