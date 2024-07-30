@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { saveShippingAddress, clearCartItems } from "../slices/cartSlice";
-import { addDecimals } from "../utils/cartHelper";
+import { createOrder } from "../slices/orderSlice";
+// import { addDecimals } from "../utils/orderHelper";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,22 @@ const OrderScreen = () => {
   };
 
   const handleCheckout = () => {
-    // You might add some order submission logic here
-    alert("Order placed successfully!");
-    dispatch(clearCartItems());
-    // Redirect to a confirmation page or home page
+    const newOrder = {
+      id: Date.now(), // Temporary ID for local storage
+      cartItems,
+      shippingAddress: address,
+      itemsPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice,
+      createdAt: new Date().toISOString(),
+    };
+
+    dispatch(createOrder(newOrder)).then(() => {
+      alert("Order placed successfully!");
+      dispatch(clearCartItems());
+      // Redirect to a confirmation page or home page
+    });
   };
 
   return (
@@ -70,7 +83,7 @@ const OrderScreen = () => {
         <h2 className="text-xl font-semibold">Cart Summary</h2>
         {cartItems && cartItems.length > 0 ? (
           <div>
-            {cartItems.map(item => (
+            {cartItems.map((item) => (
               <div key={item.id} className="flex justify-between mb-2">
                 <div>{item.name}</div>
                 <div>${item.price} x {item.qty}</div>
