@@ -1,43 +1,43 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   saveOrderToLocalStorage,
   getOrderFromLocalStorage,
   getAllOrdersFromLocalStorage,
   updateOrderInLocalStorage,
   deleteOrderFromLocalStorage,
-} from '../utils/localStorageHelper';
+} from "../utils/orderHelper";
 
-export const createOrder = createAsyncThunk('orders/createOrder', async (order) => {
+export const createOrder = createAsyncThunk("orders/createOrder", async (order) => {
   saveOrderToLocalStorage(order);
   return order;
 });
 
-export const fetchOrder = createAsyncThunk('orders/fetchOrder', async (orderId) => {
+export const fetchOrder = createAsyncThunk("orders/fetchOrder", async (orderId) => {
   const order = getOrderFromLocalStorage(orderId);
   return order;
 });
 
-export const fetchAllOrders = createAsyncThunk('orders/fetchAllOrders', async () => {
+export const fetchAllOrders = createAsyncThunk("orders/fetchAllOrders", async () => {
   const orders = getAllOrdersFromLocalStorage();
   return orders;
 });
 
-export const updateOrder = createAsyncThunk('orders/updateOrder', async (order) => {
+export const updateOrder = createAsyncThunk("orders/updateOrder", async (order) => {
   updateOrderInLocalStorage(order);
   return order;
 });
 
-export const deleteOrder = createAsyncThunk('orders/deleteOrder', async (orderId) => {
+export const deleteOrder = createAsyncThunk("orders/deleteOrder", async (orderId) => {
   deleteOrderFromLocalStorage(orderId);
   return orderId;
 });
 
 const orderSlice = createSlice({
-  name: 'orders',
+  name: "orders",
   initialState: {
     orders: [],
     order: null,
-    status: 'idle',
+    status: "idle",
     error: null,
   },
   reducers: {},
