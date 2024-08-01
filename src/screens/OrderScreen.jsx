@@ -1,26 +1,30 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { saveShippingAddress, clearCartItems } from "../slices/cartSlice";
+import { useState, useEffect } from "react";
+import { saveShippingAddress, clearCartItems, decreaseCurrency, increaseCurrency } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
 // import { addDecimals } from "../utils/orderHelper";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
-  const { cartItems, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice } = cart;
+  const { cartItems, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice, currency} = cart;
 
   const [address, setAddress] = useState(shippingAddress);
 
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
-
+  useEffect(() => {
+    console.log("Currency from state:", currency);
+  }, [currency]);
   const handleSaveAddress = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(address));
   };
 
   const handleCheckout = () => {
+    console.log("Total Price:", totalPrice);
+    console.log("Available Currency:", currency);
     const newOrder = {
       id: Date.now(), // Temporary ID for local storage
       cartItems,
@@ -31,12 +35,17 @@ const OrderScreen = () => {
       totalPrice,
       createdAt: new Date().toISOString(),
     };
-
+    if (totalPrice <= currency) {
     dispatch(createOrder(newOrder)).then(() => {
       alert("Order placed successfully!");
+      dispatch(decreaseCurrency(totalPrice))
       dispatch(clearCartItems());
       // Redirect to a confirmation page or home page
     });
+  }
+  else {
+    alert("Insufficient currency to complete the purchase.");
+  }
   };
 
   return (
