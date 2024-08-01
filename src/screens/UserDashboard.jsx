@@ -5,6 +5,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Cart from "../components/Dashboard/Cart";
+import UserTop from "../components/Dashboard/UserTop";
 
 const UserDashboard = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -18,6 +19,7 @@ const UserDashboard = () => {
   return (
     <div>
       <h1>UserDashboard</h1>
+      <UserTop />
       <Cart />
       {cartItems.length > 0 ? (
         <button onClick={handleCheckout}>Checkout</button>
