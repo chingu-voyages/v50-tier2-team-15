@@ -2,7 +2,7 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Modal from "./components/Modal";
+import Modal from "./components/LoginModal";
 import useToggle from "./utils/useToggle";
 
 function App() {

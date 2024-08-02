@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import LoginScreen from '../screens/LoginScreen';
+import PropTypes from "prop-types";
+import LoginScreen from "../screens/LoginScreen";
 
-const Modal = ({ toggler }) => {
+const LoginModal = ({ toggler }) => {
   return (
     <div className="static">
       <div className="fixed h-screen w-screen bg-black z-10 top-0 opacity-75"></div>
@@ -9,7 +9,7 @@ const Modal = ({ toggler }) => {
         <div className="mx-4 my-4 bg-white p-4 rounded-lg shadow-lg">
           <div className="flex justify-end">
             <button
-              onClick={() => toggler()}
+              onClick={toggler}
               className="border-2 text-red-900 px-2 m-2"
             >
               X
@@ -22,8 +22,8 @@ const Modal = ({ toggler }) => {
   );
 };
 
-Modal.propTypes = {
+LoginModal.propTypes = {
   toggler: PropTypes.func.isRequired,
 };
 
-export default Modal;
+export default LoginModal;
