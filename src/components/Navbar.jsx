@@ -8,16 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/authSlice";
 import { resetCart } from "../slices/cartSlice";
 
-const Navbar = () => {
+const Navbar = ({ toggler }) => {
   const { userInfo } = useSelector((state) => state.auth);
-  const { on, toggler } = useToggle();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const goToLogin = () => {
-    navigate("/login");
-  };
 
     const logoutHandler = () => {
     try {
