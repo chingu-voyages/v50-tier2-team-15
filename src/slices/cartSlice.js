@@ -58,12 +58,12 @@ const cartSlice = createSlice({
     return resetState;
   },
     decreaseCurrency: (state, action) => {
-      state.currency -= action.payload; 
+      state.currency -= action.payload;
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
     increaseCurrency: (state, action) => {
-      state.currency += action.payload; 
+      state.currency += action.payload;
       localStorage.setItem("cart", JSON.stringify(state));
     },
   },

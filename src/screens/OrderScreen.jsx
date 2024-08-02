@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { saveShippingAddress, clearCartItems, decreaseCurrency, increaseCurrency } from "../slices/cartSlice";
+//Is increaseCurrency import needed?
+import { saveShippingAddress, clearCartItems, decreaseCurrency } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
 // import { addDecimals } from "../utils/orderHelper";
 
