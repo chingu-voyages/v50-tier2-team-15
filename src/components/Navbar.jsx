@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logo-purple.png";
 
 import { useNavigate } from "react-router-dom";
-import useToggle from "../utils/useToggle";
 import { useSelector, useDispatch } from "react-redux";
 
 import { logout } from "../slices/authSlice";
 import { resetCart } from "../slices/cartSlice";
+
+import PropTypes from "prop-types";
 
 const Navbar = ({ toggler }) => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -49,6 +50,10 @@ const Navbar = ({ toggler }) => {
       </div>
     </header>
   );
+}
+
+Navbar.propTypes = {
+  toggler: PropTypes.func.isRequired,
 };
 
 export default Navbar;
