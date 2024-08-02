@@ -26,6 +26,7 @@ const UserDashboard = () => {
       <UserTop />
       <button onClick={() => handleAddCurrency(50)}>Add 50</button>
       <button onClick={() => handleAddCurrency(100)}>Add 100</button>
+      <button onClick={() => handleAddCurrency(150)}>Add 150</button>
       <Cart />
       {cartItems.length > 0 ? (
         <button onClick={handleCheckout}>Checkout</button>
