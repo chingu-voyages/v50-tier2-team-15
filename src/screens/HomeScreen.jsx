@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
 import { useNavigate } from "react-router";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 // import Footer from "../components/Footer";
 import HomeHero from "../components/HomeScreen/HomeHero";
 import FoodRibbon from "../components/FoodRibbon";
@@ -29,7 +29,7 @@ const HomeScreen = () => {
   return (
     <div className="bg-gradient-to-b from-white to-lightOrange">
       <div className="px-[150px] py-[10px]">
-        <Navbar />
+        {/* <Navbar /> */}
         <HomeHero />
         <FoodRibbon onCategorySelect={handleCategorySelect} />
         <HomeSpecialties />
