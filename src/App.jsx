@@ -3,20 +3,21 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
-// import FoodRibbon from "./components/FoodRibbon";
+import useToggle from "./utils/useToggle";
 
 function App() {
+
+  const { on, toggler } = useToggle(); // Custom hook to toggle modal
 
 
   return (
     <>
       <Navbar />
-      {/* <FoodRibbon onCategorySelect={handleCategorySelect} /> */}
       <main className="mx-auto">
         <Outlet />
       </main>
       <Footer />
-      <Modal />
+      {on && <Modal toggler={toggler} />}
     </>
   );
 }
