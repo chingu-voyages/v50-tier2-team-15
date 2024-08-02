@@ -1,6 +1,6 @@
 import "./App.css";
 import { Outlet } from "react-router-dom";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 // import FoodRibbon from "./components/FoodRibbon";
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       {/* <FoodRibbon onCategorySelect={handleCategorySelect} /> */}
       <main className="mx-auto">
         <Outlet />
