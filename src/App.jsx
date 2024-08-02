@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar toggler={toggler} />
       <main className="mx-auto">
         <Outlet />
       </main>
