@@ -2,6 +2,7 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 // import FoodRibbon from "./components/FoodRibbon";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
+      <Modal />
     </>
   );
 }
