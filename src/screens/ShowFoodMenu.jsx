@@ -9,7 +9,7 @@ const ShowFoodMenu = () => {
   return (
     <div>
       <FoodMenu toggle={toggler} />
-      {on && <FoodCardModal toggler={toggler} food={selectedFood} />}
+      {on && <FoodCardModal toggler={toggler} />}
     </div>
   );
 };

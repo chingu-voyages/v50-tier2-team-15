@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
-const useToggle = () => {
-  const [on, setOn] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
+const useToggle = (initialState = false) => {
+  const [on, setOn] = useState(initialState);
 
-  const toggler = (food) => {
-    setSelectedFood(food || null);
-    setOn(!on);
-  };
+  const toggler = useCallback(() => {
+    setOn(prevOn => !prevOn);
+  }, []);
 
-  return { on, toggler, selectedFood };
+  return { on, toggler };
 };
 
 export default useToggle;
