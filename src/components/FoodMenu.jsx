@@ -13,11 +13,6 @@ const FoodMenu = ({ toggle }) => {
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[category] || [];
 
-  // const handleFoodClick = (food) => {
-  //   dispatch(selectFood(food));
-  //   navigate(`/food/${food.id}`);
-  // };
-
   const handleAddToCart = (food, e) => {
     e.stopPropagation(); // Prevents triggering the handleFoodClick when adding to cart
     dispatch(addToCart({ ...food, qty: 1 })); // Add food item to cart with initial quantity of 1

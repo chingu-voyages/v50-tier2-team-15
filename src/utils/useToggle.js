@@ -1,16 +1,11 @@
 import { useState } from "react";
 
 const useToggle = () => {
-  const [modal, setModal] = useState(null);
+  const [on, setOn] = useState(false);
 
-  const toggler = (modalType) => {
-    setModal((prevModal) => (prevModal === modalType ? null : modalType));
-  };
+  const toggler = () => setOn(!on);
 
-  return {
-    modal,
-    toggler,
-  };
+  return { on, toggler };
 };
 
 export default useToggle;
