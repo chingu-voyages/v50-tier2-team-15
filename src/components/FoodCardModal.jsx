@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 
 const FoodCardModal = ({ toggler, food }) => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  // const { id } = useParams();
   const { userInfo } = useSelector((state) => state.auth);
-  const foodData = useSelector((state) => state.foodData.data);
-  const food = Object.values(foodData)
-    .flat()
-    .find((item) => item.id === id);
+  // const foodData = useSelector((state) => state.foodData.data);
+  // const food = Object.values(foodData)
+  //   .flat()
+  //   .find((item) => item.id === id);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -87,6 +87,7 @@ const FoodCardModal = ({ toggler, food }) => {
 
 FoodCardModal.propTypes = {
   toggler: PropTypes.func.isRequired,
+  food: PropTypes.object.isRequired,
 };
 
 export default FoodCardModal;
