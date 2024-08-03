@@ -8,7 +8,7 @@ import useToggle from "./utils/useToggle";
 
 function App() {
 
-  const { on, toggler } = useToggle(); // Custom hook to toggle modal
+  const { modal, toggler } = useToggle(); // use the custom hook to manage the modal state and toggler function.
 
 
   return (
@@ -18,8 +18,8 @@ function App() {
         <Outlet />
       </main>
       <Footer />
-      {on && <LoginModal toggler={toggler} />}
-      {on && <FoodCardModal toggler={toggler} />}
+      {modal === "login" && <LoginModal toggler={() => toggler("login")} />}
+      {modal === "foodCard" && <FoodCardModal toggler={() => toggler("foodCard")} />}
     </>
   );
 }

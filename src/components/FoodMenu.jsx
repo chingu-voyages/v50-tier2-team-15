@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
-// import { selectFood } from "../slices/foodDataApiSlice";
 import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 
 const FoodMenu = ({ toggle }) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { category } = useParams();
+
     // Get the userInfo from the auth state. The userInfo has the username.
   const { userInfo } = useSelector((state) => state.auth);
   // Get the food data from the store state.
@@ -33,7 +31,7 @@ const FoodMenu = ({ toggle }) => {
           <div
             key={food.id}
             className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
-            onClick={toggle}
+            onClick={() => toggle("foodCard")}
           >
             <img
               src={food.img}
