@@ -18,6 +18,7 @@ function App() {
       </main>
       <Footer />
       {on && <LoginModal toggler={toggler} />}
+      {on && <FoodCardModal toggler={toggler} />}
     </>
   );
 }
