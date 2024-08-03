@@ -26,7 +26,7 @@ const FoodMenu = ({ toggle }) => {
           <div
             key={food.id}
             className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
-            onClick={() => toggle("foodCard")}
+            onClick={toggle}
           >
             <img
               src={food.img}
