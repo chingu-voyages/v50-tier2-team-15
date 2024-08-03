@@ -18,7 +18,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import UserDashboard from "./screens/UserDashboard";
 import ShowFoodMenu from "./screens/ShowFoodMenu.jsx";
-import FoodCard from "./components/FoodCard";
+// import FoodCard from "./components/FoodCard";
 import OurFoodsList from "./screens/OurFoodsList.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
 
@@ -29,7 +29,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/foods" element={<OurFoodsList />} />
       <Route path="/foods/:category" element={<ShowFoodMenu />} />
-      <Route path="/food/:id" element={<FoodCard />} />
+      {/* <Route path="/food/:id" element={<FoodCard />} /> */}
 
       <Route path="" element={<PrivateRoute />}>
       <Route path="/user" element={<UserDashboard />} />
