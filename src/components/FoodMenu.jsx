@@ -3,19 +3,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 
-const FoodMenu = ({ toggle }) => {
+
+const FoodMenu = ({ toggle, onSelectFood }) => {
   const dispatch = useDispatch();
   const { category } = useParams();
-
-  // Get the userInfo from the auth state. The userInfo has the username.
   const { userInfo } = useSelector((state) => state.auth);
-  // Get the food data from the store state.
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[category] || [];
 
   const handleAddToCart = (food, e) => {
-    e.stopPropagation(); // Prevents triggering the handleFoodClick when adding to cart
-    dispatch(addToCart({ ...food, qty: 1 })); // Add food item to cart with initial quantity of 1
+    e.stopPropagation();
+    dispatch(addToCart({ ...food, qty: 1 }));
   };
 
   return (
@@ -26,7 +24,10 @@ const FoodMenu = ({ toggle }) => {
           <div
             key={food.id}
             className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
-            onClick={() => toggle()} // Make sure to wrap the toggle call in an anonymous function
+            onClick={() => {
+              onSelectFood(food);
+              toggle();
+            }}
           >
             <img
               src={food.img}
@@ -55,8 +56,8 @@ const FoodMenu = ({ toggle }) => {
 };
 
 FoodMenu.propTypes = {
-  selectedCategory: PropTypes.string,
   toggle: PropTypes.func.isRequired,
+  onSelectFood: PropTypes.func.isRequired,
 };
 
 export default FoodMenu;

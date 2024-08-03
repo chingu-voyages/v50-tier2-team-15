@@ -6,12 +6,7 @@ import PropTypes from "prop-types";
 
 const FoodCardModal = ({ toggler, food }) => {
   const dispatch = useDispatch();
-  // const { id } = useParams();
   const { userInfo } = useSelector((state) => state.auth);
-  // const foodData = useSelector((state) => state.foodData.data);
-  // const food = Object.values(foodData)
-  //   .flat()
-  //   .find((item) => item.id === id);
 
   const [quantity, setQuantity] = useState(1);
 
