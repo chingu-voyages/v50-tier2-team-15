@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-export default function useToggle() {
-  const [on, setOn] = useState(false);
+const useToggle = () => {
+  const [modal, setModal] = useState(null);
 
-  const toggler = () => {
-    setOn((on) => !on);
+  const toggler = (modalType) => {
+    setModal((prevModal) => (prevModal === modalType ? null : modalType));
   };
 
-  return { on, toggler };
-}
+  return {
+    modal,
+    toggler,
+  };
+};
+
+export default useToggle;
