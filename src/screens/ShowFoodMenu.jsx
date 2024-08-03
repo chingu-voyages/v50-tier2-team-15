@@ -1,11 +1,16 @@
 import FoodMenu from "../components/FoodMenu";
+import PropTypes from "prop-types";
 
-const ShowFoodMenu = () => {
+const ShowFoodMenu = ({ toggler }) => {
   return (
     <div>
-      <FoodMenu />
+      <FoodMenu toggle={toggler} />
     </div>
   );
+};
+
+ShowFoodMenu.propTypes = {
+  toggler: PropTypes.func.isRequired,
 };
 
 export default ShowFoodMenu;
