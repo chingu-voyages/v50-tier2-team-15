@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { selectFood } from "../slices/foodDataApiSlice";
+import { useParams } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import { selectFood } from "../slices/foodDataApiSlice";
 import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 
-const FoodMenu = () => {
+const FoodMenu = ({ toggle }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { category } = useParams();
     // Get the userInfo from the auth state. The userInfo has the username.
   const { userInfo } = useSelector((state) => state.auth);
@@ -14,10 +15,10 @@ const FoodMenu = () => {
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[category] || [];
 
-  const handleFoodClick = (food) => {
-    dispatch(selectFood(food));
-    navigate(`/food/${food.id}`);
-  };
+  // const handleFoodClick = (food) => {
+  //   dispatch(selectFood(food));
+  //   navigate(`/food/${food.id}`);
+  // };
 
   const handleAddToCart = (food, e) => {
     e.stopPropagation(); // Prevents triggering the handleFoodClick when adding to cart
@@ -32,7 +33,7 @@ const FoodMenu = () => {
           <div
             key={food.id}
             className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
-            onClick={() => handleFoodClick(food)}
+            onClick={toggle}
           >
             <img
               src={food.img}
@@ -60,8 +61,10 @@ const FoodMenu = () => {
   );
 };
 
+
 FoodMenu.propTypes = {
   selectedCategory: PropTypes.string,
+  toggle: PropTypes.func.isRequired,
 };
 
 export default FoodMenu;

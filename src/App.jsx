@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoginModal from "./components/LoginModal";
+import FoodCardModal from "./components/FoodCardModal";
 import useToggle from "./utils/useToggle";
 
 function App() {
