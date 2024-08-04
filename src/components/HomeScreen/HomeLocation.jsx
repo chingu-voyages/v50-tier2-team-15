@@ -5,7 +5,7 @@ import Map from "../Map/Map";
 const HomeLocation = () => {
   return (
     <>
-      <section className="text-center">
+      <section className="text-center" id="locations">
       <div className="flex flex-col justify-center items-center">
           <h2 className="text-5xl font-bold text-purple items-start mt-[100px]">
             Our Locations
