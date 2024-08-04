@@ -7,14 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/authSlice";
 import { resetCart } from "../slices/cartSlice";
 
-const Navbar = () => {
+import PropTypes from "prop-types";
+
+const Navbar = ({ toggler }) => {
   const { userInfo } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const goToLogin = () => {
-    navigate("/login");
-  };
 
     const logoutHandler = () => {
     try {
@@ -42,13 +41,19 @@ const Navbar = () => {
             About
           </NavLink>
           <NavLink to="https://www.chingu.io/">Chingu</NavLink>
-          {userInfo ? <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button> : <button className="text-darkOrange text-bold" onClick={goToLogin}>
-            Get Started
-          </button>}
+          {userInfo ? (
+            <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button>
+          ) : (
+            <button className="text-darkOrange text-bold" onClick={toggler}>Get Started</button>
+          )}
         </div>
       </div>
     </header>
   );
+}
+
+Navbar.propTypes = {
+  toggler: PropTypes.func.isRequired,
 };
 
 export default Navbar;

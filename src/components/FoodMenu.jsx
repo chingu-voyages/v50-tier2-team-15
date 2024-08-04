@@ -1,27 +1,19 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { selectFood } from "../slices/foodDataApiSlice";
+import { useParams } from "react-router-dom";
 import { addToCart } from "../slices/cartSlice"; // Import addToCart action
 
-const FoodMenu = () => {
+
+const FoodMenu = ({ toggle, onSelectFood }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { category } = useParams();
-    // Get the userInfo from the auth state. The userInfo has the username.
   const { userInfo } = useSelector((state) => state.auth);
-  // Get the food data from the store state.
   const foodData = useSelector((state) => state.foodData.data);
   const foods = foodData[category] || [];
 
-  const handleFoodClick = (food) => {
-    dispatch(selectFood(food));
-    navigate(`/food/${food.id}`);
-  };
-
   const handleAddToCart = (food, e) => {
-    e.stopPropagation(); // Prevents triggering the handleFoodClick when adding to cart
-    dispatch(addToCart({ ...food, qty: 1 })); // Add food item to cart with initial quantity of 1
+    e.stopPropagation();
+    dispatch(addToCart({ ...food, qty: 1 }));
   };
 
   return (
@@ -32,7 +24,10 @@ const FoodMenu = () => {
           <div
             key={food.id}
             className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer h-80 relative"
-            onClick={() => handleFoodClick(food)}
+            onClick={() => {
+              onSelectFood(food);
+              toggle();
+            }}
           >
             <img
               src={food.img}
@@ -45,13 +40,13 @@ const FoodMenu = () => {
                 <p className="text-gray-600 mb-4">Price: {food.price}</p>
               </div>
               {userInfo ? (
-      <button
-        onClick={(e) => handleAddToCart(food, e)}
-        className="absolute bottom-4 right-4 bg-purple-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200"
-      >
-        +
-      </button>
-    ) : null}
+                <button
+                  onClick={(e) => handleAddToCart(food, e)}
+                  className="absolute bottom-4 right-4 bg-purple-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-200"
+                >
+                  +
+                </button>
+              ) : null}
             </div>
           </div>
         ))}
@@ -61,7 +56,8 @@ const FoodMenu = () => {
 };
 
 FoodMenu.propTypes = {
-  selectedCategory: PropTypes.string,
+  toggle: PropTypes.func.isRequired,
+  onSelectFood: PropTypes.func.isRequired,
 };
 
 export default FoodMenu;
