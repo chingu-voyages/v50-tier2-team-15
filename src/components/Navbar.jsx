@@ -41,7 +41,7 @@ const Navbar = () => {
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
             About
           </NavLink>
-          <NavLink to="#locations">Locations</NavLink>
+          <a href="#locations">Locations</a>
           {userInfo ? <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button> : <button className="text-darkOrange text-bold" onClick={goToLogin}>
             Get Started
           </button>}
