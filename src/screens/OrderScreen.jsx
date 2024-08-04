@@ -104,9 +104,9 @@ const OrderScreen = () => {
             ))}
             <div className="mt-2">
               <h2 className="text-xl font-semibold">Order Details!</h2>
-              <div>Items Total: ${itemsPrice}</div>
-              <div>Shipping Price: ${shippingPrice}</div>
-              <div>Tax: ${taxPrice}</div>
+              <div>Items Total: {itemsPrice}</div>
+              <div>Shipping Price: {shippingPrice}</div>
+              <div>Tax: {taxPrice}</div>
               <div>Current Tokens: {currency}</div>
               <div className="font-bold">Order Total: {totalPrice}</div>
               <div>Tokens after order: {currency - totalPrice}</div>
