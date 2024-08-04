@@ -90,21 +90,26 @@ const OrderScreen = () => {
       </div>
 
       <div className="mb-4">
-        <h2 className="text-xl font-semibold">Order Summary</h2>
         {cartItems && cartItems.length > 0 ? (
           <div>
             {cartItems.map((item) => (
               <div key={item.id} className="flex justify-between mb-2">
-                <div>{item.dsc}</div>
+                <div>
+                  <div>{item.dsc}</div>
                 <div>From: {item.name}</div>
-                <div>${item.price} x {item.qty}</div>
+                <div> Rating: {item.rate}</div>
+                </div>
+                <div>x {item.qty}</div>
               </div>
             ))}
             <div className="mt-2">
+              <h2 className="text-xl font-semibold">Order Details!</h2>
               <div>Items Total: ${itemsPrice}</div>
               <div>Shipping Price: ${shippingPrice}</div>
               <div>Tax: ${taxPrice}</div>
-              <div className="font-bold">Order Total: ${totalPrice}</div>
+              <div>Current Tokens: </div>
+              <div className="font-bold">Order Total: {totalPrice}</div>
+              <div>Tokens after order: </div>
             </div>
           </div>
         ) : (
