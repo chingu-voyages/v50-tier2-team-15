@@ -90,20 +90,21 @@ const OrderScreen = () => {
       </div>
 
       <div className="mb-4">
-        <h2 className="text-xl font-semibold">Cart Summary</h2>
+        <h2 className="text-xl font-semibold">Order Summary</h2>
         {cartItems && cartItems.length > 0 ? (
           <div>
             {cartItems.map((item) => (
               <div key={item.id} className="flex justify-between mb-2">
-                <div>{item.name}</div>
+                <div>{item.dsc}</div>
+                <div>From: {item.name}</div>
                 <div>${item.price} x {item.qty}</div>
               </div>
             ))}
             <div className="mt-2">
-              <div>Items Price: ${itemsPrice}</div>
+              <div>Items Total: ${itemsPrice}</div>
               <div>Shipping Price: ${shippingPrice}</div>
-              <div>Tax Price: ${taxPrice}</div>
-              <div className="font-bold">Total Price: ${totalPrice}</div>
+              <div>Tax: ${taxPrice}</div>
+              <div className="font-bold">Order Total: ${totalPrice}</div>
             </div>
           </div>
         ) : (
@@ -112,7 +113,7 @@ const OrderScreen = () => {
       </div>
 
       <button onClick={handleCheckout} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-        Complete Purchase
+        Place Order!
       </button>
     </div>
   );
