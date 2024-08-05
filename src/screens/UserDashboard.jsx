@@ -2,7 +2,7 @@
 // We need a cart. We need the FoodRibbon. We need the FoodMenu.
 // Should the ShowFoodMenu.jsx in the screens folder just be a component?????
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Cart from "../components/Dashboard/Cart";
 import UserTop from "../components/Dashboard/UserTop";
@@ -22,7 +22,7 @@ const UserDashboard = () => {
   // };
   return (
     <div>
-      <h1>UserDashboard</h1>
+      {/* <h1>UserDashboard</h1> */}
       <UserTop />
       {/* <button onClick={() => handleAddCurrency(50)}>Add 50</button>
       <button onClick={() => handleAddCurrency(100)}>Add 100</button>
