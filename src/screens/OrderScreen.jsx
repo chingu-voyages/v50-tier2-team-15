@@ -21,9 +21,8 @@ const OrderScreen = () => {
   } = cart;
 
   const [userAddress, setUserAddress] = useState(shippingAddress || {});
-  const [savedAddress, setSavedAddress] = useState(shippingAddress);
 
-  const handleAddressChange = (e) => {
+const handleAddressChange = (e) => {
     setUserAddress({ ...userAddress, [e.target.name]: e.target.value });
   };
 
@@ -34,7 +33,6 @@ const OrderScreen = () => {
   const handleSaveAddress = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(userAddress));
-    setSavedAddress(userAddress); // Update the saved address state
   };
 
   const handleCheckout = () => {
@@ -84,63 +82,63 @@ const OrderScreen = () => {
 
       <div className="mb-4 flex">
         <div className="flex-1 p-2">
-              <h2 className="text-3xl font-semibold">Shipping Address</h2>
-              <p>Enter your shipping address below:</p>
-              <form onSubmit={handleSaveAddress} className="space-y-4">
-                <input
-                  type="text"
-                  name="address"
-                  value={userAddress.address || ""}
-                  onChange={handleAddressChange}
-                  placeholder="Address"
-                  className="p-2 border rounded"
-                  required
-                />
-                <input
-                  type="text"
-                  name="city"
-                  value={userAddress.city || ""}
-                  onChange={handleAddressChange}
-                  placeholder="City"
-                  className="p-2 border rounded"
-                  required
-                />
-                <input
-                  type="text"
-                  name="postalCode"
-                  value={userAddress.postalCode || ""}
-                  onChange={handleAddressChange}
-                  placeholder="Postal Code"
-                  className="p-2 border rounded"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-purple-500 text-white rounded-full"
-                >
-                  Save Address
-                </button>
-              </form>
-            </div>
-        </div>
-        <div className="flex-1 p-2">
-          <div className="mt-2">
-            <h2 className="text-3xl font-semibold">Order Details!</h2>
-            <div>Items Total: {itemsPrice}</div>
-            <div>Shipping Price: {shippingPrice}</div>
-            <div>Tax: {taxPrice}</div>
-            <div>Current Tokens: {currency}</div>
-            <div className="font-bold">Order Total: {totalPrice}</div>
-            <div>Tokens after order: {currency - totalPrice}</div>
-          </div>
-          <button
-            onClick={handleCheckout}
-            className="px-4 py-2 bg-darkOrange text-white font-bold rounded-full"
-          >
-            Place Order!
-          </button>
+          <h2 className="text-3xl font-semibold">Shipping Address</h2>
+          <p>Enter your shipping address below:</p>
+          <form onSubmit={handleSaveAddress} className="space-y-4">
+            <input
+              type="text"
+              name="address"
+              value={userAddress.address || ""}
+              onChange={handleAddressChange}
+              placeholder="Address"
+              className="p-2 border rounded"
+              required
+            />
+            <input
+              type="text"
+              name="city"
+              value={userAddress.city || ""}
+              onChange={handleAddressChange}
+              placeholder="City"
+              className="p-2 border rounded"
+              required
+            />
+            <input
+              type="text"
+              name="postalCode"
+              value={userAddress.postalCode || ""}
+              onChange={handleAddressChange}
+              placeholder="Postal Code"
+              className="p-2 border rounded"
+              required
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-purple-500 text-white rounded-full"
+            >
+              Save Address
+            </button>
+          </form>
         </div>
       </div>
+      <div className="flex-1 p-2">
+        <div className="mt-2">
+          <h2 className="text-3xl font-semibold">Order Details!</h2>
+          <div>Items Total: {itemsPrice}</div>
+          <div>Shipping Price: {shippingPrice}</div>
+          <div>Tax: {taxPrice}</div>
+          <div>Current Tokens: {currency}</div>
+          <div className="font-bold">Order Total: {totalPrice}</div>
+          <div>Tokens after order: {currency - totalPrice}</div>
+        </div>
+        <button
+          onClick={handleCheckout}
+          className="px-4 py-2 bg-darkOrange text-white font-bold rounded-full"
+        >
+          Place Order!
+        </button>
+      </div>
+    </div>
   );
 };
 
