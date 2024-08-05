@@ -45,13 +45,13 @@ const OrderScreen = () => {
     });
   }
   else {
-    alert("Insufficient currency to complete the purchase.");
+    alert("Oops! Insufficient tokens to complete purchase!");
   }
   };
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
+      <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
 
       <div className="mb-4">
         <h2 className="text-xl font-semibold">Shipping Information</h2>
@@ -103,7 +103,7 @@ const OrderScreen = () => {
               </div>
             ))}
             <div className="mt-2">
-              <h2 className="text-xl font-semibold">Order Details!</h2>
+              <h2 className="text-3xl font-semibold">Order Details!</h2>
               <div>Items Total: {itemsPrice}</div>
               <div>Shipping Price: {shippingPrice}</div>
               <div>Tax: {taxPrice}</div>
