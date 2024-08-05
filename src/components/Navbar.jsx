@@ -1,21 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo-purple.png";
-
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { logout } from "../slices/authSlice";
 import { resetCart } from "../slices/cartSlice";
-
 import PropTypes from "prop-types";
 
 const Navbar = ({ toggler }) => {
   const { userInfo } = useSelector((state) => state.auth);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-    const logoutHandler = () => {
+  const logoutHandler = () => {
     try {
       dispatch(logout());
       dispatch(resetCart());
@@ -24,7 +19,7 @@ const Navbar = ({ toggler }) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <header>
@@ -35,27 +30,30 @@ const Navbar = ({ toggler }) => {
           </NavLink>
         </div>
         <div className="flex items-center justify-center gap-14 ml-auto text-xl">
-          {userInfo ? <NavLink to="/user">Dashboard</NavLink> : <NavLink to="/">Home</NavLink>}
+          {userInfo ? (
+            <NavLink to="/user">Dashboard</NavLink>
+          ) : (
+            <NavLink to="/">Home</NavLink>
+          )}
           <NavLink to="/foods">Our Foods</NavLink>
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
             About
           </NavLink>
           <a href="#locations">Locations</a>
-          {userInfo ? <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button> : <button className="text-darkOrange text-bold" onClick={goToLogin}>
-            Get Started
-          </button>}
-//           <NavLink to="https://www.chingu.io/">Chingu</NavLink>
-//           {userInfo ? (
-//             <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button>
-//           ) : (
-//             <button className="text-darkOrange text-bold" onClick={toggler}>Get Started</button>
-//           )}
-
+          {userInfo ? (
+            <button className="text-darkOrange text-bold" onClick={logoutHandler}>
+              Log Out
+            </button>
+          ) : (
+            <button className="text-darkOrange text-bold" onClick={toggler}>
+              Get Started
+            </button>
+          )}
         </div>
       </div>
     </header>
   );
-}
+};
 
 Navbar.propTypes = {
   toggler: PropTypes.func.isRequired,
