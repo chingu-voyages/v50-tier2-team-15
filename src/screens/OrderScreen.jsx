@@ -20,11 +20,11 @@ const OrderScreen = () => {
     currency,
   } = cart;
 
-  const [address, setAddress] = useState(shippingAddress || {});
+  const [userAddress, setUserAddress] = useState(shippingAddress || {});
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
 
   const handleAddressChange = (e) => {
-    setAddress({ ...address, [e.target.name]: e.target.value });
+    setUserAddress({ ...userAddress, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
@@ -33,8 +33,8 @@ const OrderScreen = () => {
 
   const handleSaveAddress = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress(address));
-    setSavedAddress(address); // Update the saved address state
+    dispatch(saveShippingAddress(userAddress));
+    setSavedAddress(userAddress); // Update the saved address state
   };
 
   const handleCheckout = () => {
@@ -43,7 +43,7 @@ const OrderScreen = () => {
     const newOrder = {
       id: Date.now(), // Temporary ID for local storage
       cartItems,
-      shippingAddress: address,
+      shippingAddress: userAddress,
       itemsPrice,
       shippingPrice,
       taxPrice,
@@ -98,7 +98,7 @@ const OrderScreen = () => {
                 <input
                   type="text"
                   name="address"
-                  value={address.address || ""}
+                  value={userAddress.address || ""}
                   onChange={handleAddressChange}
                   placeholder="Address"
                   className="p-2 border rounded"
@@ -107,7 +107,7 @@ const OrderScreen = () => {
                 <input
                   type="text"
                   name="city"
-                  value={address.city || ""}
+                  value={userAddress.city || ""}
                   onChange={handleAddressChange}
                   placeholder="City"
                   className="p-2 border rounded"
@@ -116,7 +116,7 @@ const OrderScreen = () => {
                 <input
                   type="text"
                   name="postalCode"
-                  value={address.postalCode || ""}
+                  value={userAddress.postalCode || ""}
                   onChange={handleAddressChange}
                   placeholder="Postal Code"
                   className="p-2 border rounded"
