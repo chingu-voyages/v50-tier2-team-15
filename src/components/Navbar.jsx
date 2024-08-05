@@ -40,12 +40,17 @@ const Navbar = ({ toggler }) => {
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
             About
           </NavLink>
-          <NavLink to="https://www.chingu.io/">Chingu</NavLink>
-          {userInfo ? (
-            <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button>
-          ) : (
-            <button className="text-darkOrange text-bold" onClick={toggler}>Get Started</button>
-          )}
+          <a href="#locations">Locations</a>
+          {userInfo ? <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button> : <button className="text-darkOrange text-bold" onClick={goToLogin}>
+            Get Started
+          </button>}
+//           <NavLink to="https://www.chingu.io/">Chingu</NavLink>
+//           {userInfo ? (
+//             <button className="text-darkOrange text-bold" onClick={logoutHandler}>Log Out</button>
+//           ) : (
+//             <button className="text-darkOrange text-bold" onClick={toggler}>Get Started</button>
+//           )}
+
         </div>
       </div>
     </header>
