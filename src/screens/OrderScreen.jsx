@@ -84,15 +84,7 @@ const OrderScreen = () => {
 
       <div className="mb-4 flex">
         <div className="flex-1 p-2">
-          {savedAddress ? (
-            <div>
               <h2 className="text-3xl font-semibold">Shipping Address</h2>
-              <p>Address: {savedAddress.address}</p>
-              <p>City: {savedAddress.city}</p>
-              <p>Postal Code: {savedAddress.postalCode}</p>
-            </div>
-          ) : (
-            <div>
               <p>Enter your shipping address below:</p>
               <form onSubmit={handleSaveAddress} className="space-y-4">
                 <input
@@ -130,7 +122,6 @@ const OrderScreen = () => {
                 </button>
               </form>
             </div>
-          )}
         </div>
         <div className="flex-1 p-2">
           <div className="mt-2">
@@ -150,7 +141,6 @@ const OrderScreen = () => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 
