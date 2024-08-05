@@ -6,7 +6,6 @@ import {
   decreaseCurrency,
 } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
-// import { addDecimals } from "../utils/orderHelper";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
@@ -21,8 +20,8 @@ const OrderScreen = () => {
     currency,
   } = cart;
 
-  const [address, setAddress] = useState(shippingAddress);
-  const [savedAddress] = useState(shippingAddress);
+  const [address, setAddress] = useState(shippingAddress || {});
+  const [savedAddress, setSavedAddress] = useState(shippingAddress);
 
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
@@ -35,6 +34,7 @@ const OrderScreen = () => {
   const handleSaveAddress = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(address));
+    setSavedAddress(address); // Update the saved address state
   };
 
   const handleCheckout = () => {
@@ -72,7 +72,7 @@ const OrderScreen = () => {
               <div>
                 <div>{item.dsc}</div>
                 <div>From: {item.name}</div>
-                <div> Rating: {item.rate}</div>
+                <div>Rating: {item.rate}</div>
               </div>
               <div>x {item.qty}</div>
             </div>
@@ -124,7 +124,7 @@ const OrderScreen = () => {
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-purple text-white rounded-full"
+                  className="px-6 py-3 bg-purple-500 text-white rounded-full"
                 >
                   Save Address
                 </button>
@@ -144,7 +144,7 @@ const OrderScreen = () => {
           </div>
           <button
             onClick={handleCheckout}
-            className="px-4 py-2 text-darkOrange text-bold"
+            className="px-4 py-2 bg-darkOrange text-white font-bold rounded-full"
           >
             Place Order!
           </button>
