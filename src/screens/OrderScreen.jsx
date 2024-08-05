@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-//Is increaseCurrency import needed?
 import { saveShippingAddress, clearCartItems, decreaseCurrency } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
 // import { addDecimals } from "../utils/orderHelper";
@@ -11,13 +10,16 @@ const OrderScreen = () => {
   const { cartItems, shippingAddress, itemsPrice, shippingPrice, taxPrice, totalPrice, currency} = cart;
 
   const [address, setAddress] = useState(shippingAddress);
+   const [savedAddress, setSavedAddress] = useState(shippingAddress);
 
   const handleAddressChange = (e) => {
     setAddress({ ...address, [e.target.name]: e.target.value });
   };
+
   useEffect(() => {
     console.log("Currency from state:", currency);
   }, [currency]);
+
   const handleSaveAddress = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(address));
@@ -49,45 +51,58 @@ const OrderScreen = () => {
   }
   };
 
+
   return (
     <div className="p-4">
       <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
 
       <div className="mb-4">
-        <h2 className="text-xl font-semibold">Shipping Information</h2>
-        <form onSubmit={handleSaveAddress} className="space-y-4">
-          <input
-            type="text"
-            name="address"
-            value={address.address || ""}
-            onChange={handleAddressChange}
-            placeholder="Address"
-            className="p-2 border rounded"
-            required
-          />
-          <input
-            type="text"
-            name="city"
-            value={address.city || ""}
-            onChange={handleAddressChange}
-            placeholder="City"
-            className="p-2 border rounded"
-            required
-          />
-          <input
-            type="text"
-            name="postalCode"
-            value={address.postalCode || ""}
-            onChange={handleAddressChange}
-            placeholder="Postal Code"
-            className="p-2 border rounded"
-            required
-          />
-          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Save Address
-          </button>
-        </form>
-      </div>
+  {savedAddress ? (
+    <div>
+      <h2 className="text-xl font-semibold">Shipping Address</h2>
+      <p>Address: {savedAddress.address}</p>
+      <p>City: {savedAddress.city}</p>
+      <p>Postal Code: {savedAddress.postalCode}</p>
+    </div>
+  ) : (
+    <div>
+      <p>Enter your shipping address below:</p>
+      <form onSubmit={handleSaveAddress} className="space-y-4">
+        <input
+          type="text"
+          name="address"
+          value={address.address || ""}
+          onChange={handleAddressChange}
+          placeholder="Address"
+          className="p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          name="city"
+          value={address.city || ""}
+          onChange={handleAddressChange}
+          placeholder="City"
+          className="p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          name="postalCode"
+          value={address.postalCode || ""}
+          onChange={handleAddressChange}
+          placeholder="Postal Code"
+          className="p-2 border rounded"
+          required
+        />
+        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          Save Address
+        </button>
+      </form>
+    </div>
+  )}
+</div>
+
 
       <div className="mb-4">
         {cartItems && cartItems.length > 0 ? (
