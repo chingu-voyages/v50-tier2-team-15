@@ -3,8 +3,8 @@ import { updateCart } from "../utils/cartUtils";
 
 //Initial state of the cart. If there is a cart (with items) in local storage, use that. If not, use an empty array.
 const initialState = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
-  : { cartItems: [], shippingAddress: {} };
+  ? {...JSON.parse(localStorage.getItem("cart")), currency: 1000}
+  : { cartItems: [], shippingAddress: {}, currency: 1000 };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -53,7 +53,19 @@ const cartSlice = createSlice({
       state.cartItems = [];
       return updateCart(state);
     },
-    resetCart: () => initialState
+    resetCart: () => {const resetState = { cartItems: [], shippingAddress: {}, currency: 1000 };
+    localStorage.setItem("cart", JSON.stringify(resetState));
+    return resetState;
+  },
+    decreaseCurrency: (state, action) => {
+      state.currency -= action.payload;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+
+    increaseCurrency: (state, action) => {
+      state.currency += action.payload;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
   },
 });
 
@@ -63,6 +75,8 @@ export const {
   saveShippingAddress,
   clearCartItems,
   resetCart,
+  decreaseCurrency,
+  increaseCurrency,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

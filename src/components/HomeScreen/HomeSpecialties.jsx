@@ -1,3 +1,6 @@
+import Tacos from "../../assets/specialties-left.png";
+import Pasta from "../../assets/specialties-right.png";
+
 const HomeSpecialties = () => {
   return (
     <>
@@ -13,9 +16,9 @@ const HomeSpecialties = () => {
             <div className="flex pt-12 justify-center items-center">
               <div className="w-1/3">
                 <img
-                  src="src/assets/specialties-left.png"
                   alt="Specialty 1"
                   className="w-[80%]"
+                  src={Tacos}
                 />
               </div>
               <div className="w-2/3 text-left pr-14">
@@ -34,9 +37,9 @@ const HomeSpecialties = () => {
           </div>
           <div className="w-1/3">
             <img
-              src="src\assets\specialties-right.png"
               alt="Specialty 2"
               className=""
+              src={Pasta}
             />
           </div>
         </div>

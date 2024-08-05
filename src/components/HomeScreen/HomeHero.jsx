@@ -1,7 +1,13 @@
 import heroImage from "../../assets/HomeHero.svg";
 import logoOrange from "../../assets/logo-orange.svg";
+import { useNavigate } from "react-router-dom";
+
 
 const HomeHero = () => {
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    navigate("/login");
+  };
   return (
     <>
       <section className="flex items-center justify-center mb-[150px] w-[100%]">
@@ -25,7 +31,7 @@ const HomeHero = () => {
           <div className="mt-7">
             <div className="mt-4">
               <button
-                href="your-link-url"
+                onClick={goToLogin}
                 className="inline-block px-14 py-4 bg-darkOrange text-white rounded-full text-xl"
               >
                 Get Started
