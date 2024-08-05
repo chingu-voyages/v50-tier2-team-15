@@ -91,7 +91,7 @@ const handleAddressChange = (e) => {
               value={userAddress.address || ""}
               onChange={handleAddressChange}
               placeholder="Address"
-              className="p-2 border rounded"
+              className="m-2 p-2 border rounded"
               required
             />
             <input
@@ -100,7 +100,7 @@ const handleAddressChange = (e) => {
               value={userAddress.city || ""}
               onChange={handleAddressChange}
               placeholder="City"
-              className="p-2 border rounded"
+              className="m-2 p-2 border rounded"
               required
             />
             <input
@@ -109,12 +109,12 @@ const handleAddressChange = (e) => {
               value={userAddress.postalCode || ""}
               onChange={handleAddressChange}
               placeholder="Postal Code"
-              className="p-2 border rounded"
+              className="m-2 p-2 border rounded"
               required
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-purple-500 text-white rounded-full"
+              className="m-2 px-6 py-3 bg-purple-500 text-white rounded-full"
             >
               Save Address
             </button>
