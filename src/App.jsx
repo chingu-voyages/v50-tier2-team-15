@@ -2,19 +2,24 @@ import "./App.css";
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-// import FoodRibbon from "./components/FoodRibbon";
+import LoginModal from "./components/LoginModal";
+import FoodCardModal from "./components/FoodCardModal";
+import useToggle from "./utils/useToggle";
 
 function App() {
+
+  const { on, toggler } = useToggle(); // Destructure the on and toggler properties from the useToggle hook function.
 
 
   return (
     <>
-      <Navbar />
-      {/* <FoodRibbon onCategorySelect={handleCategorySelect} /> */}
+      <Navbar toggler={toggler} />
       <main className="mx-auto">
         <Outlet />
       </main>
       <Footer />
+      {on && <LoginModal toggler={toggler} />}
+      {on && <FoodCardModal toggler={toggler} />}
     </>
   );
 }

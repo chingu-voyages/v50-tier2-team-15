@@ -50,10 +50,10 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
-  filter: drop-shadow(3px 5px 4px #ededee);
+  filter: drop-shadow(1px 3px 2px #ededee);
 }
 button:hover {
-  border-color: #646cff;
+  filter: drop-shadow(3px 4px 3px #ededee);
 }
 button:focus,
 button:focus-visible {
