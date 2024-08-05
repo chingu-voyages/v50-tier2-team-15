@@ -139,9 +139,6 @@ const OrderScreen = () => {
             <div>Shipping Price: {shippingPrice}</div>
             <div>Tax: {taxPrice}</div>
             <div>Current Tokens: {currency}</div>
-            <br />
-            <hr />
-            <br />
             <div className="font-bold">Order Total: {totalPrice}</div>
             <div>Tokens after order: {currency - totalPrice}</div>
           </div>
