@@ -6,9 +6,20 @@ import {
   decreaseCurrency,
 } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
+import { useNavigate } from "react-router-dom";
+// add tips
+import { setTips } from "../slices/tipsSlice";
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // Add tips
+  const goToAdd = () => {
+    navigate("/AddTips");
+  };
+  const tipsSelected = useSelector((state) => state.tips)
+  console.log("tips", tipsSelected)
+  
   const cart = useSelector((state) => state.cart) || {};
   const {
     cartItems,
@@ -148,6 +159,10 @@ const OrderScreen = () => {
           >
             Place Order!
           </button>
+          {/* Add tips */}
+          <button onClick={goToAdd}
+          className="px-4 py-2 bg-darkOrange ml-5 text-white font-bold rounded-full">Addtips</button>
+          
         </div>
       </div>
     </div>
