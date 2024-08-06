@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { saveShippingAddress } from "../slices/cartSlice";
+import { saveShippingAddress } from "../../slices/cartSlice";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
