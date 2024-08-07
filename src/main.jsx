@@ -22,7 +22,7 @@ import ShowFoodMenu from "./screens/ShowFoodMenu.jsx";
 import OurFoodsList from "./screens/OurFoodsList.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
 import StatusScreen from "./screens/StatusScreen.jsx";
-
+import AddTips from "./screens/AddTips.jsx"
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -36,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/checkout" element={<OrderScreen />} />
       <Route path="/orderstatus" element={<StatusScreen />} />
+      <Route path="/addTips" element={<AddTips />}/>
       </Route>
 
     </Route>

@@ -9,6 +9,8 @@ import OrderSummary from "../components/Orders/OrderSummary";
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
+  
+  
   const {
     cartItems,
     shippingAddress,
@@ -20,11 +22,16 @@ const OrderScreen = () => {
   } = cart;
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
-
+  
   useEffect(() => {
     console.log("Currency from state:", currency);
   }, [currency]);
-
+  // add tips
+  const tipsPercentage = useSelector((state) => state.tips.tips)
+  const tipsTotal = (tipsPercentage/100) * itemsPrice
+  console.log("tipspercentage", tipsPercentage)
+  console.log("tipstotal", tipsTotal)
+  console.log("items", itemsPrice)
   const handleCheckout = () => {
     console.log("Total Price:", totalPrice);
     console.log("Available Currency:", currency);
@@ -38,6 +45,7 @@ const OrderScreen = () => {
       totalPrice,
       createdAt: new Date().toISOString(),
     };
+   
     if (totalPrice <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         alert("Order placed successfully!");
