@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
 import { clearCartItems, decreaseCurrency } from "../slices/cartSlice";
 import { createOrder } from "../slices/orderSlice";
+
 import AddressForm from "../components/Orders/AddressForm";
 import CartItems from "../components/Orders/CartItems";
 import OrderSummary from "../components/Orders/OrderSummary";
@@ -9,8 +13,10 @@ import OrderSummary from "../components/Orders/OrderSummary";
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
-  
-  
+
+  const navigate = useNavigate();
+
+
   const {
     cartItems,
     shippingAddress,
@@ -22,7 +28,7 @@ const OrderScreen = () => {
   } = cart;
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
-  
+
   useEffect(() => {
     console.log("Currency from state:", currency);
   }, [currency]);
@@ -32,6 +38,7 @@ const OrderScreen = () => {
   console.log("tipspercentage", tipsPercentage)
   console.log("tipstotal", tipsTotal)
   console.log("items", itemsPrice)
+
   const handleCheckout = () => {
     console.log("Total Price:", totalPrice);
     console.log("Available Currency:", currency);
@@ -45,15 +52,17 @@ const OrderScreen = () => {
       totalPrice,
       createdAt: new Date().toISOString(),
     };
-   
+
     if (totalPrice <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         alert("Order placed successfully!");
+        navigate("/orderstatus");
         dispatch(decreaseCurrency(totalPrice));
         dispatch(clearCartItems());
       });
     } else {
       alert("Oops! Insufficient tokens to complete purchase!");
+      navigate("/orderstatus");
     }
   };
 
