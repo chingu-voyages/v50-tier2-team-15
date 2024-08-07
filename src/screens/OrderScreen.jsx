@@ -55,14 +55,14 @@ const OrderScreen = () => {
 
     if (totalPrice <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
-        alert("Order placed successfully!");
+        console.log("Order placed successfully!");
         setOrderSuccess(true);
         navigate("/orderstatus", { state: { orderSuccess: true } });
         dispatch(decreaseCurrency(totalPrice));
         dispatch(clearCartItems());
       });
     } else {
-      alert("Oops! Insufficient tokens to complete purchase!");
+      console.log("Oops! Insufficient tokens to complete purchase!");
       setOrderSuccess(false);
       navigate("/orderstatus", { state: { orderSuccess: false } });
     }

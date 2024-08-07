@@ -11,12 +11,12 @@ const StatusScreen = () => {
       {orderSuccess ? (
         <div>
           <h1>Order Successful!</h1>
-          <p>Your order has been placed successfully.</p>
+          <p>Your order has been placed successfully!</p>
         </div>
       ) : (
         <div>
           <h1>Order Failed!</h1>
-          <p>Insufficient tokens to complete the purchase.</p>
+          <p>Oops! Insufficient tokens to complete purchase!</p>
         </div>
       )}
     </div>
