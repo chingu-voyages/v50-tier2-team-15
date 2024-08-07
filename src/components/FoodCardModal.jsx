@@ -18,6 +18,7 @@ const FoodCardModal = ({ toggler, food }) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...food, qty: quantity }));
+    toggler(); 
   };
 
   const handleQuantityChange = (change) => {

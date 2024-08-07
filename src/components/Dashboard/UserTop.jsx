@@ -1,14 +1,17 @@
 import chickenAvatar from "../../assets/chicken-avatar.svg";
 import { useEffect, useState } from "react";
 import AddTokens from "./AddTokens";
+import { useSelector } from "react-redux";
 
 const UserTop = () => {
   const [categories, setCategories] = useState({});
   const [restaurantCount, setRestaurantCount] = useState(0);
   const [dishCount, setDishCount] = useState(0);
 
+  const { username, tokens } = useSelector((state) => state.auth.userInfo) || {};
+
   useEffect(() => {
-    fetch("../../../public/fooddata.json") // Adjust the path if necessary
+    fetch("../../../public/fooddata.json")
       .then((response) => response.json())
       .then((foodData) => {
         setCategories(foodData);
@@ -40,8 +43,8 @@ const UserTop = () => {
             src={chickenAvatar}
             alt="chicken avatar"
           />
-          <h3 className="text-white text-2xl font-bold">Username</h3>
-          <p className="text-white text-md font-normal">token amount</p>
+          <h3 className="text-white text-2xl font-bold">{username}</h3>
+          <p className="text-white text-md font-normal">{tokens}</p>
           <div className="my-10 flex gap-5 justify-center text-lg">
             <AddTokens />
           </div>
