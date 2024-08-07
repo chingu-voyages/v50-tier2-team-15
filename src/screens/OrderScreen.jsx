@@ -57,14 +57,14 @@ const OrderScreen = () => {
       dispatch(createOrder(newOrder)).then(() => {
         alert("Order placed successfully!");
         setOrderSuccess(true);
-        navigate("/orderstatus");
+        navigate("/orderstatus", { state: { orderSuccess: true } });
         dispatch(decreaseCurrency(totalPrice));
         dispatch(clearCartItems());
       });
     } else {
       alert("Oops! Insufficient tokens to complete purchase!");
       setOrderSuccess(false);
-      navigate("/orderstatus");
+      navigate("/orderstatus", { state: { orderSuccess: false } });
     }
   };
 
