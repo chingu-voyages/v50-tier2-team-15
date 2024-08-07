@@ -16,7 +16,6 @@ const OrderScreen = () => {
 
   const navigate = useNavigate();
 
-
   const {
     cartItems,
     shippingAddress,
@@ -28,6 +27,7 @@ const OrderScreen = () => {
   } = cart;
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
+  const [orderSuccess, setOrderSuccess] = useState(null);
 
   useEffect(() => {
     console.log("Currency from state:", currency);
@@ -56,12 +56,14 @@ const OrderScreen = () => {
     if (totalPrice <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         alert("Order placed successfully!");
+        setOrderSuccess(true);
         navigate("/orderstatus");
         dispatch(decreaseCurrency(totalPrice));
         dispatch(clearCartItems());
       });
     } else {
       alert("Oops! Insufficient tokens to complete purchase!");
+      setOrderSuccess(false);
       navigate("/orderstatus");
     }
   };
