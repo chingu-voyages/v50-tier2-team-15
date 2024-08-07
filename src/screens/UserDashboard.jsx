@@ -15,7 +15,7 @@ const UserDashboard = () => {
 
   const handleCheckout = () => {
     // Navigate to the checkout screen
-    navigate("/checkout");
+    navigate("/addTips");
   };
   // const handleAddCurrency = (amount) => {
   //   dispatch(increaseCurrency(amount));
