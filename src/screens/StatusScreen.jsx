@@ -18,7 +18,7 @@ const StatusScreen = () => {
         <div>
           <h1>Order Successful!</h1>
           <p>Your order has been placed successfully!</p>
-          {lastOrder && (
+          {lastOrder ? (
             <OrderSummary
               itemsPrice={lastOrder.itemsPrice}
               shippingPrice={lastOrder.shippingPrice}
@@ -26,6 +26,8 @@ const StatusScreen = () => {
               totalPrice={lastOrder.totalPrice}
               currency={lastOrder.currency}
             />
+          ) : (
+            <p>Loading order details...</p>
           )}
         </div>
       ) : (
