@@ -36,7 +36,7 @@ const orderSlice = createSlice({
   name: "orders",
   initialState: {
     orders: [],
-    order: null,
+    order: null, // Initialize order as null
     status: "idle",
     error: null,
   },
@@ -45,6 +45,7 @@ const orderSlice = createSlice({
     builder
       .addCase(createOrder.fulfilled, (state, action) => {
         state.orders.push(action.payload);
+        state.order = action.payload; // Set the current order
       })
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.order = action.payload;
