@@ -53,11 +53,11 @@ const OrderScreen = () => {
       createdAt: new Date().toISOString(),
     };
 
-    if (totalPrice <= currency) {
+   if (totalPrice <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         console.log("Order placed successfully!");
         setOrderSuccess(true);
-        navigate("/orderstatus", { state: { orderSuccess: true } });
+        navigate("/orderstatus", { state: { orderSuccess: true, order: newOrder } });
         dispatch(decreaseCurrency(totalPrice));
         dispatch(clearCartItems());
       });
