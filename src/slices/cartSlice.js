@@ -13,19 +13,21 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const item = action.payload;
       const existItem = state.cartItems.find(
-        (currentItem) => currentItem._id === item._id
+        (currentItem) => currentItem.id === item.id
       );
 
       //Check if item is already in cart
       //If it is, replace it with the new item
       if (existItem) {
         state.cartItems = state.cartItems.map((cartItem) =>
-          cartItem._id === existItem._id ? item : cartItem
+          cartItem.id === existItem.id ? item : cartItem
         );
       } else {
         //If it isn't, add it to the cart
         state.cartItems = [...state.cartItems, item];
       }
+
+      console.log("Cart Items after addToCart:", JSON.stringify(state.cartItems, null, 2));
 
       //Update the cart in local storage with that updateCart named export function in the /utils/cartUtils.js file.
       return updateCart(state);
@@ -33,8 +35,10 @@ const cartSlice = createSlice({
 
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
-        (item) => item._id !== action.payload
+        (item) => item.id !== action.payload
       );
+
+      console.log("Cart Items after removeFromCart:", JSON.stringify(state.cartItems, null, 2));
 
       //Update the cart in local storage with that updateCart named export function in the /utils/cartUtils.js file.
       return updateCart(state);
