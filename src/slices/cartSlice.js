@@ -27,6 +27,8 @@ const cartSlice = createSlice({
         state.cartItems = [...state.cartItems, item];
       }
 
+      console.log("Cart Items after addToCart:", JSON.stringify(state.cartItems, null, 2));
+
       //Update the cart in local storage with that updateCart named export function in the /utils/cartUtils.js file.
       return updateCart(state);
     },
@@ -35,6 +37,8 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (item) => item._id !== action.payload
       );
+
+      console.log("Cart Items after removeFromCart:", JSON.stringify(state.cartItems, null, 2));
 
       //Update the cart in local storage with that updateCart named export function in the /utils/cartUtils.js file.
       return updateCart(state);
