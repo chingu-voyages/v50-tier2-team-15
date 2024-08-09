@@ -23,7 +23,7 @@ const LoginScreen = () => {
     setError("");
 
     // Dispatch setCredentials action with the entered username
-    dispatch(setCredentials({ username }));
+    dispatch(setCredentials({ username, tokens: 100 }));
 
     // Navigate to the UserDashboard screen
     navigate("/user");
