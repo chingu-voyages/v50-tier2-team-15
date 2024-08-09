@@ -4,9 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/authSlice";
 import { resetCart } from "../slices/cartSlice";
 import PropTypes from "prop-types";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = ({ toggler }) => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,18 +33,32 @@ const Navbar = ({ toggler }) => {
           </NavLink>
         </div>
         <div className="flex items-center justify-center gap-14 ml-auto text-xl">
-          {userInfo ? (
-            <NavLink to="/user">Dashboard</NavLink>
-          ) : (
-            <NavLink to="/">Home</NavLink>
-          )}
+            {userInfo ? (
+              <NavLink to="/user">Dashboard</NavLink>
+            ) : (
+              <NavLink to="/">Home</NavLink>
+            )}
+            <div className="">
+              <FaShoppingCart />
+              {cartItems.length > 0 && (
+                <div style={{ marginLeft: "5px" }}>
+                  {cartItems.reduce(
+                    (accumulator, item) => accumulator + item.qty,
+                    0
+                  )}
+                </div>
+              )}
+            </div>
           <NavLink to="/foods">Our Foods</NavLink>
           <NavLink to="https://github.com/orgs/chingu-voyages/teams/v50-tier2-team-15">
             About
           </NavLink>
           <a href="#locations">Locations</a>
           {userInfo ? (
-            <button className="text-darkOrange text-bold" onClick={logoutHandler}>
+            <button
+              className="text-darkOrange text-bold"
+              onClick={logoutHandler}
+            >
               Log Out
             </button>
           ) : (

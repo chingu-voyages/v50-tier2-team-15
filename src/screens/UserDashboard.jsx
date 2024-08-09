@@ -10,6 +10,22 @@ import FoodCardModal from "../components/FoodCardModal"; // Import the modal
 import { useNavigate } from "react-router";
 
 const UserDashboard = () => {
+<<<<<<< HEAD
+=======
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  const handleCheckout = () => {
+    // Navigate to the checkout screen
+    navigate("/addTips");
+  };
+  // const handleAddCurrency = (amount) => {
+  //   dispatch(increaseCurrency(amount));
+  // };
+
+  const dispatch = useDispatch();
+>>>>>>> 5c50b478500786546d140bd60bb2029c89211f81
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFood, setSelectedFood] = useState(null); // State to manage the selected food
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
