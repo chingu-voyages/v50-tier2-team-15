@@ -15,7 +15,7 @@ const OrderSummary = ({
       <p>Items Price: {itemsPrice}</p>
       <p>Shipping Price: {shippingPrice}</p>
       <p>Tax Price: {taxPrice}</p>
-      <p>Tip: {tipsTotal.toFixed(2)}</p>
+      <p>Tip: {tipsTotal ? tipsTotal.toFixed(2) : "0.00"}</p>
       <p>Current Tokens: {currency}</p>
       <div className="font-bold">Order Total: {totalPrice}</div>
       <div>Tokens after order: {currency - totalPrice}</div>

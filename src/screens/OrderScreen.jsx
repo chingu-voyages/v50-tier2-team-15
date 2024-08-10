@@ -36,13 +36,13 @@ const OrderScreen = () => {
 
   // add tips
  // Calculate the tip total based on the itemsPrice
-  const tipsTotal = (tipsPercentage/100) * itemsPrice
+  const tipsTotal = tipsPercentage ? (tipsPercentage / 100) * itemsPrice : 0;
   console.log("tipspercentage", tipsPercentage)
   console.log("tipstotal", tipsTotal)
   console.log("items", itemsPrice)
 
   // Calculate the new total price including tips
-  const totalPriceWithTips = parseFloat(totalPrice) + parseFloat(tipsTotal);
+  const totalPriceWithTips = parseFloat(totalPrice) + parseFloat(tipsTotal || 0);
 
   const handleCheckout = () => {
     console.log("Total Price with Tips:", totalPriceWithTips);
