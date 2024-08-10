@@ -36,7 +36,7 @@ const UserTop = () => {
 
   return (
     <>
-      <div className="flex h-[350px] w-[830px] gap-3 my-9 m-auto p-auto">
+      <div className="flex h-96 w-full gap-3 my-9 m-auto p-auto justify-center align-middle">
         <section className="bg-purple flex flex-col align-middle justify-center rounded-2xl py-5 flex-none w-[270px]">
           <img
             className="w-30 p-auto m-auto"
@@ -50,19 +50,19 @@ const UserTop = () => {
           </div>
         </section>
         <div>
-          <div className="flex gap-3">
+          <div className="h-60 flex gap-3">
             <section className="bg-darkOrange rounded-xl ">
               <h4 className="text-4xl text-white font-bold pt-4 pb-20 px-6 text-left">
                 Restaurants: {restaurantCount}
               </h4>
             </section>
             <section className="bg-darkRed rounded-xl">
-              <h4 className="text-4xl text-white font-bold pt-4 pb-24 px-6 text-left">
+              <h4 className="text-4xl text-white font-bold pt-4 pb-24 px-12 text-left">
                 Dishes: {dishCount}
               </h4>
             </section>
           </div>
-          <section className="bg-lightOrange rounded-xl mt-3">
+          <section className="bg-lightOrange rounded-xl mt-3 h-32">
             <h4 className="text-white text-3xl text-left font-bold pt-4 pb-14 px-6">
               The most delicious foods at your fingertips
             </h4>

@@ -51,7 +51,7 @@ const UserDashboard = () => {
   return (
     <div>
       <UserTop />
-      <div className="flex m-auto p-auto justify-center align-middle pt-6">
+      <div className="flex m-auto p-auto justify-center align-middle pt-6 gap-6">
         <div className="w-1/2">
           <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <FilterButtons />
@@ -63,20 +63,21 @@ const UserDashboard = () => {
           />
         </div>
         <div className="w-1/3">
-          <Cart />
+          <div>
+            <Cart />
+          </div>
+          <div>
+            {cartItems.length > 0 ? (
+              <button onClick={handleCheckout}>Checkout</button>
+            ) : (
+              <p>Your cart is empty.</p>
+            )}
+            {isModalOpen && selectedFood && (
+              <FoodCardModal toggler={handleCloseModal} food={selectedFood} />
+            )}
+          </div>
         </div>
       </div>
-      {cartItems.length > 0 ? (
-        <button onClick={handleCheckout}>Checkout</button>
-      ) : (
-        <p>Your cart is empty.</p>
-      )}
-      {isModalOpen && selectedFood && (
-        <FoodCardModal
-          toggler={handleCloseModal}
-          food={selectedFood}
-        />
-      )}
     </div>
   );
 };

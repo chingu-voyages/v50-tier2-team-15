@@ -15,6 +15,7 @@ const Searchbar = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <div>
+      <h2 className="font-semibold text-3xl text-purple mb-6">Find your favorite foods</h2>
       <input
         type="text"
         placeholder="Search for food..."

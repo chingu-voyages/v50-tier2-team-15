@@ -28,6 +28,7 @@ const Cart = () => {
 
   return (
     <div>
+      <h2 className="font-semibold text-3xl text-purple mb-6">Your Cart</h2>
       {cartItems && cartItems.length > 0 ? (
         cartItems.map(item => (
           <div key={item.id} className="flex items-center p-4 bg-white shadow-md rounded-lg mb-4">
