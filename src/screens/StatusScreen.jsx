@@ -9,13 +9,13 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
     {lastOrder ? (
       <div className="space-y-2">
         <p className="text-lg">
-          <strong>Items Price:</strong> ${lastOrder.itemsPrice.toFixed(2)}
+          <strong>Items Price:</strong> ${lastOrder.itemsPrice}
         </p>
         <p className="text-lg">
-          <strong>Shipping Price:</strong> ${lastOrder.shippingPrice.toFixed(2)}
+          <strong>Shipping Price:</strong> ${lastOrder.shippingPrice}
         </p>
         <p className="text-lg">
-          <strong>Tax Price:</strong> ${lastOrder.taxPrice.toFixed(2)}
+          <strong>Tax Price:</strong> ${lastOrder.taxPrice}
         </p>
         <p className="text-lg">
           <strong>Tip:</strong> ${lastOrder.tipsTotal.toFixed(2)}
@@ -24,7 +24,7 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
           <strong>Order Total:</strong> ${lastOrder.totalPrice.toFixed(2)}
         </p>
         <p className="text-lg">
-          <strong>Current Tokens:</strong> ${currentTokens.toFixed(2)}
+          <strong>Current Tokens:</strong> ${currentTokens}
         </p>
       </div>
     ) : (
