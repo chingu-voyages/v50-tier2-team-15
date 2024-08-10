@@ -1,21 +1,32 @@
+import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import OrderSummary from "../components/Orders/OrderSummary";
 
-import PropTypes from "prop-types";
-
-const OrderSuccessMessage = ({ lastOrder }) => (
-  <div>
-    <h1>Order Successful!</h1>
-    <p>Your order has been placed successfully!</p>
+const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
+  <div className="p-4">
+    <h1 className="text-3xl font-semibold mb-4">Order Successful!</h1>
+    <p className="text-lg mb-4">Your order has been placed successfully!</p>
     {lastOrder ? (
-      <OrderSummary
-        itemsPrice={lastOrder.itemsPrice}
-        shippingPrice={lastOrder.shippingPrice}
-        taxPrice={lastOrder.taxPrice}
-        totalPrice={lastOrder.totalPrice}
-        currency={lastOrder.currency}
-      />
+      <div className="space-y-2">
+        <p className="text-lg">
+          <strong>Items Price:</strong> ${lastOrder.itemsPrice.toFixed(2)}
+        </p>
+        <p className="text-lg">
+          <strong>Shipping Price:</strong> ${lastOrder.shippingPrice.toFixed(2)}
+        </p>
+        <p className="text-lg">
+          <strong>Tax Price:</strong> ${lastOrder.taxPrice.toFixed(2)}
+        </p>
+        <p className="text-lg">
+          <strong>Tip:</strong> ${lastOrder.tipsTotal.toFixed(2)}
+        </p>
+        <p className="text-lg">
+          <strong>Order Total:</strong> ${lastOrder.totalPrice.toFixed(2)}
+        </p>
+        <p className="text-lg">
+          <strong>Current Tokens:</strong> ${currentTokens.toFixed(2)}
+        </p>
+      </div>
     ) : (
       <p>Loading order details...</p>
     )}
@@ -24,8 +35,8 @@ const OrderSuccessMessage = ({ lastOrder }) => (
 
 const OrderFailedMessage = () => (
   <div>
-    <h1>Order Failed!</h1>
-    <p>Oops! Insufficient tokens to complete purchase!</p>
+    <h1 className="text-3xl font-semibold mb-4">Order Failed!</h1>
+    <p className="text-lg mb-4">Oops! Insufficient tokens to complete purchase!</p>
   </div>
 );
 
@@ -33,15 +44,17 @@ const StatusScreen = () => {
   const location = useLocation();
   const { orderSuccess, order } = location.state || {};
   const lastOrder = useSelector((state) => state.orders?.order) || order;
+  const currentTokens = useSelector((state) => state.cart.currency);
 
   console.log('Order Success:', orderSuccess);
   console.log('Order from location state:', order);
   console.log('Order from Redux state:', lastOrder);
+  console.log('Current Tokens:', currentTokens);
 
   return (
     <div>
       {orderSuccess ? (
-        <OrderSuccessMessage lastOrder={lastOrder} />
+        <OrderSuccessMessage lastOrder={lastOrder} currentTokens={currentTokens} />
       ) : (
         <OrderFailedMessage />
       )}
@@ -54,9 +67,10 @@ OrderSuccessMessage.propTypes = {
     itemsPrice: PropTypes.number.isRequired,
     shippingPrice: PropTypes.number.isRequired,
     taxPrice: PropTypes.number.isRequired,
+    tipsTotal: PropTypes.number.isRequired,
     totalPrice: PropTypes.number.isRequired,
-    currency: PropTypes.string.isRequired,
   }).isRequired,
+  currentTokens: PropTypes.number.isRequired,
 };
 
 export default StatusScreen;
