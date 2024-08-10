@@ -24,6 +24,7 @@ const Navbar = ({ toggler }) => {
     }
   };
 
+
   return (
     <header>
       <div className="flex items-center justify-center mb-8 mr-25 ml-25">
@@ -38,8 +39,8 @@ const Navbar = ({ toggler }) => {
             ) : (
               <NavLink to="/">Home</NavLink>
             )}
-            <div className="">
-              <FaShoppingCart />
+            <div className="flex justify-center align-middle gap-1 text-purple">
+              <FaShoppingCart className="mt-1"/>
               {cartItems.length > 0 && (
                 <div style={{ marginLeft: "5px" }}>
                   {cartItems.reduce(
@@ -62,9 +63,12 @@ const Navbar = ({ toggler }) => {
               Log Out
             </button>
           ) : (
-            <button className="text-darkOrange text-bold" onClick={toggler}>
-              Get Started
-            </button>
+            <>
+              <button className="text-darkOrange text-bold" onClick={toggler}>
+                Get Started
+              </button>
+            </>
+            
           )}
         </div>
       </div>

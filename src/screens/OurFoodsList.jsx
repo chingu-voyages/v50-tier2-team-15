@@ -23,9 +23,8 @@ const OurFoodsList = () => {
 
   return (
     <div>
-      <h1>Our Foods List</h1>
       <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <FilterButtons />
+      <FilterButtons/>
       <Results filteredFoods={filteredFoods} status={status} error={error} />
     </div>
   );
