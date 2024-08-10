@@ -25,7 +25,10 @@ const Searchbar = ({ searchTerm, setSearchTerm }) => {
           marginRight: '10px',
           outline: 'none', 
           border: '2px solid transparent',
+          borderRadius: '25px',
           transition: 'border-color 0.3s ease',
+          paddingLeft: '10px',
+          height: "40px",
         }}
         onFocus={(e) => e.target.style.borderColor = 'rgba(0, 0, 0, 0.1)'}
         onBlur={(e) => e.target.style.borderColor = 'transparent'}

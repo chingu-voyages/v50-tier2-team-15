@@ -23,10 +23,7 @@ const FilterButtons = () => {
 
 
   return (
-    <div className="mx-auto flex flex-grow">
-      {/* <div> */}
-        {/* <h3 >Filter by:</h3> */}
-      {/* </div> */}
+    <div className="mx-auto flex justify-center align-middle">
       <div className="m-6">
         <button className="hover:bg-gray-200 transition duration-200 ease-in-out" onClick={handleSortByPriceHighToLow}>Price: High to Low</button>
       </div>

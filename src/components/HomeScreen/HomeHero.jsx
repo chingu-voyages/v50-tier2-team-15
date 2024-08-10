@@ -1,12 +1,24 @@
 import heroImage from "../../assets/HomeHero.svg";
 import logoOrange from "../../assets/logo-orange.svg";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { loginAsGuest } from "../../slices/authSlice"; // Adjust the import path as needed
+import LoginModal from "../LoginModal";
+import { useState } from "react";
 
 const HomeHero = () => {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   const navigate = useNavigate();
-  const goToLogin = () => {
-    navigate("/login");
+  const dispatch = useDispatch();
+
+  const toggleLoginModal = () => {
+    setShowLoginModal(prevState => !prevState);
+  };
+
+  const signInAsGuestHandler = () => {
+    dispatch(loginAsGuest());
+    navigate("/user");
   };
   return (
     <>
@@ -30,16 +42,25 @@ const HomeHero = () => {
           </p>
           <div className="mt-7">
             <div className="mt-4">
-              <button
-                onClick={goToLogin}
+            <button
+                onClick={toggleLoginModal}
                 className="inline-block px-14 py-4 bg-darkOrange text-white rounded-full text-xl"
               >
                 Get Started
               </button>
             </div>
+            <div className="mt-4">
+              <button
+                onClick={signInAsGuestHandler}
+                className="inline-block px-14 py-4 bg-lightGray text-darkOrange rounded-full text-xl"
+              >
+                Sign in as Guest
+              </button>
+            </div>
           </div>
         </div>
       </section>
+      {showLoginModal && <LoginModal toggler={toggleLoginModal} />}
     </>
   );
 };
