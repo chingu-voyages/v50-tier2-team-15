@@ -24,20 +24,20 @@ const FilterButtons = () => {
 
   return (
     <div className="mx-auto flex flex-grow">
-      <div>
-        <h3 >Filter by:</h3>
+      {/* <div> */}
+        {/* <h3 >Filter by:</h3> */}
+      {/* </div> */}
+      <div className="m-6">
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out" onClick={handleSortByPriceHighToLow}>Price: High to Low</button>
       </div>
       <div className="m-6">
-        <button onClick={handleSortByPriceHighToLow}>Price: High to Low</button>
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out"  onClick={handleSortByPriceLowToHigh}>Price: Low to High</button>
       </div>
       <div className="m-6">
-        <button onClick={handleSortByPriceLowToHigh}>Price: Low to High</button>
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out"  onClick={handleSortByRatingHighToLow}>Rating: High to Low</button>
       </div>
       <div className="m-6">
-        <button onClick={handleSortByRatingHighToLow}>Rating: High to Low</button>
-      </div>
-      <div className="m-6">
-        <button onClick={handleSortByRatingLowToHigh}>Rating: Low to High</button>
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out"  onClick={handleSortByRatingLowToHigh}>Rating: Low to High</button>
       </div>
     </div>
   );

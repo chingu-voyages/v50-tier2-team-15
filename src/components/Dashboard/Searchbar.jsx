@@ -15,13 +15,22 @@ const Searchbar = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <div>
+      <h2 className="font-semibold text-3xl text-purple mb-6">Find your favorite foods</h2>
       <input
         type="text"
         placeholder="Search for food..."
         value={searchTerm}
         onChange={handleChange}
+        style={{ 
+          marginRight: '10px',
+          outline: 'none', 
+          border: '2px solid transparent',
+          transition: 'border-color 0.3s ease',
+        }}
+        onFocus={(e) => e.target.style.borderColor = 'rgba(0, 0, 0, 0.1)'}
+        onBlur={(e) => e.target.style.borderColor = 'transparent'}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className="hover:bg-gray-200 transition duration-200 ease-in-out"  onClick={handleSearch}>Search</button>
     </div>
   );
 };
