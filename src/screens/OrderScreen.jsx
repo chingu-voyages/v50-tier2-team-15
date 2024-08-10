@@ -13,6 +13,7 @@ import OrderSummary from "../components/Orders/OrderSummary";
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
+  const tipsPercentage = useSelector((state) => state.tips.tips);
 
   const navigate = useNavigate();
 
@@ -32,15 +33,19 @@ const OrderScreen = () => {
   useEffect(() => {
     console.log("Currency from state:", currency);
   }, [currency]);
+
   // add tips
-  const tipsPercentage = useSelector((state) => state.tips.tips)
+ // Calculate the tip total based on the itemsPrice
   const tipsTotal = (tipsPercentage/100) * itemsPrice
   console.log("tipspercentage", tipsPercentage)
   console.log("tipstotal", tipsTotal)
   console.log("items", itemsPrice)
 
+  // Calculate the new total price including tips
+  const totalPriceWithTips = parseFloat(totalPrice) + parseFloat(tipsTotal);
+
   const handleCheckout = () => {
-    console.log("Total Price:", totalPrice);
+    console.log("Total Price with Tips:", totalPriceWithTips);
     console.log("Available Currency:", currency);
     const newOrder = {
       id: Date.now(),
@@ -49,16 +54,17 @@ const OrderScreen = () => {
       itemsPrice,
       shippingPrice,
       taxPrice,
-      totalPrice,
+      tipsTotal, // Add the tips amount to the order
+      totalPrice: totalPriceWithTips, // Update the total price with tips
       createdAt: new Date().toISOString(),
     };
 
-   if (totalPrice <= currency) {
+     if (totalPriceWithTips <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         console.log("Order placed successfully!");
         setOrderSuccess(true);
         navigate("/orderstatus", { state: { orderSuccess: true, order: newOrder } });
-        dispatch(decreaseCurrency(totalPrice));
+        dispatch(decreaseCurrency(totalPriceWithTips));
         dispatch(clearCartItems());
       });
     } else {
@@ -87,7 +93,8 @@ const OrderScreen = () => {
             itemsPrice={itemsPrice}
             shippingPrice={shippingPrice}
             taxPrice={taxPrice}
-            totalPrice={totalPrice}
+            tipsTotal={tipsTotal} // Pass the tips total to the OrderSummary
+            totalPrice={totalPriceWithTips} // Pass the updated total price
             currency={currency}
             onCheckout={handleCheckout}
           />
