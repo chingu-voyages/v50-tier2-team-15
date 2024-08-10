@@ -49,7 +49,6 @@ const AddressForm = ({ initialAddress, onSave }) => {
           onChange={handleAddressChange}
           placeholder="Street Address"
           className="p-2 border rounded"
-          required
         />
         {errors.address && <p className="text-red-500">{errors.address}</p>}
       </div>
@@ -61,7 +60,6 @@ const AddressForm = ({ initialAddress, onSave }) => {
           onChange={handleAddressChange}
           placeholder="City"
           className="p-2 border rounded"
-          required
         />
         {errors.city && <p className="text-red-500">{errors.city}</p>}
       </div>
@@ -73,7 +71,6 @@ const AddressForm = ({ initialAddress, onSave }) => {
           onChange={handleAddressChange}
           placeholder="Postal Code"
           className="p-2 border rounded"
-          required
         />
         {errors.postalCode && <p className="text-red-500">{errors.postalCode}</p>}
       </div>
