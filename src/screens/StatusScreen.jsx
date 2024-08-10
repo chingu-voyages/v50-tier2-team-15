@@ -34,12 +34,11 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
 );
 
 const OrderFailedMessage = () => (
-  <div>
-    <h1 className="text-3xl font-semibold mb-4">Order Failed!</h1>
-    <p className="text-lg mb-4">Oops! Insufficient tokens to complete purchase!</p>
+  <div className="bg-gray-800 text-white max-w-md mx-auto p-8 rounded-lg">
+    <h1 className="text-3xl font-bold mb-4 text-red-600">Order Failed!</h1>
+    <p className="text-lg text-gray-300">Oops! Insufficient tokens to complete purchase!</p>
   </div>
 );
-
 const StatusScreen = () => {
   const location = useLocation();
   const { orderSuccess, order } = location.state || {};

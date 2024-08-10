@@ -2,10 +2,15 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/authSlice";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+
+import chickenAvatar from "../assets/chicken-avatar.svg";
+import pigAvatar from "../assets/pig-avatar.svg";
+import cowAvatar from "../assets/cow-avatar.svg";
 
 const LoginModal = ({ toggler }) => {
   const [username, setUsername] = useState("");
+  const [selectedAvatar, setSelectedAvatar] = useState(chickenAvatar); // Default avatar
   const [error, setError] = useState(""); // manage error messages.
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +26,7 @@ const LoginModal = ({ toggler }) => {
     setError("");
 
     // Dispatch setCredentials action with the entered username
-    dispatch(setCredentials({ username }));
+    dispatch(setCredentials({ username, tokens: 100, avatar: selectedAvatar }));
 
     // Close the modal
     toggler();
@@ -45,7 +50,40 @@ const LoginModal = ({ toggler }) => {
           </div>
           <div className="flex items-center justify-center h-screen bg-gray-900">
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-sm">
-              <h2 className="text-3xl font-bold mb-6 text-white text-center">Login</h2>
+              <h2 className="text-3xl font-bold mb-6 text-white text-center">
+                Login
+              </h2>
+              <h2 className="text-lg font-bold text-white text-center">
+                Choose your avatar
+              </h2>
+              <div className="flex justify-around">
+                <img
+                  src={chickenAvatar}
+                  alt="Chicken Avatar"
+                  className={`w-24 h-24 cursor-pointer ${
+                    selectedAvatar === chickenAvatar
+                      ? "border-2 border-white"
+                      : ""
+                  }`}
+                  onClick={() => setSelectedAvatar(chickenAvatar)}
+                />
+                <img
+                  src={cowAvatar}
+                  alt="Cow Avatar"
+                  className={`w-24 h-24 cursor-pointer ${
+                    selectedAvatar === cowAvatar ? "border-2 border-white" : ""
+                  }`}
+                  onClick={() => setSelectedAvatar(cowAvatar)}
+                />
+                <img
+                  src={pigAvatar}
+                  alt="Pig Avatar"
+                  className={`w-24 h-24 cursor-pointer ${
+                    selectedAvatar === pigAvatar ? "border-2 border-white" : ""
+                  }`}
+                  onClick={() => setSelectedAvatar(pigAvatar)}
+                />
+              </div>
               <input
                 type="text"
                 placeholder="Enter username"
