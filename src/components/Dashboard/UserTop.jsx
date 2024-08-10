@@ -1,4 +1,3 @@
-import chickenAvatar from "../../assets/chicken-avatar.svg";
 import { useEffect, useState } from "react";
 import AddTokens from "./AddTokens";
 import { useSelector } from "react-redux";
@@ -8,7 +7,7 @@ const UserTop = () => {
   const [restaurantCount, setRestaurantCount] = useState(0);
   const [dishCount, setDishCount] = useState(0);
 
-  const { username, tokens } = useSelector((state) => state.auth.userInfo) || {};
+  const { username, tokens, avatar } = useSelector((state) => state.auth.userInfo) || {};
 
   useEffect(() => {
     fetch("../../../public/fooddata.json")
@@ -39,12 +38,12 @@ const UserTop = () => {
       <div className="flex h-96 w-full gap-3 my-9 m-auto p-auto justify-center align-middle">
         <section className="bg-purple flex flex-col align-middle justify-center rounded-2xl py-5 flex-none w-[270px]">
           <img
-            className="w-30 p-auto m-auto"
-            src={chickenAvatar}
+            className="w-40 p-auto m-auto"
+            src={avatar}
             alt="chicken avatar"
           />
           <h3 className="text-white text-2xl font-bold">{username}</h3>
-          <p className="text-white text-md font-normal">{tokens}</p>
+          <p className="text-white text-lg font-normal">{tokens}</p>
           <div className="my-10 flex gap-5 justify-center text-lg">
             <AddTokens />
           </div>

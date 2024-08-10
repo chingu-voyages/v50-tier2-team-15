@@ -68,7 +68,7 @@ const UserDashboard = () => {
           </div>
           <div>
             {cartItems.length > 0 ? (
-              <button onClick={handleCheckout}>Checkout</button>
+              <button className="hover:bg-gray-200 transition duration-200 ease-in-out" onClick={handleCheckout}>Checkout</button>
             ) : (
               <p>Your cart is empty.</p>
             )}
