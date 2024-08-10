@@ -53,11 +53,12 @@ button {
   filter: drop-shadow(1px 3px 2px #ededee);
 }
 button:hover {
-  filter: drop-shadow(3px 4px 3px #ededee);
+  filter: drop-shadow(2px 4px 3px #ededee);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  background-color: #dcdada;
 }
 
 @media (prefers-color-scheme: light) {
@@ -66,7 +67,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #ad3b81;
   }
   button {
     background-color: #f9f9f9;

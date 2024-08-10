@@ -1,4 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import chickenAvatar from "../assets/chicken-avatar.svg";
+import pigAvatar from "../assets/pig-avatar.svg";
+import cowAvatar from "../assets/cow-avatar.svg";
+
+const avatars = [chickenAvatar, pigAvatar, cowAvatar];
 
 // Initial state of the auth slice.
 const initialState = {
@@ -26,12 +31,16 @@ const authSlice = createSlice({
       // Set the userInfo part of the state to null, and remove it from localStorage.
       state.userInfo = null;
       localStorage.clear();
-    }
+    },
+    loginAsGuest: (state) => {
+      const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+      state.userInfo = { username: "Guest", tokens: 100, avatar: randomAvatar };
+    },
   }
 })
 
 // Export the setCredentials and increaseTokens reducer functions from the auth slice as actions.
-export const { setCredentials, increaseTokens, logout } = authSlice.actions;
+export const { setCredentials, increaseTokens, logout, loginAsGuest } = authSlice.actions;
 
 // Export the auth slice as the default reducer function.
 export default authSlice.reducer;
