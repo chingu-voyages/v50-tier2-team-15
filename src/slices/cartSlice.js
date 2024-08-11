@@ -79,8 +79,6 @@ export const {
   saveShippingAddress,
   clearCartItems,
   resetCart,
-  decreaseCurrency,
-  increaseCurrency,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
