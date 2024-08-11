@@ -2,10 +2,18 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
+const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
   <div className="p-4">
     <h1 className="text-3xl font-semibold mb-4">Order Successful!</h1>
     <p className="text-lg mb-4">Your order has been placed successfully!</p>
+    {savedAddress && (
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
+        <p><strong>Street Address:</strong> {savedAddress.address}</p>
+        <p><strong>City:</strong> {savedAddress.city}</p>
+        <p><strong>Postal Code:</strong> {savedAddress.postalCode}</p>
+      </div>
+    )}
     {lastOrder ? (
       <div className="space-y-2">
         <p className="text-lg">
@@ -70,6 +78,11 @@ OrderSuccessMessage.propTypes = {
     totalPrice: PropTypes.number.isRequired,
   }).isRequired,
   currentTokens: PropTypes.number.isRequired,
+  savedAddress: PropTypes.shape({
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    postalCode: PropTypes.string.isRequired,
+  }),
 };
 
 export default StatusScreen;
