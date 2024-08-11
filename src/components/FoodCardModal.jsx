@@ -5,7 +5,6 @@ import { addToCart } from "../slices/cartSlice";
 import PropTypes from "prop-types";
 import FoodLocationMap from "./Map/FoodLocationMap";
 
-
 const FoodCardModal = ({ toggler, food }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
