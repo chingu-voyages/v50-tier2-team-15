@@ -10,6 +10,9 @@ import AddressForm from "../components/Orders/AddressForm";
 import CartItems from "../components/Orders/CartItems";
 import OrderSummary from "../components/Orders/OrderSummary";
 
+import StatusModal from "../components/StatusModal"; // Import StatusModal
+import useToggle from "../utils/useToggle";
+
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
@@ -29,25 +32,31 @@ const OrderScreen = () => {
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
   const [orderSuccess, setOrderSuccess] = useState(null);
-   const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [orderDetails, setOrderDetails] = useState(null);
+
+  const { on: showStatusModal, toggler: toggleStatusModal } = useToggle();
 
   useEffect(() => {
     console.log("Currency from state:", currency);
   }, [currency]);
 
   // add tips
- // Calculate the tip total based on the itemsPrice
+  // Calculate the tip total based on the itemsPrice
   const tipsTotal = tipsPercentage ? (tipsPercentage / 100) * itemsPrice : 0;
-  console.log("tipspercentage", tipsPercentage)
-  console.log("tipstotal", tipsTotal)
-  console.log("items", itemsPrice)
+  console.log("tipspercentage", tipsPercentage);
+  console.log("tipstotal", tipsTotal);
+  console.log("items", itemsPrice);
 
   // Calculate the new total price including tips
-  const totalPriceWithTips = parseFloat(totalPrice) + parseFloat(tipsTotal || 0);
+  const totalPriceWithTips =
+    parseFloat(totalPrice) + parseFloat(tipsTotal || 0);
 
   const handleCheckout = () => {
-       if (!savedAddress || Object.keys(savedAddress).length === 0) {
-      setErrorMessage("Please provide a shipping address before placing an order!");
+    if (!savedAddress || Object.keys(savedAddress).length === 0) {
+      setErrorMessage(
+        "Please provide a shipping address before placing an order!"
+      );
       return;
     }
 
@@ -68,17 +77,22 @@ const OrderScreen = () => {
       createdAt: new Date().toISOString(),
     };
 
-     if (totalPriceWithTips <= currency) {
+    if (totalPriceWithTips <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         console.log("Order placed successfully!");
-        setOrderSuccess(true);
-        navigate("/orderstatus", { state: { orderSuccess: true, order: newOrder, savedAddress: savedAddress } });
-        dispatch(decreaseTokens(totalPriceWithTips)); // Dispatch decreaseTokens action with the total price
+        setOrderDetails({
+          orderSuccess: true,
+          order: newOrder,
+          savedAddress: savedAddress,
+        });
+        toggleStatusModal(true);
       });
     } else {
-      console.log("Oops! Insufficient tokens to complete purchase!");
-      setOrderSuccess(false);
-      navigate("/orderstatus", { state: { orderSuccess: false, savedAddress: savedAddress } });
+      setOrderDetails({
+        orderSuccess: false,
+        savedAddress: savedAddress,
+      });
+      toggleStatusModal(true);
     }
   };
 
@@ -94,7 +108,10 @@ const OrderScreen = () => {
         <div className="flex-1 p-2">
           <h2 className="text-3xl font-semibold">Shipping Address</h2>
           <p>Enter your shipping address below:</p>
-          <AddressForm initialAddress={shippingAddress} onSave={setSavedAddress} />
+          <AddressForm
+            initialAddress={shippingAddress}
+            onSave={setSavedAddress}
+          />
         </div>
         <div className="flex-1 p-2">
           <OrderSummary
@@ -105,10 +122,19 @@ const OrderScreen = () => {
             totalPrice={totalPriceWithTips} // Pass the updated total price
             currency={currency}
             onCheckout={handleCheckout}
-            isAddressProvided={!!savedAddress && Object.keys(savedAddress).length > 0}
+            isAddressProvided={
+              !!savedAddress && Object.keys(savedAddress).length > 0
+            }
           />
         </div>
       </div>
+      {showStatusModal && (
+        <StatusModal
+          isOpen={showStatusModal}
+          onClose={() => toggleStatusModal(false)}
+          {...orderDetails}
+        />
+      )}
     </div>
   );
 };
