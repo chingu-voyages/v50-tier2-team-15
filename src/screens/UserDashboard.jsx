@@ -9,6 +9,8 @@ import UserTop from "../components/Dashboard/UserTop";
 import FoodCardModal from "../components/FoodCardModal"; // Import the modal
 import { useNavigate } from "react-router";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const UserDashboard = () => {
@@ -29,6 +31,10 @@ const UserDashboard = () => {
   const error = useSelector((state) => state.foodData.error);
   const currency = useSelector((state) => state.cart.currency); // Access the currency from the cart slice
 
+  const handleAddToCartSuccess = () => {
+    toast.success("Item successfully added to cart!");
+  };
+  
    // Logging state values for debugging
   useEffect(() => {
     console.log("Fetching food data...");
@@ -71,6 +77,7 @@ const UserDashboard = () => {
   return (
     <div>
       <UserTop />
+      <ToastContainer />
       <div className="lg:flex m-auto p-auto justify-center align-middle pt-6 gap-6 px-8">
         <div className="lg:w-3/4">
           <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -95,7 +102,7 @@ const UserDashboard = () => {
               <p>Your cart is empty.</p>
             )}
             {isModalOpen && selectedFood && (
-              <FoodCardModal toggler={handleCloseModal} food={selectedFood} />
+              <FoodCardModal toggler={handleCloseModal} food={selectedFood} onAddToCartSuccess={handleAddToCartSuccess} />
             )}
           </div>
         </div>
