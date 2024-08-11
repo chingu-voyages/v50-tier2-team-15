@@ -1,20 +1,35 @@
 import PropTypes from "prop-types";
+import CartItems from "./Orders/CartItems";
 
-const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, savedAddress }) => {
+const StatusModal = ({
+  lastOrder,
+  currentTokens,
+  isOpen,
+  onClose,
+  orderSuccess,
+  savedAddress,
+  cartItems,
+}) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-white p-4 rounded-lg max-w-md mx-auto">
+      <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
         {orderSuccess ? (
           <div>
-            <h1 className="text-3xl font-semibold">Order Successful!</h1>
-            <p>Your order has been placed successfully!</p>
-            <div className="grid grid-cols-2">
+            <h1 className="text-3xl font-semibold text-center mb-4">
+              Order Successful!
+            </h1>
+            <p className="text-center mb-6">
+              Your order has been placed successfully!
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {savedAddress && (
                 <div className="space-y-2">
-                  <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
-                  <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-semibold mb-2">
+                    Shipping Address
+                  </h2>
+                  <div className="space-y-1">
                     <p className="text-lg">
                       <strong>Street Address:</strong> {savedAddress.address}
                     </p>
@@ -30,7 +45,7 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
               {lastOrder && (
                 <div className="space-y-2">
                   <h2 className="text-xl font-semibold mb-2">Order Details</h2>
-                  <div className="grid grid-cols-2">
+                  <div className="space-y-1">
                     <p className="text-lg">
                       <strong>Items Price:</strong> {lastOrder.itemsPrice}
                     </p>
@@ -44,7 +59,8 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
                       <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
                     </p>
                     <p className="text-lg">
-                      <strong>Order Total:</strong> {lastOrder.totalPrice.toFixed(2)}
+                      <strong>Order Total:</strong>{" "}
+                      {lastOrder.totalPrice.toFixed(2)}
                     </p>
                     <p className="text-lg">
                       <strong>Current Tokens:</strong> {currentTokens}
@@ -52,15 +68,27 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
                   </div>
                 </div>
               )}
+              {cartItems && cartItems.length > 0 && (
+                <div className="space-y-2">
+                  <CartItems items={cartItems} />
+                </div>
+              )}
             </div>
           </div>
         ) : (
           <div>
-            <h1 className="text-3xl font-bold text-red-600">Order Failed!</h1>
-            <p>Oops! Something went wrong! Try again later.</p>
+            <h1 className="text-3xl font-bold text-red-600 text-center">
+              Order Failed!
+            </h1>
+            <p className="text-center">
+              Oops! Something went wrong! Try again later.
+            </p>
           </div>
         )}
-        <button onClick={onClose} className="mt-4 px-4 py-2 bg-gray-700 text-white rounded">
+        <button
+          onClick={onClose}
+          className="mt-6 px-4 py-2 bg-gray-700 text-white rounded w-full sm:w-auto"
+        >
           Back
         </button>
       </div>
@@ -74,7 +102,7 @@ StatusModal.propTypes = {
     shippingPrice: PropTypes.string.isRequired,
     taxPrice: PropTypes.string.isRequired,
     tipsTotal: PropTypes.string.isRequired,
-    totalPrice: PropTypes.number.isRequired,
+    totalPrice: PropTypes.string.isRequired,
   }),
   currentTokens: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
@@ -85,6 +113,7 @@ StatusModal.propTypes = {
     city: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
   }),
+  cartItems: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default StatusModal;

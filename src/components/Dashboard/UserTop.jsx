@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTokens from "./AddTokens";
 import { useSelector } from "react-redux";
+import { addDecimals } from "../../utils/cartUtils";
 
 const UserTop = () => {
   const [categories, setCategories] = useState({});
@@ -43,7 +44,7 @@ const UserTop = () => {
             alt="chicken avatar"
           />
           <h3 className="text-white text-2xl font-bold">{username}</h3>
-          <p className="text-white text-lg font-normal">{tokens}</p>
+          <p className="text-white text-lg font-normal">{addDecimals(tokens)}</p>
           <div className="my-10 flex gap-5 justify-center text-lg">
             <AddTokens />
           </div>

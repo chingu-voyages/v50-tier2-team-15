@@ -10,10 +10,10 @@ const Results = ({ filteredFoods, status, error, onSelectFood }) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
-        <Icon 
-          key={i} 
-          icon={starFilled} 
-          className={i < rate ? 'text-yellow-400' : 'text-gray-300'} 
+        <Icon
+          key={i}
+          icon={starFilled}
+          className={i < rate ? 'text-yellow-400' : 'text-gray-300'}
         />
       );
     }
@@ -36,7 +36,7 @@ const Results = ({ filteredFoods, status, error, onSelectFood }) => {
           <div className="p-4 flex flex-col justify-between h-full">
             <div>
               <h4 className="text-lg font-semibold mb-2">{food.name}</h4>
-              <p className="text-gray-600 mb-4">Price: ${food.price}</p>
+              <p className="text-gray-600 mb-4">Price: {food.price}</p>
               <div className="flex mb-4 m-auto p-auto justify-center align-center">{renderStars(food.rate)}</div>
             </div>
           </div>
