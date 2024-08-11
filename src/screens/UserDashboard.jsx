@@ -69,8 +69,8 @@ const UserDashboard = () => {
   return (
     <div>
       <UserTop />
-      <div className="flex m-auto p-auto justify-center align-middle pt-6 gap-6">
-        <div className="w-1/2">
+      <div className="lg:flex m-auto p-auto justify-center align-middle pt-6 gap-6 px-8">
+        <div className="lg:w-3/4">
           <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <FilterButtons />
           <Results
@@ -80,7 +80,7 @@ const UserDashboard = () => {
             onSelectFood={handleOpenModal} // Pass the handler to Results
           />
         </div>
-        <div className="w-1/3">
+        <div className="lg:w-1/3 pt-6">
           <div>
             <Cart />
           </div>
