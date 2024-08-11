@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../slices/cartSlice";
 import PropTypes from "prop-types";
-import FoodLocationMap from "./Map/FoodLocationMap";
+// import FoodLocationMap from "./Map/FoodLocationMap";
+import { Suspense, lazy } from "react";
+
+const FoodLocationMap = lazy(() => import('./Map/FoodLocationMap'));
 
 const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
   const dispatch = useDispatch();
@@ -18,6 +21,7 @@ const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
   const handleAddToCart = () => {
     dispatch(addToCart({ ...food, qty: quantity }));
     toggler();
+    
     if (onAddToCartSuccess) {
       onAddToCartSuccess();  // Trigger the callback function passed from UserDashboard
     }
@@ -83,9 +87,9 @@ const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
               </div>
             </div>
             <h3 className="text-lg font-semibold">Location: {food.country}</h3>
-            <FoodLocationMap
-              selectedItem={food} // Pass the food data to the map component
-            />
+            <Suspense fallback={<div>Loading map...</div>}>
+              <FoodLocationMap selectedItem={food} />
+            </Suspense>
           </div>
         </div>
       </div>

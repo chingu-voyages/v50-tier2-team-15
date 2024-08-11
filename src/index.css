@@ -74,4 +74,15 @@ button:focus-visible {
   }
 }
 
+.image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Match the height of your images */
+  background-color: #f0f0f0; /* Light gray background */
+  color: #888; /* Gray text */
+  font-size: 16px;
+  font-style: italic;
+}
+
 
