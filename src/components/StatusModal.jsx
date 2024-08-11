@@ -5,7 +5,7 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-white p-4 rounded-lg max-w-md mx-auto">
+      <div className="bg-white p-4 rounded-lg max-w-xl mx-auto">
         {orderSuccess ? (
           <div>
             <h1 className="text-3xl font-semibold">Order Successful!</h1>
