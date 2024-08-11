@@ -2,6 +2,28 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+const StatusScreen = () => {
+  const location = useLocation();
+  const { orderSuccess, order, savedAddress } = location.state || {};
+  const lastOrder = useSelector((state) => state.orders?.order) || order;
+  const currentTokens = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
+
+  console.log('Order Success:', orderSuccess);
+  console.log('Order from location state:', order);
+  console.log('Order from Redux state:', lastOrder);
+  console.log('Current Tokens:', currentTokens);
+
+  return (
+    <div>
+      {orderSuccess ? (
+        <OrderSuccessMessage lastOrder={lastOrder} currentTokens={currentTokens} savedAddress={savedAddress}/>
+      ) : (
+        <OrderFailedMessage />
+      )}
+    </div>
+  );
+};
+
 const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
   <div className="p-4">
     <h1 className="text-3xl font-semibold mb-4">Order Successful!</h1>
@@ -47,27 +69,6 @@ const OrderFailedMessage = () => (
     <p className="text-lg text-gray-300">Oops! Insufficient tokens to complete purchase!</p>
   </div>
 );
-const StatusScreen = () => {
-  const location = useLocation();
-  const { orderSuccess, order, savedAddress } = location.state || {};
-  const lastOrder = useSelector((state) => state.orders?.order) || order;
-  const currentTokens = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
-
-  console.log('Order Success:', orderSuccess);
-  console.log('Order from location state:', order);
-  console.log('Order from Redux state:', lastOrder);
-  console.log('Current Tokens:', currentTokens);
-
-  return (
-    <div>
-      {orderSuccess ? (
-        <OrderSuccessMessage lastOrder={lastOrder} currentTokens={currentTokens} savedAddress={savedAddress}/>
-      ) : (
-        <OrderFailedMessage />
-      )}
-    </div>
-  );
-};
 
 OrderSuccessMessage.propTypes = {
   lastOrder: PropTypes.shape({
