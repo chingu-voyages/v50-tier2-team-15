@@ -4,7 +4,7 @@ import Pasta from "../../assets/specialties-right.png";
 const HomeSpecialties = () => {
   return (
     <>
-      <section className="flex flex-col py-10 md:text-left mt-[110px] justify-center items-center">
+      <section className="flex flex-col md:py-10 md:text-left md:mt-[110px] justify-center items-center">
         <div className="flex justify-between items-center mx-4">
           <div className="flex flex-col justify-center align-middle">
             <div className="flex flex-col justify-center items-center">

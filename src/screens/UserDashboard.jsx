@@ -8,6 +8,8 @@ import Cart from "../components/Dashboard/Cart";
 import UserTop from "../components/Dashboard/UserTop";
 import FoodCardModal from "../components/FoodCardModal"; // Import the modal
 import { useNavigate } from "react-router";
+import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+
 
 const UserDashboard = () => {
   // const cartItems = useSelector((state) => state.cart.cartItems);
@@ -68,7 +70,9 @@ const UserDashboard = () => {
           </div>
           <div>
             {cartItems.length > 0 ? (
-              <button className="hover:bg-gray-200 transition duration-200 ease-in-out" onClick={handleCheckout}>Checkout</button>
+              <button className="hover:bg-gray-200 transition duration-200 ease-in-out flex justify-center align-middle m-auto p-auto gap-2" onClick={handleCheckout}>Checkout
+              <MdOutlineShoppingCartCheckout className="mt-1" />
+              </button>
             ) : (
               <p>Your cart is empty.</p>
             )}

@@ -27,16 +27,14 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-gradient-to-b from-white to-lightOrange">
+    <div className="bg-gradient-to-b from-white via-lightOrange to-orange via-lightOrange to-white">
       <div className="px-[100px] py-[10px]">
-        {/* <Navbar /> */}
         <HomeHero />
         <FoodRibbon onCategorySelect={handleCategorySelect} />
         <HomeSpecialties />
         <HomeCategories />
         <HomeLocation />
         <HomeBottom />
-        {/* <Footer /> */}
       </div>
     </div>
   );
