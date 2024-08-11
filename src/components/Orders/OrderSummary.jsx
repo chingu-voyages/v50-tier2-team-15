@@ -8,6 +8,7 @@ const OrderSummary = ({
   totalPrice,
   currency,
   onCheckout,
+  isAddressProvided
 }) => {
   return (
     <div className="p-4 border rounded-lg">
@@ -19,7 +20,11 @@ const OrderSummary = ({
       <p>Current Tokens: {currency}</p>
       <div className="font-bold">Order Total: {totalPrice}</div>
       <div>Tokens after order: {currency - totalPrice}</div>
-      <button onClick={onCheckout} className="px-4 py-2 bg-darkOrange text-white font-bold rounded-full">
+      <button
+        onClick={onCheckout}
+        className={`px-4 py-2 ${isAddressProvided ? 'bg-darkOrange' : 'bg-gray-500'} text-white font-bold rounded-full`}
+        disabled={!isAddressProvided}
+      >
         Place Order
       </button>
     </div>
@@ -34,6 +39,7 @@ OrderSummary.propTypes = {
   totalPrice: PropTypes.number.isRequired,
   currency: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
+  isAddressProvided: PropTypes.bool.isRequired
 };
 
 export default OrderSummary;

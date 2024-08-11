@@ -29,6 +29,7 @@ const OrderScreen = () => {
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
   const [orderSuccess, setOrderSuccess] = useState(null);
+   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     console.log("Currency from state:", currency);
@@ -45,6 +46,13 @@ const OrderScreen = () => {
   const totalPriceWithTips = parseFloat(totalPrice) + parseFloat(tipsTotal || 0);
 
   const handleCheckout = () => {
+       if (!savedAddress || Object.keys(savedAddress).length === 0) {
+      setErrorMessage("Please provide a shipping address before placing an order!");
+      return;
+    }
+
+    setErrorMessage(""); // Clear any previous errors
+
     console.log("Total Price with Tips:", totalPriceWithTips);
     console.log("Available Currency:", currency);
 
@@ -97,6 +105,7 @@ const OrderScreen = () => {
             totalPrice={totalPriceWithTips} // Pass the updated total price
             currency={currency}
             onCheckout={handleCheckout}
+            isAddressProvided={!!savedAddress && Object.keys(savedAddress).length > 0}
           />
         </div>
       </div>
