@@ -75,7 +75,7 @@ StatusModal.propTypes = {
     shippingPrice: PropTypes.string.isRequired,
     taxPrice: PropTypes.string.isRequired,
     tipsTotal: PropTypes.string.isRequired,
-    totalPrice: PropTypes.number.isRequired,
+    totalPrice: PropTypes.string.isRequired,
   }),
   currentTokens: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
