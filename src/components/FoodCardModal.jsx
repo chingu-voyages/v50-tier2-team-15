@@ -8,7 +8,7 @@ import { Suspense, lazy } from "react";
 
 const FoodLocationMap = lazy(() => import('./Map/FoodLocationMap'));
 
-const FoodCardModal = ({ toggler, food }) => {
+const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
   const [quantity, setQuantity] = useState(1);
@@ -21,6 +21,10 @@ const FoodCardModal = ({ toggler, food }) => {
   const handleAddToCart = () => {
     dispatch(addToCart({ ...food, qty: quantity }));
     toggler();
+    
+    if (onAddToCartSuccess) {
+      onAddToCartSuccess();  // Trigger the callback function passed from UserDashboard
+    }
   };
 
   const handleQuantityChange = (change) => {
@@ -96,6 +100,7 @@ const FoodCardModal = ({ toggler, food }) => {
 FoodCardModal.propTypes = {
   toggler: PropTypes.func.isRequired,
   food: PropTypes.object.isRequired,
+  onAddToCartSuccess: PropTypes.func,
 };
 
 export default FoodCardModal;
