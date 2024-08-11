@@ -1,12 +1,19 @@
 import PropTypes from "prop-types";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { resetCart } from "../slices/cartSlice";
 
 const StatusScreen = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { orderSuccess, order, savedAddress } = location.state || {};
   const lastOrder = useSelector((state) => state.orders?.order) || order;
-  const currentTokens = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
+  const currentTokens = useSelector((state) => state.auth.userInfo.tokens);
+
+  const handleBack = (success) => {
+    if (success) resetCart();
+    navigate("/user");
+  };
 
   console.log("Order Success:", orderSuccess);
   console.log("Order from location state:", order);
@@ -20,15 +27,16 @@ const StatusScreen = () => {
           lastOrder={lastOrder}
           currentTokens={currentTokens}
           savedAddress={savedAddress}
+          onBack={() => handleBack(true)}
         />
       ) : (
-        <OrderFailedMessage />
+        <OrderFailedMessage onBack={() => handleBack(false)} />
       )}
     </div>
   );
 };
 
-const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
+const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress, onBack }) => (
   <div className="p-4">
     <h1 className="text-3xl font-semibold m-3">Order Successful!</h1>
     <p className="text-lg m-4">Your order has been placed successfully!</p>
@@ -52,7 +60,7 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
       {lastOrder ? (
         <div className="space-y-2">
           <h2 className="text-xl font-semibold mb-2">Order Details</h2>
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-2">
             <p className="text-lg">
               <strong>Items Price:</strong> {lastOrder.itemsPrice}
             </p>
@@ -77,17 +85,17 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
         <p>Loading order details...</p>
       )}
     </div>
-    <button>Back</button>
+    <button onClick={onBack}>Back</button>
   </div>
 );
 
-const OrderFailedMessage = () => (
+const OrderFailedMessage = ({ onBack }) => (
   <div className="bg-gray-800 text-white max-w-md mx-auto p-8 rounded-lg">
     <h1 className="text-3xl font-bold mb-4 text-red-600">Order Failed!</h1>
     <p className="text-lg text-gray-300">
       Oops! Something went wrong! Try again later.
     </p>
-    <button>Back</button>
+    <button onClick={onBack}>Back</button>
   </div>
 );
 
@@ -105,6 +113,11 @@ OrderSuccessMessage.propTypes = {
     city: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
   }),
+  onBack: PropTypes.func.isRequired,
+};
+
+OrderFailedMessage.propTypes = {
+  onBack: PropTypes.func.isRequired,
 };
 
 export default StatusScreen;
