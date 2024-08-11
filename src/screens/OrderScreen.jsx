@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { clearCartItems, decreaseCurrency } from "../slices/cartSlice";
+import { decreaseTokens } from "../slices/authSlice";
 import { createOrder } from "../slices/orderSlice";
 
 import AddressForm from "../components/Orders/AddressForm";
@@ -14,6 +14,7 @@ const OrderScreen = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart) || {};
   const tipsPercentage = useSelector((state) => state.tips.tips);
+  const currency = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
 
   const navigate = useNavigate();
 
@@ -24,7 +25,6 @@ const OrderScreen = () => {
     shippingPrice,
     taxPrice,
     totalPrice,
-    currency,
   } = cart;
 
   const [savedAddress, setSavedAddress] = useState(shippingAddress);
@@ -65,8 +65,7 @@ const OrderScreen = () => {
         console.log("Order placed successfully!");
         setOrderSuccess(true);
         navigate("/orderstatus", { state: { orderSuccess: true, order: newOrder } });
-        dispatch(decreaseCurrency(totalPriceWithTips));
-        dispatch(clearCartItems());
+        dispatch(decreaseTokens(totalPriceWithTips)); // Dispatch decreaseTokens action with the total price
       });
     } else {
       console.log("Oops! Insufficient tokens to complete purchase!");
