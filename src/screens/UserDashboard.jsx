@@ -10,14 +10,6 @@ import FoodCardModal from "../components/FoodCardModal"; // Import the modal
 import { useNavigate } from "react-router";
 
 const UserDashboard = () => {
-  // const cartItems = useSelector((state) => state.cart.cartItems);
-  // const navigate = useNavigate();
-  // // const dispatch = useDispatch();
-
-  const handleCheckout = () => {
-    // Navigate to the checkout screen
-    navigate("/addTips");
-  };
   // const handleAddCurrency = (amount) => {
   //   dispatch(increaseCurrency(amount));
   // };
@@ -33,17 +25,43 @@ const UserDashboard = () => {
   const filteredFoods = useSelector((state) => state.foodData.filteredFoods);
   const status = useSelector((state) => state.foodData.status);
   const error = useSelector((state) => state.foodData.error);
+  const currency = useSelector((state) => state.cart.currency); // Access the currency from the cart slice
 
+   // Logging state values for debugging
   useEffect(() => {
+    console.log("Fetching food data...");
     dispatch(fetchFoodData());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log("Search Term:", searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    console.log("Filtered Foods:", filteredFoods);
+  }, [filteredFoods]);
+
+  useEffect(() => {
+    console.log("Cart Items:", cartItems);
+  }, [cartItems]);
+
+  useEffect(() => {
+    console.log("Currency:", currency); // Log the currency value
+  }, [currency]);
+
+  const handleCheckout = () => {
+    console.log("Navigating to tips screen");
+    navigate("/addTips");
+  };
+
   const handleOpenModal = (food) => {
+    console.log("Selected Food:", food);
     setSelectedFood(food);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
+    console.log("Closing Modal");
     setIsModalOpen(false);
     setSelectedFood(null);
   };

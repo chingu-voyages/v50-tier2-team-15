@@ -47,6 +47,7 @@ const OrderScreen = () => {
   const handleCheckout = () => {
     console.log("Total Price with Tips:", totalPriceWithTips);
     console.log("Available Currency:", currency);
+
     const newOrder = {
       id: Date.now(),
       cartItems,
