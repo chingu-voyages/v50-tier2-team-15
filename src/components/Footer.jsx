@@ -5,18 +5,18 @@ import { FaXTwitter, FaSquareInstagram, FaHeart } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="flex items-center justify-between text-purple w-full font-para text-lg mt-14">
-        <div className="flex justify-center gap-8 w-1/3">
+    <footer className="">
+      <div className="lg:flex items-center justify-between text-purple w-full font-para text-lg mt-14">
+        <div className="flex justify-center gap-8 lg:w-1/3">
           <a href="#"><FaFacebook /></a>
           <a href="#"><FaGithub /></a>
           <a href="#"><FaSquareInstagram /></a>
           <a href="#"><FaXTwitter /></a>
         </div>
-        <div className="w-1/3 flex justify-center">
+        <div className="lg:w-1/3 flex justify-center">
         <a href="#home"><img className="h-[150px] w-[150px]" src={logo} alt="Logo" /></a>
         </div>
-        <ul className="flex justify-center gap-7 w-1/3">
+        <ul className="flex justify-center gap-7 lg:w-1/3">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>

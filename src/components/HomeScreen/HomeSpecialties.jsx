@@ -21,7 +21,7 @@ const HomeSpecialties = () => {
                   src={Tacos}
                 />
               </div>
-              <div className="w-2/3 text-left pr-14">
+              <div className="md:w-2/3 text-left pr-14">
                 <p className="text-2xl text-darkGray">
                   Our menu doesn’t stop there. We offer a wide range of
                   deliciousness!
@@ -35,7 +35,7 @@ const HomeSpecialties = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3">
+          <div className="md:w-1/3 md:block hidden">
             <img
               alt="Specialty 2"
               className=""

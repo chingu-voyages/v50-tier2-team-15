@@ -3,6 +3,7 @@ import diagonalArrowRightUpFill from "@iconify-icons/eva/diagonal-arrow-right-up
 import categoriesLeft from "../../assets/categories-left.svg";
 import categoriesRight from "../../assets/categories-right.svg";
 import categoriesBackground from "../../assets/categories-background.svg";
+import { NavLink } from "react-router-dom"; // Import NavLink
 
 const HomeCategories = () => {
   return (
@@ -12,90 +13,87 @@ const HomeCategories = () => {
           backgroundImage: `url(${categoriesBackground})`,
           backgroundRepeat: "no-repeat",
         }}
-        className="pb-[200px] my-14 bg-center"
+        className="md:pb-[200px] my-14 md:bg-center bg-none"
       >
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="text-5xl font-bold text-purple items-start mt-[100px]">
+        <div className="md:flex md:flex-col justify-center items-center">
+          <h2 className="lg:text-5xl text-3xl font-bold text-purple items-start mt-[100px] mb-8">
             Our Categories
           </h2>
-          <span className="block center w-[16%] h-0.5 bg-darkRed mt-9 mx-auto"></span>
+          <span className="hidden md:block center w-[16%] h-0.5 bg-darkRed mt-9 mx-auto"></span>
         </div>
-        <div
-          className="flex justify-between items-center mx-auto"
-        //   style={{ maxWidth: "1200px" }}
-        >
-          <div className="flex-shrink-0 w-1/4 px-6">
+        <div className="flex justify-between items-center mx-auto">
+          <div className="flex-shrink-0 md:w-1/4 px-6 hidden md:block">
             <img src={categoriesLeft} alt="Image of Steak" className="" />
           </div>
-          <div className="flex-grow text-left px-8">
-            <ul className="grid grid-cols-2 gap-10 text-2xl">
-              <li className="flex justify-between items-center">
-                <a
-                  href="#bbq"
-                  className="flex-grow text-darkGray border-b-2 border-darkRed"
+          <div className="md:flex-grow text-center p-auto m-auto md:px-8">
+            <ul className="md:grid md:grid-cols-2 md:gap-10 text-2xl">
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#bbqs"
+                  className="flex-grow text-darkGray border-b-2 border-darkRed px-24"
                 >
                   BBQ
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
                 />
               </li>
-              <li className="flex justify-between items-center">
-                <a
-                  href="#chocolate"
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#chocolates"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Chocolate
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
                 />
               </li>
-              <li className="flex justify-between items-center">
-                <a
-                  href="#bread"
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#breads"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Bread
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
                 />
               </li>
-              <li className="flex justify-between items-center">
-                <a
-                  href="#desserts"
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#desserts"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Desserts
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
                 />
               </li>
-              <li className="flex justify-between items-center">
-                <a
-                  href="#burgers"
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#burgers"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Burgers
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
                 />
               </li>
-              <li className="flex justify-between items-center">
-                <a
-                  href="#drinks"
+              <li className="flex justify-between items-center py-4">
+                <NavLink
+                  to="/foods#drinks"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Drinks
-                </a>
+                </NavLink>
                 <Icon
                   icon={diagonalArrowRightUpFill}
                   className="text-darkRed -ml-6"
@@ -103,7 +101,7 @@ const HomeCategories = () => {
               </li>
             </ul>
           </div>
-          <div className="flex-shrink-0 w-1/4 px-6">
+          <div className="flex-shrink-0 md:w-1/4 px-6 hidden md:block">
             <img src={categoriesRight} alt="Image of hamburger" className="" />
           </div>
         </div>
