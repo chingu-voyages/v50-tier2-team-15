@@ -6,11 +6,6 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
-        <div>
-          <h1 className="text-3xl font-semibold text-center mb-4">Debug Information</h1>
-          <p>Last Order: {JSON.stringify(lastOrder)}</p>
-          <p>Current Tokens: {currentTokens}</p>
-        </div>
         {orderSuccess ? (
           <div>
             <h1 className="text-3xl font-semibold text-center mb-4">Order Successful!</h1>
