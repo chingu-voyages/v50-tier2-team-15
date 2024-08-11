@@ -1,8 +1,3 @@
-// This is an unordered list of the Our Foods category.
-// It's a list of every single food available in JSON file.
-// This screen would be used for filtering/searching stuff.
-// From there, we should be able to get components, and move them to other screens.
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFoodData } from "../slices/foodDataApiSlice";
