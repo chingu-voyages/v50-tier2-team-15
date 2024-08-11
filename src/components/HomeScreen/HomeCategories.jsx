@@ -8,12 +8,14 @@ import { NavLink } from "react-router-dom"; // Import NavLink
 const HomeCategories = () => {
   return (
     <>
-      <section
+<section
         style={{
-          backgroundImage: `url(${categoriesBackground})`,
-          backgroundRepeat: "no-repeat",
+          backgroundImage: 'none',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
-        className="md:pb-[200px] my-14 md:bg-center bg-none"
+        className="md:bg-cover md:bg-center md:bg-[url('../../assets/categories-background.svg')] md:pb-[200px] my-14"
       >
         <div className="md:flex md:flex-col justify-center items-center">
           <h2 className="lg:text-5xl text-3xl font-bold text-purple items-start mt-[100px] mb-8">

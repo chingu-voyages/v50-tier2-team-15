@@ -44,7 +44,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
   };
 
   return (
-    <div className="flex items-center justify-center relative">
+    <div className="md:flex items-center justify-center relative hidden">
       <button
         onClick={scrollLeft}
         className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 rounded-full p-2 z-10"
