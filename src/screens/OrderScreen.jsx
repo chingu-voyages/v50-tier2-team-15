@@ -81,6 +81,10 @@ const OrderScreen = () => {
     if (totalPriceWithTips <= currency) {
       dispatch(createOrder(newOrder)).then(() => {
         console.log("Order placed successfully!");
+
+        // Decrease tokens after successfully creating the order
+        dispatch(decreaseTokens(totalPriceWithTips));
+
         setOrderDetails({
           orderSuccess: true,
           order: newOrder,
