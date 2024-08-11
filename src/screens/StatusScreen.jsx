@@ -30,49 +30,54 @@ const StatusScreen = () => {
 
 const OrderSuccessMessage = ({ lastOrder, currentTokens, savedAddress }) => (
   <div className="p-4">
-    <h1 className="text-3xl font-semibold mb-4">Order Successful!</h1>
-    <p className="text-lg mb-4">Your order has been placed successfully!</p>
+    <h1 className="text-3xl font-semibold m-3">Order Successful!</h1>
+    <p className="text-lg m-4">Your order has been placed successfully!</p>
     <div className="grid grid-cols-2">
       {savedAddress && (
-        <div className="mb-4">
+        <div className="space-y-2">
           <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
-          <p className="text-lg">
-            <strong>Street Address:</strong> {savedAddress.address}
-          </p>
-          <p className="text-lg">
-            <strong>City:</strong> {savedAddress.city}
-          </p>
-          <p className="text-lg">
-            <strong>Postal Code:</strong> {savedAddress.postalCode}
-          </p>
+          <div className="grid grid-cols-3">
+            <p className="text-lg">
+              <strong>Street Address:</strong> {savedAddress.address}
+            </p>
+            <p className="text-lg">
+              <strong>City:</strong> {savedAddress.city}
+            </p>
+            <p className="text-lg">
+              <strong>Postal Code:</strong> {savedAddress.postalCode}
+            </p>
+          </div>
         </div>
       )}
       {lastOrder ? (
         <div className="space-y-2">
           <h2 className="text-xl font-semibold mb-2">Order Details</h2>
-          <p className="text-lg">
-            <strong>Items Price:</strong> {lastOrder.itemsPrice}
-          </p>
-          <p className="text-lg">
-            <strong>Shipping Price:</strong> {lastOrder.shippingPrice}
-          </p>
-          <p className="text-lg">
-            <strong>Tax Price:</strong> {lastOrder.taxPrice}
-          </p>
-          <p className="text-lg">
-            <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
-          </p>
-          <p className="text-lg">
-            <strong>Order Total:</strong> {lastOrder.totalPrice.toFixed(2)}
-          </p>
-          <p className="text-lg">
-            <strong>Current Tokens:</strong> {currentTokens}
-          </p>
+          <div className="grid grid-cols-3">
+            <p className="text-lg">
+              <strong>Items Price:</strong> {lastOrder.itemsPrice}
+            </p>
+            <p className="text-lg">
+              <strong>Shipping Price:</strong> {lastOrder.shippingPrice}
+            </p>
+            <p className="text-lg">
+              <strong>Tax Price:</strong> {lastOrder.taxPrice}
+            </p>
+            <p className="text-lg">
+              <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
+            </p>
+            <p className="text-lg">
+              <strong>Order Total:</strong> {lastOrder.totalPrice.toFixed(2)}
+            </p>
+            <p className="text-lg">
+              <strong>Current Tokens:</strong> {currentTokens}
+            </p>
+          </div>
         </div>
       ) : (
         <p>Loading order details...</p>
       )}
     </div>
+    <button>Back</button>
   </div>
 );
 
@@ -80,8 +85,9 @@ const OrderFailedMessage = () => (
   <div className="bg-gray-800 text-white max-w-md mx-auto p-8 rounded-lg">
     <h1 className="text-3xl font-bold mb-4 text-red-600">Order Failed!</h1>
     <p className="text-lg text-gray-300">
-      Oops! Insufficient tokens to complete purchase!
+      Oops! Something went wrong! Try again later.
     </p>
+    <button>Back</button>
   </div>
 );
 
