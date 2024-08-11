@@ -9,22 +9,22 @@ const OrderSuccessMessage = ({ lastOrder, currentTokens }) => (
     {lastOrder ? (
       <div className="space-y-2">
         <p className="text-lg">
-          <strong>Items Price:</strong> ${lastOrder.itemsPrice}
+          <strong>Items Price:</strong> {lastOrder.itemsPrice}
         </p>
         <p className="text-lg">
-          <strong>Shipping Price:</strong> ${lastOrder.shippingPrice}
+          <strong>Shipping Price:</strong> {lastOrder.shippingPrice}
         </p>
         <p className="text-lg">
-          <strong>Tax Price:</strong> ${lastOrder.taxPrice}
+          <strong>Tax Price:</strong> {lastOrder.taxPrice}
         </p>
         <p className="text-lg">
-          <strong>Tip:</strong> ${lastOrder.tipsTotal.toFixed(2)}
+          <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
         </p>
         <p className="text-lg">
-          <strong>Order Total:</strong> ${lastOrder.totalPrice.toFixed(2)}
+          <strong>Order Total:</strong> {lastOrder.totalPrice.toFixed(2)}
         </p>
         <p className="text-lg">
-          <strong>Current Tokens:</strong> ${currentTokens}
+          <strong>Current Tokens:</strong> {currentTokens}
         </p>
       </div>
     ) : (
@@ -63,10 +63,10 @@ const StatusScreen = () => {
 
 OrderSuccessMessage.propTypes = {
   lastOrder: PropTypes.shape({
-    itemsPrice: PropTypes.number.isRequired,
-    shippingPrice: PropTypes.number.isRequired,
-    taxPrice: PropTypes.number.isRequired,
-    tipsTotal: PropTypes.number.isRequired,
+    itemsPrice: PropTypes.string.isRequired,
+    shippingPrice: PropTypes.string.isRequired,
+    taxPrice: PropTypes.string.isRequired,
+    tipsTotal: PropTypes.string.isRequired,
     totalPrice: PropTypes.number.isRequired,
   }).isRequired,
   currentTokens: PropTypes.number.isRequired,

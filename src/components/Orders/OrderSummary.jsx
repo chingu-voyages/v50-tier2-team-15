@@ -30,7 +30,7 @@ OrderSummary.propTypes = {
   itemsPrice: PropTypes.string.isRequired,
   shippingPrice: PropTypes.string.isRequired,
   taxPrice: PropTypes.string.isRequired,
-  tipsTotal: PropTypes.number.isRequired,
+  tipsTotal: PropTypes.string.isRequired,
   totalPrice: PropTypes.number.isRequired,
   currency: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
