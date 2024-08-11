@@ -1,14 +1,14 @@
 // import { useState, useEffect} from "react";
 import { useNavigate } from "react-router";
 import { setTips } from "../slices/tipsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 
 const AddTips = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const goToOrderScreen = () => { 
+    const goToOrderScreen = () => {
     navigate("/checkout");
  };
  const getTips = (tip)=> {
