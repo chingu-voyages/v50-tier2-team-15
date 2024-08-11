@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import CartItems from "../CartItems";
 
-const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, savedAddress }) => {
+const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, savedAddress, cartItems }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
         {orderSuccess ? (
           <div>
@@ -50,6 +51,12 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
                       <strong>Current Tokens:</strong> {currentTokens}
                     </p>
                   </div>
+                </div>
+              )}
+              {cartItems && cartItems.length > 0 && (
+                <div className="space-y-2">
+                  <h2 className="text-xl font-semibold mb-2">Cart Items</h2>
+                  <CartItems items={cartItems} />
                 </div>
               )}
             </div>
@@ -154,6 +161,7 @@ StatusModal.propTypes = {
     city: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
   }),
+  cartItems: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default StatusModal;

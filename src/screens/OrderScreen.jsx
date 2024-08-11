@@ -116,6 +116,7 @@ const OrderScreen = () => {
           lastOrder={lastOrder}
           currentTokens={currency}
           {...orderDetails}
+          cartItems={cart.cartItems}
         />
       )}
     </div>
