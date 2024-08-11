@@ -26,7 +26,9 @@ const OrderScreen = () => {
   const { on: showStatusModal, toggler: toggleStatusModal } = useToggle();
 
   // Fetch last order from state
-  const lastOrder = useSelector((state) => state.orders?.order);
+  const lastOrder = useSelector((state) => state.orders?.order) || order;
+console.log("Last Order:", lastOrder);
+console.log("Current Tokens:", currentTokens);
 
   // Calculate tips and total price
   const tipsTotal = tipsPercentage ? (tipsPercentage / 100) * itemsPrice : 0;
@@ -54,6 +56,8 @@ const OrderScreen = () => {
     if (totalPriceWithTips <= currentTokens) {
       dispatch(createOrder(newOrder)).then(() => {
         dispatch(decreaseTokens(totalPriceWithTips));
+        console.log("Order placed successfully!");
+  console.log("Updated state:", store.getState()); // Replace with correct state logging
         setOrderDetails({ orderSuccess: true, order: newOrder, savedAddress });
         toggleStatusModal(true);
       });
