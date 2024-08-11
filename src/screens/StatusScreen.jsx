@@ -43,7 +43,7 @@ const StatusScreen = () => {
   const location = useLocation();
   const { orderSuccess, order } = location.state || {};
   const lastOrder = useSelector((state) => state.orders?.order) || order;
-  const currentTokens = = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
+  const currentTokens = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
 
   console.log('Order Success:', orderSuccess);
   console.log('Order from location state:', order);
