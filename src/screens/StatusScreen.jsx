@@ -49,7 +49,7 @@ const OrderFailedMessage = () => (
 );
 const StatusScreen = () => {
   const location = useLocation();
-  const { orderSuccess, order } = location.state || {};
+  const { orderSuccess, order, savedAddress } = location.state || {};
   const lastOrder = useSelector((state) => state.orders?.order) || order;
   const currentTokens = useSelector((state) => state.auth.userInfo.tokens); // Use tokens from authSlice
 
@@ -61,7 +61,7 @@ const StatusScreen = () => {
   return (
     <div>
       {orderSuccess ? (
-        <OrderSuccessMessage lastOrder={lastOrder} currentTokens={currentTokens} />
+        <OrderSuccessMessage lastOrder={lastOrder} currentTokens={currentTokens} savedAddress={savedAddress}/>
       ) : (
         <OrderFailedMessage />
       )}
