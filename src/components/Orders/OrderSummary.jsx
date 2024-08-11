@@ -27,12 +27,12 @@ const OrderSummary = ({
 };
 
 OrderSummary.propTypes = {
-  itemsPrice: PropTypes.number.isRequired,
-  shippingPrice: PropTypes.number.isRequired,
-  taxPrice: PropTypes.number.isRequired,
+  itemsPrice: PropTypes.string.isRequired,
+  shippingPrice: PropTypes.string.isRequired,
+  taxPrice: PropTypes.string.isRequired,
   tipsTotal: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
-  currency: PropTypes.string.isRequired,
+  currency: PropTypes.number.isRequired,
   onCheckout: PropTypes.func.isRequired,
 };
 
