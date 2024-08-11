@@ -1,8 +1,24 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { Icon } from '@iconify/react';
+import starFilled from '@iconify/icons-mdi/star'; // Import star icon
 
 const Results = ({ filteredFoods, status, error, onSelectFood }) => {
   if (status === "loading") return <p>Loading...</p>;
   if (status === "failed") return <p>Error fetching data: {error}</p>;
+
+  const renderStars = (rate) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <Icon 
+          key={i} 
+          icon={starFilled} 
+          className={i < rate ? 'text-yellow-400' : 'text-gray-300'} 
+        />
+      );
+    }
+    return stars;
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -21,7 +37,7 @@ const Results = ({ filteredFoods, status, error, onSelectFood }) => {
             <div>
               <h4 className="text-lg font-semibold mb-2">{food.name}</h4>
               <p className="text-gray-600 mb-4">Price: ${food.price}</p>
-              <p className="text-gray-600 mb-4">Rating: {food.rate}</p>
+              <div className="flex mb-4 m-auto p-auto justify-center align-center">{renderStars(food.rate)}</div>
             </div>
           </div>
         </div>
@@ -38,4 +54,3 @@ Results.propTypes = {
 };
 
 export default Results;
-

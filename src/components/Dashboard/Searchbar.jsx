@@ -33,7 +33,7 @@ const Searchbar = ({ searchTerm, setSearchTerm }) => {
         onFocus={(e) => e.target.style.borderColor = 'rgba(0, 0, 0, 0.1)'}
         onBlur={(e) => e.target.style.borderColor = 'transparent'}
       />
-      <button className="hover:bg-gray-200 transition duration-200 ease-in-out"  onClick={handleSearch}>Search</button>
+      <button className="hover:bg-gray-200 transition duration-200 ease-in-out md:text-lg"  onClick={handleSearch}>Search</button>
     </div>
   );
 };

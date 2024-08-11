@@ -34,9 +34,9 @@ const Navbar = ({ toggler }) => {
 
   return (
     <header>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between px-8 py-3">
         <NavLink to="/">
-          <img className="w-[120px] h-[120px]" src={logo} alt="Logo" />
+          <img className="md:w-[160px] md:h-[160px] w-[120px] h-[120px]" src={logo} alt="Logo" />
         </NavLink>
         {/* Hamburger button */}
         <div className="md:hidden cursor-pointer z-20" onClick={toggleMenu}>

@@ -67,7 +67,7 @@ const FoodRibbon = ({ onCategorySelect }) => {
       <div
         ref={ribbonRef}
         className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide mx-8"
-        style={{ scrollBehavior: "smooth", whiteSpace: "nowrap", width: "1330px" }}
+        style={{ scrollBehavior: "smooth", whiteSpace: "nowrap", width: "1150px" }}
       >
         {status === "loading" && <p>Loading...</p>}
         {status === "failed" && <p>Error fetching data</p>}
