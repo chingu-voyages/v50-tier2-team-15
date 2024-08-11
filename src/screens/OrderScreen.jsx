@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { decreaseTokens } from "../slices/authSlice";
 import { createOrder } from "../slices/orderSlice";
+import { resetCart } from "../slices/cartSlice";
 
 import AddressForm from "../components/Orders/AddressForm";
 import CartItems from "../components/Orders/CartItems";
@@ -96,47 +97,55 @@ const OrderScreen = () => {
     }
   };
 
-  return (
-    <div className="p-4">
-      <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
-      {cartItems && cartItems.length > 0 ? (
-        <CartItems items={cartItems} />
-      ) : (
-        <p>Your cart is empty!</p>
-      )}
-      <div className="mb-4 flex">
-        <div className="flex-1 p-2">
-          <h2 className="text-3xl font-semibold">Shipping Address</h2>
-          <p>Enter your shipping address below:</p>
-          <AddressForm
-            initialAddress={shippingAddress}
-            onSave={setSavedAddress}
-          />
+  const handleBack = (success) => {
+    if (success) {
+      // Reset cart or any other necessary action
+      dispatch(resetCart());
+    }
+    navigate("/user");
+  }
+
+    return (
+      <div className="p-4">
+        <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
+        {cartItems && cartItems.length > 0 ? (
+          <CartItems items={cartItems} />
+        ) : (
+          <p>Your cart is empty!</p>
+        )}
+        <div className="mb-4 flex">
+          <div className="flex-1 p-2">
+            <h2 className="text-3xl font-semibold">Shipping Address</h2>
+            <p>Enter your shipping address below:</p>
+            <AddressForm
+              initialAddress={shippingAddress}
+              onSave={setSavedAddress}
+            />
+          </div>
+          <div className="flex-1 p-2">
+            <OrderSummary
+              itemsPrice={itemsPrice}
+              shippingPrice={shippingPrice}
+              taxPrice={taxPrice}
+              tipsTotal={tipsTotal} // Pass the tips total to the OrderSummary
+              totalPrice={totalPriceWithTips} // Pass the updated total price
+              currency={currency}
+              onCheckout={handleCheckout}
+              isAddressProvided={
+                !!savedAddress && Object.keys(savedAddress).length > 0
+              }
+            />
+          </div>
         </div>
-        <div className="flex-1 p-2">
-          <OrderSummary
-            itemsPrice={itemsPrice}
-            shippingPrice={shippingPrice}
-            taxPrice={taxPrice}
-            tipsTotal={tipsTotal} // Pass the tips total to the OrderSummary
-            totalPrice={totalPriceWithTips} // Pass the updated total price
-            currency={currency}
-            onCheckout={handleCheckout}
-            isAddressProvided={
-              !!savedAddress && Object.keys(savedAddress).length > 0
-            }
+        {showStatusModal && (
+          <StatusModal
+            isOpen={showStatusModal}
+            onClose={() => handleBack(orderDetails?.orderSuccess)}
+            {...orderDetails}
           />
-        </div>
+        )}
       </div>
-      {showStatusModal && (
-        <StatusModal
-          isOpen={showStatusModal}
-          onClose={() => toggleStatusModal(false)}
-          {...orderDetails}
-        />
-      )}
-    </div>
-  );
-};
+    );
+  };
 
 export default OrderScreen;
