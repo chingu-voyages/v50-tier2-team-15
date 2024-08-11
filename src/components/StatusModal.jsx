@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
 import CartItems from "./Orders/CartItems";
 
-const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, savedAddress, cartItems }) => {
+const StatusModal = ({
+  lastOrder,
+  currentTokens,
+  isOpen,
+  onClose,
+  orderSuccess,
+  savedAddress,
+  cartItems,
+}) => {
   if (!isOpen) return null;
 
   return (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
         {orderSuccess ? (
           <div>
-            <h1 className="text-3xl font-semibold text-center mb-4">Order Successful!</h1>
-            <p className="text-center mb-6">Your order has been placed successfully!</p>
+            <h1 className="text-3xl font-semibold text-center mb-4">
+              Order Successful!
+            </h1>
+            <p className="text-center mb-6">
+              Your order has been placed successfully!
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {savedAddress && (
                 <div className="space-y-2">
-                  <h2 className="text-xl font-semibold mb-2">Shipping Address</h2>
+                  <h2 className="text-xl font-semibold mb-2">
+                    Shipping Address
+                  </h2>
                   <div className="space-y-1">
                     <p className="text-lg">
                       <strong>Street Address:</strong> {savedAddress.address}
@@ -45,7 +59,8 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
                       <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
                     </p>
                     <p className="text-lg">
-                      <strong>Order Total:</strong> {lastOrder.totalPrice.toFixed(2)}
+                      <strong>Order Total:</strong>{" "}
+                      {lastOrder.totalPrice.toFixed(2)}
                     </p>
                     <p className="text-lg">
                       <strong>Current Tokens:</strong> {currentTokens}
@@ -55,7 +70,6 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
               )}
               {cartItems && cartItems.length > 0 && (
                 <div className="space-y-2">
-                  <h2 className="text-xl font-semibold mb-2">Cart Items</h2>
                   <CartItems items={cartItems} />
                 </div>
               )}
@@ -63,11 +77,18 @@ const StatusModal = ({ lastOrder, currentTokens, isOpen, onClose, orderSuccess, 
           </div>
         ) : (
           <div>
-            <h1 className="text-3xl font-bold text-red-600 text-center">Order Failed!</h1>
-            <p className="text-center">Oops! Something went wrong! Try again later.</p>
+            <h1 className="text-3xl font-bold text-red-600 text-center">
+              Order Failed!
+            </h1>
+            <p className="text-center">
+              Oops! Something went wrong! Try again later.
+            </p>
           </div>
         )}
-        <button onClick={onClose} className="mt-6 px-4 py-2 bg-gray-700 text-white rounded w-full sm:w-auto">
+        <button
+          onClick={onClose}
+          className="mt-6 px-4 py-2 bg-gray-700 text-white rounded w-full sm:w-auto"
+        >
           Back
         </button>
       </div>
