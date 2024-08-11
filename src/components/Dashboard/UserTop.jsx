@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTokens from "./AddTokens";
 import { useSelector } from "react-redux";
-import { addDecimals } from "../utils/cartUtils";
+import { addDecimals } from "../../utils/cartUtils";
 
 const UserTop = () => {
   const [categories, setCategories] = useState({});
