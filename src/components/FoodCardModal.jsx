@@ -5,7 +5,7 @@ import { addToCart } from "../slices/cartSlice";
 import PropTypes from "prop-types";
 import FoodLocationMap from "./Map/FoodLocationMap";
 
-const FoodCardModal = ({ toggler, food }) => {
+const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
   const [quantity, setQuantity] = useState(1);
@@ -17,14 +17,15 @@ const FoodCardModal = ({ toggler, food }) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...food, qty: quantity }));
-    toggler(); 
+    toggler();
+    if (onAddToCartSuccess) {
+      onAddToCartSuccess();  // Trigger the callback function passed from UserDashboard
+    }
   };
 
   const handleQuantityChange = (change) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + change));
   };
-
-
 
   return (
     <>
@@ -81,12 +82,10 @@ const FoodCardModal = ({ toggler, food }) => {
                 ) : null}
               </div>
             </div>
-            <h3 className="text-lg font-semibold">
-                  Location: {food.country}
-                </h3>
+            <h3 className="text-lg font-semibold">Location: {food.country}</h3>
             <FoodLocationMap
-                selectedItem={food} // Pass the food data to the map component
-              />
+              selectedItem={food} // Pass the food data to the map component
+            />
           </div>
         </div>
       </div>
@@ -97,6 +96,7 @@ const FoodCardModal = ({ toggler, food }) => {
 FoodCardModal.propTypes = {
   toggler: PropTypes.func.isRequired,
   food: PropTypes.object.isRequired,
+  onAddToCartSuccess: PropTypes.func,
 };
 
 export default FoodCardModal;

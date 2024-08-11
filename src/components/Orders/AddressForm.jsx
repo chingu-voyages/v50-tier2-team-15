@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { saveShippingAddress } from "../../slices/cartSlice";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddressForm = ({ initialAddress, onSave }) => {
   const [userAddress, setUserAddress] = useState(initialAddress || {});
@@ -36,11 +38,14 @@ const AddressForm = ({ initialAddress, onSave }) => {
     if (validate()) {
       dispatch(saveShippingAddress(userAddress));
       onSave(userAddress);
+      toast.success("Address successfully saved!");
     }
   };
 
+
   return (
     <form onSubmit={handleSaveAddress} className="space-y-4">
+      <ToastContainer />
       <div>
         <input
           type="text"
