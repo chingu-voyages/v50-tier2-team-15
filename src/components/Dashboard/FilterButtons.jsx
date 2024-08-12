@@ -1,5 +1,10 @@
+
 import { useDispatch } from "react-redux";
 import { sortByPriceHighToLow, sortByPriceLowToHigh, sortByRatingHighToLow, sortByRatingLowToHigh } from "../../slices/foodDataApiSlice";
+import { LuArrowDownUp } from "react-icons/lu";
+import { LuArrowUpDown } from "react-icons/lu";
+
+
 
 const FilterButtons = () => {
   const dispatch = useDispatch();
@@ -22,21 +27,21 @@ const FilterButtons = () => {
 
 
   return (
-    <div className="mx-auto flex flex-grow">
-      <div>
-        <h3>Filter by:</h3>
+    <div className="mx-auto flex justify-center align-middle flex-wrap mb-8 mt-5">
+      <div className="md:m-6 m-3 flex">
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out flex gap-1 md:text-lg" onClick={handleSortByPriceHighToLow}>Price <LuArrowUpDown className="mt-1"  />
+        </button>
       </div>
-      <div className="m-6">
-        <button onClick={handleSortByPriceHighToLow}>Price: High to Low</button>
+      <div className="md:m-6 m-3">
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out flex gap-1 md:text-lg"  onClick={handleSortByPriceLowToHigh}>Price <LuArrowDownUp className="mt-1" />
+        </button>
       </div>
-      <div className="m-6">
-        <button onClick={handleSortByPriceLowToHigh}>Price: Low to High</button>
+      <div className="md:m-6 m-3">
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out flex gap-1 md:text-lg"  onClick={handleSortByRatingHighToLow}>Rating <LuArrowUpDown className="mt-1"  />
+        </button>
       </div>
-      <div className="m-6">
-        <button onClick={handleSortByRatingHighToLow}>Rating: High to Low</button>
-      </div>
-      <div className="m-6">
-        <button onClick={handleSortByRatingLowToHigh}>Rating: Low to High</button>
+      <div className="md:m-6 m-3">
+        <button className="hover:bg-gray-200 transition duration-200 ease-in-out flex gap-1 md:text-lg"  onClick={handleSortByRatingLowToHigh}>Rating <LuArrowDownUp className="mt-1" /></button>
       </div>
     </div>
   );

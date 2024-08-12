@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCredentials } from "../slices/authSlice";
 
+
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(""); // manage error messages.
@@ -23,7 +24,7 @@ const LoginScreen = () => {
     setError("");
 
     // Dispatch setCredentials action with the entered username
-    dispatch(setCredentials({ username }));
+    dispatch(setCredentials({ username, tokens: 100 }));
 
     // Navigate to the UserDashboard screen
     navigate("/user");
