@@ -6,6 +6,7 @@ import LazyLoad from "react-lazyload";
 
 const Results = ({ filteredFoods, status, error, onSelectFood }) => {
   const [imageError, setImageError] = useState({});
+
   if (status === "loading") return <p>Loading...</p>;
   if (status === "failed") return <p>Error fetching data: {error}</p>;
 
@@ -24,8 +25,17 @@ const Results = ({ filteredFoods, status, error, onSelectFood }) => {
   };
 
   const handleError = (id) => {
-    setImageError(prev => ({ ...prev, [id]: true }));
+    setImageError((prev) => ({ ...prev, [id]: true }));
   };
+
+  // Conditional rendering to check if there are any results
+  if (filteredFoods.length === 0) {
+    return (
+      <div className="text-center text-gray-600">
+        <p>Oops! No results found!</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -36,16 +46,16 @@ const Results = ({ filteredFoods, status, error, onSelectFood }) => {
           onClick={() => onSelectFood(food)} // Handle click event
         >
           <LazyLoad height={200} offset={100}>
-          {imageError[food.id] ? (
+            {imageError[food.id] ? (
               <div className="image-placeholder">Image not available</div>
             ) : (
-            <img
-              src={food.img}
-              alt={food.name}
-              className="w-full h-48 object-cover"
-              onError={() => handleError(food.id)}
-              loading="lazy"
-            />
+              <img
+                src={food.img}
+                alt={food.name}
+                className="w-full h-48 object-cover"
+                onError={() => handleError(food.id)}
+                loading="lazy"
+              />
             )}
           </LazyLoad>
           <div className="p-4 flex flex-col justify-between h-full">

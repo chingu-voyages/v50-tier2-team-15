@@ -18,12 +18,11 @@ const OrderScreen = () => {
   const cart = useSelector((state) => state.cart) || {};
   const tipsPercentage = useSelector((state) => state.tips.tips);
   const currency = useSelector((state) => state.auth.userInfo.tokens);
-  const lastOrder = useSelector((state) => state.orders.order); // Get lastOrder from Redux state
+  const lastOrder = useSelector((state) => state.orders.order);
 
   const [savedAddress, setSavedAddress] = useState(cart.shippingAddress);
-  const [orderSuccess, setOrderSuccess] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
   const [orderDetails, setOrderDetails] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { on: showStatusModal, toggler: toggleStatusModal } = useToggle();
 
@@ -42,7 +41,7 @@ const OrderScreen = () => {
       return;
     }
 
-    setErrorMessage(""); // Clear any previous errors
+    setErrorMessage("");
 
     const newOrder = {
       id: Date.now(),
@@ -62,14 +61,14 @@ const OrderScreen = () => {
         setOrderDetails({
           orderSuccess: true,
           order: newOrder,
-          savedAddress: savedAddress,
+          savedAddress,
         });
         toggleStatusModal(true);
       });
     } else {
       setOrderDetails({
         orderSuccess: false,
-        savedAddress: savedAddress,
+        savedAddress,
       });
       toggleStatusModal(true);
     }
@@ -84,19 +83,19 @@ const OrderScreen = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
+      <h1 className="text-2xl md:text-3xl font-semibold mb-4">Checkout</h1>
       {cart.cartItems && cart.cartItems.length > 0 ? (
         <CartItems items={cart.cartItems} />
       ) : (
         <p>Your cart is empty!</p>
       )}
-      <div className="mb-4 flex">
+      <div className="flex flex-col xl:flex-row mb-4">
         <div className="flex-1 p-2">
-          <h2 className="text-3xl font-semibold">Shipping Address</h2>
-          <p>Enter your shipping address below:</p>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold">Shipping Address</h2>
+          <p className="text-sm md:text-base">Enter your shipping address below:</p>
           <AddressForm initialAddress={cart.shippingAddress} onSave={setSavedAddress} />
         </div>
-        <div className="flex-1 p-2">
+        <div className="flex-1 p-2 mt-4 xl:mt-0">
           <OrderSummary
             itemsPrice={cart.itemsPrice}
             shippingPrice={cart.shippingPrice}
