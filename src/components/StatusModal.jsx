@@ -13,7 +13,8 @@ const StatusModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    // <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div className="fixed inset-0 flex items-center justify-center h-screen w-screen bg-black z-10 top-0 opacity-100">
       <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
         {orderSuccess ? (
           <div>
