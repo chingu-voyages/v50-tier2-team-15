@@ -38,7 +38,7 @@ function App() {
         <Outlet />
         {showBackToTop && (
           <button
-            className="fixed bottom-4 right-4 text-lightOrange bg-transparent rounded-full text-5xl drop-shadow-none hover:drop-shadow-none focus:bg-transparent"
+            className="fixed bottom-4 right-4 text-yellow-400 bg-transparent rounded-full text-5xl drop-shadow-none hover:drop-shadow-none focus:bg-transparent"
             onClick={scrollToTop}
           >
             <FaRegArrowAltCircleUp />

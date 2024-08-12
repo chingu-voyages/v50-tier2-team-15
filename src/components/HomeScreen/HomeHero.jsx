@@ -53,7 +53,7 @@ const HomeHero = () => {
             <div className="mt-4">
               <button
                 onClick={signInAsGuestHandler}
-                className="inline-block px-8 py-3 lg:px-14 lg:py-4 bg-lightGray text-darkOrange rounded-full text-lg lg:text-xl"
+                className="inline-block px-8 py-3 lg:px-10 lg:py-4 bg-lightGray text-darkOrange rounded-full text-lg lg:text-xl"
               >
                 Sign in as Guest
               </button>
