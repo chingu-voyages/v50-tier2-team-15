@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import CartItems from "./Orders/CartItems";
 
 const StatusModal = ({
   lastOrder,
@@ -13,8 +12,14 @@ const StatusModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl mx-auto">
+    <div className="fixed inset-0 flex items-center justify-center h-screen w-screen bg-black z-10 top-0 opacity-100">
+      <div className="relative bg-white p-6 rounded-lg w-full max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-red-900 text-2xl"
+        >
+          X
+        </button>
         {orderSuccess ? (
           <div>
             <h1 className="text-3xl font-semibold text-center mb-4">
@@ -23,7 +28,7 @@ const StatusModal = ({
             <p className="text-center mb-6">
               Your order has been placed successfully!
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {savedAddress && (
                 <div className="space-y-2">
                   <h2 className="text-xl font-semibold mb-2">
@@ -47,15 +52,6 @@ const StatusModal = ({
                   <h2 className="text-xl font-semibold mb-2">Order Details</h2>
                   <div className="space-y-1">
                     <p className="text-lg">
-                      <strong>Items Price:</strong> {lastOrder.itemsPrice}
-                    </p>
-                    <p className="text-lg">
-                      <strong>Shipping Price:</strong> {lastOrder.shippingPrice}
-                    </p>
-                    <p className="text-lg">
-                      <strong>Tax Price:</strong> {lastOrder.taxPrice}
-                    </p>
-                    <p className="text-lg">
                       <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
                     </p>
                     <p className="text-lg">
@@ -70,7 +66,11 @@ const StatusModal = ({
               )}
               {cartItems && cartItems.length > 0 && (
                 <div className="space-y-2">
-                  <CartItems items={cartItems} />
+                  {cartItems.map((item, index) => (
+                    <div key={index} className="text-lg">
+                      {item.dsc}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -85,12 +85,6 @@ const StatusModal = ({
             </p>
           </div>
         )}
-        <button
-          onClick={onClose}
-          className="mt-6 px-4 py-2 bg-gray-700 text-white rounded w-full sm:w-auto"
-        >
-          Back
-        </button>
       </div>
     </div>
   );
