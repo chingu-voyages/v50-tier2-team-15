@@ -47,15 +47,6 @@ const StatusModal = ({
                   <h2 className="text-xl font-semibold mb-2">Order Details</h2>
                   <div className="space-y-1">
                     <p className="text-lg">
-                      <strong>Items Price:</strong> {lastOrder.itemsPrice}
-                    </p>
-                    <p className="text-lg">
-                      <strong>Shipping Price:</strong> {lastOrder.shippingPrice}
-                    </p>
-                    <p className="text-lg">
-                      <strong>Tax Price:</strong> {lastOrder.taxPrice}
-                    </p>
-                    <p className="text-lg">
                       <strong>Tip:</strong> {lastOrder.tipsTotal.toFixed(2)}
                     </p>
                     <p className="text-lg">
