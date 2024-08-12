@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AddTips = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const goToOrderScreen = () => {
     toast.success("Tip added! Proceeding to checkout.");
     setTimeout(() => {
