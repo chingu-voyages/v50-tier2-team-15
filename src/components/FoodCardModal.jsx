@@ -21,7 +21,7 @@ const FoodCardModal = ({ toggler, food, onAddToCartSuccess }) => {
   const handleAddToCart = () => {
     dispatch(addToCart({ ...food, qty: quantity }));
     toggler();
-    
+
     if (onAddToCartSuccess) {
       onAddToCartSuccess();  // Trigger the callback function passed from UserDashboard
     }

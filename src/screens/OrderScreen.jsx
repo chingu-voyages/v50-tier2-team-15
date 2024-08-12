@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { decreaseTokens } from "../slices/authSlice";
 import { createOrder, fetchOrder } from "../slices/orderSlice";
@@ -13,7 +13,6 @@ import useToggle from "../utils/useToggle";
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const cart = useSelector((state) => state.cart) || {};
   const tipsPercentage = useSelector((state) => state.tips.tips);

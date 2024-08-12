@@ -1,47 +1,89 @@
-# voyage-tasks
+# FlavorFinder
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+## Overview
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+Welcome to **FlavorFinder**! This application is designed to help users discover and order their favorite foods. Explore various food categories, view detailed information about individual items, manage your shopping cart, and place orders. FlavorFinder also integrates map features for location-based services and is optimized for a seamless experience across different devices.
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Project Structure
 
-> Own it & Make it your Own!
+The project is organized as follows:
 
-## Team Documents
+- `src/`
+  - `components/`
+    - `Dashboard/`
+      - `Searchbar.jsx`: A component for searching food items.
+      - `FilterButtons.jsx`: Provides filter buttons for sorting food items.
+      - `Results.jsx`: Displays search results.
+    - `OrderScreen.jsx`: Displays the order process and status.
+    - `OrderSummary.jsx`: Shows a summary of the order details.
+    - `StatusModal.jsx`: A modal that displays the order status.
+    - `FoodRibbon.jsx`: Displays food categories.
+    - `FoodCard.jsx`: Shows detailed information about individual food items.
+  - `slices/`
+    - `authSlice.js`: Manages user authentication, including login and logout actions.
+    - `cartSlice.js`: Handles shopping cart state, including adding and removing items and managing shipping address.
+    - `foodDataApiSlice.js`: Manages food data, including fetching, filtering, and sorting.
+    - `orderSlice.js`: Manages order creation, fetching, and updates.
+    - `tipsSlice.js`: Manages tips amount.
+  - `utils/`
+    - `foodMenuFetch.js`: Utility functions for fetching food data from the API.
+    - `orderHelper.js`: Utility functions for managing orders.
+    - `cartUtils.js`: Utility functions for managing the cart.
+  - `assets/`
+    - `chicken-avatar.svg`
+    - `pig-avatar.svg`
+    - `cow-avatar.svg`
+  - `App.jsx`: Main app component that includes routing and context providers.
+  - `index.jsx`: Entry point for the React application.
 
-You may find these helpful as you work together to organize your project.
+## Features
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+- **User Authentication:** Login, logout, and manage user sessions.
+- **Food Management:** Browse and search food items, view details, and filter results.
+- **Shopping Cart:** Add items to the cart, manage quantities, and save shipping address.
+- **Order Processing:** Place orders, view order summaries, and track order status.
+- **Map Integration:** View locations and directions related to food orders (if applicable).
+- **Responsive Design:** Optimized for various screen sizes and devices.
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+## Installation
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   ```
+
+Navigate to the project directory:
+
+```
+cd <project-directory>
+```
+Install dependencies:
+
+```
+npm install
+```
+
+## Usage
+
+Start the development server:
+
+```
+npm start
+```
+
+Open your browser and navigate to:
+
+```
+http://localhost:3000
+```
 
 ## Our Team
 
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team *before* you start
-coding!
+Made with love by Chingus!
 
 - Suruchi Patki: [GitHub](https://github.com/Supatki) / [LinkedIn](https://linkedin.com/in/Suruchipatki)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
-   ...
-
-- Oleg Klyufinskyy: [GitHub](https://github.com/olegklyufinskyy) / [LinkedIn](https://www.linkedin.com/in/oleg-klyufinskyy/)
-
-- Ross: [GitHub](https://github.com/RossaMania) / [LinkedIn](https://www.linkedin.com/in/ross-clettenberg/)
+- Ross Clettenberg: [GitHub](https://github.com/RossaMania) / [LinkedIn](https://www.linkedin.com/in/ross-clettenberg/)
 
 - Nandhini Ravichandran: [GitHub](https://github.com/Nandhini0123) / [LinkedIn](https://www.linkedin.com/in/nandhini-ravichandran-9b11272b1/)
 
