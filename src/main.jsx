@@ -27,7 +27,6 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/foods" element={<OurFoodsList />} />
       <Route path="/foods/:category" element={<ShowFoodMenu />} />
-      {/* <Route path="/food/:id" element={<FoodCard />} /> */}
 
       <Route path="" element={<PrivateRoute />}>
       <Route path="/user" element={<UserDashboard />} />
