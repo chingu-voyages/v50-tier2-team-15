@@ -19,7 +19,6 @@ import UserDashboard from "./screens/UserDashboard";
 import ShowFoodMenu from "./screens/ShowFoodMenu.jsx";
 import OurFoodsList from "./screens/OurFoodsList.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
-import StatusScreen from "./screens/StatusScreen.jsx";
 import AddTips from "./screens/AddTips.jsx"
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,7 +30,6 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
       <Route path="/user" element={<UserDashboard />} />
       <Route path="/checkout" element={<OrderScreen />} />
-      <Route path="/orderstatus" element={<StatusScreen />} />
       <Route path="/addTips" element={<AddTips />}/>
       </Route>
 
