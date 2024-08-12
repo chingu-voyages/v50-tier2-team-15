@@ -31,7 +31,7 @@ const HomeCategories = () => {
             <ul className="md:grid md:grid-cols-2 md:gap-10 text-2xl">
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#bbqs"
+                  to="/foods/bbqs"
                   className="flex-grow text-darkGray border-b-2 border-darkRed px-24"
                 >
                   BBQ
@@ -43,7 +43,7 @@ const HomeCategories = () => {
               </li>
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#chocolates"
+                  to="/foods/chocolates"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Chocolate
@@ -55,7 +55,7 @@ const HomeCategories = () => {
               </li>
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#breads"
+                  to="/foods/breads"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Bread
@@ -67,7 +67,7 @@ const HomeCategories = () => {
               </li>
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#desserts"
+                  to="/foods/desserts"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Desserts
@@ -79,7 +79,7 @@ const HomeCategories = () => {
               </li>
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#burgers"
+                  to="/foods/burgers"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Burgers
@@ -91,7 +91,7 @@ const HomeCategories = () => {
               </li>
               <li className="flex justify-between items-center py-4">
                 <NavLink
-                  to="/foods#drinks"
+                  to="/foods/drinks"
                   className="flex-grow text-darkGray border-b-2 border-darkRed"
                 >
                   Drinks
