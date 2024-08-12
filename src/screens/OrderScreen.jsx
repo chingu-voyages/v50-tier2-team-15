@@ -18,12 +18,11 @@ const OrderScreen = () => {
   const cart = useSelector((state) => state.cart) || {};
   const tipsPercentage = useSelector((state) => state.tips.tips);
   const currency = useSelector((state) => state.auth.userInfo.tokens);
-  const lastOrder = useSelector((state) => state.orders.order); // Get lastOrder from Redux state
+  const lastOrder = useSelector((state) => state.orders.order);
 
   const [savedAddress, setSavedAddress] = useState(cart.shippingAddress);
-  const [orderSuccess, setOrderSuccess] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
   const [orderDetails, setOrderDetails] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { on: showStatusModal, toggler: toggleStatusModal } = useToggle();
 
@@ -42,7 +41,7 @@ const OrderScreen = () => {
       return;
     }
 
-    setErrorMessage(""); // Clear any previous errors
+    setErrorMessage("");
 
     const newOrder = {
       id: Date.now(),
@@ -62,14 +61,14 @@ const OrderScreen = () => {
         setOrderDetails({
           orderSuccess: true,
           order: newOrder,
-          savedAddress: savedAddress,
+          savedAddress,
         });
         toggleStatusModal(true);
       });
     } else {
       setOrderDetails({
         orderSuccess: false,
-        savedAddress: savedAddress,
+        savedAddress,
       });
       toggleStatusModal(true);
     }
