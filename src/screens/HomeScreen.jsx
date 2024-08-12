@@ -30,7 +30,7 @@ const HomeScreen = () => {
     const handleScroll = () => {
       const ribbon = document.querySelector("#foodRibbon"); // Add an id to FoodRibbon's wrapper div
       const ribbonTop = ribbon?.offsetTop || 0;
-      
+
       if (window.scrollY > ribbonTop) {
         setShowBackToTop(true);
       } else {
