@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo-purple.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,7 +15,7 @@ const Navbar = ({ toggler }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [menuOpen, setMenuOpen] = useState(false); 
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const logoutHandler = () => {
     try {
@@ -29,7 +29,7 @@ const Navbar = ({ toggler }) => {
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); 
+    setMenuOpen(!menuOpen);
   };
 
   return (

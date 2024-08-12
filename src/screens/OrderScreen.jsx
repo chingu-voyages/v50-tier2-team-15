@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { decreaseTokens } from "../slices/authSlice";
 import { createOrder, fetchOrder } from "../slices/orderSlice";
@@ -13,7 +13,6 @@ import useToggle from "../utils/useToggle";
 const OrderScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const cart = useSelector((state) => state.cart) || {};
   const tipsPercentage = useSelector((state) => state.tips.tips);
@@ -83,30 +82,32 @@ const OrderScreen = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-semibold mb-4">Checkout</h1>
-      {cart.cartItems && cart.cartItems.length > 0 ? (
-        <CartItems items={cart.cartItems} />
-      ) : (
-        <p>Your cart is empty!</p>
-      )}
-      <div className="mb-4 flex">
-        <div className="flex-1 p-2">
-          <h2 className="text-3xl font-semibold">Shipping Address</h2>
-          <p>Enter your shipping address below:</p>
-          <AddressForm initialAddress={cart.shippingAddress} onSave={setSavedAddress} />
-        </div>
-        <div className="flex-1 p-2">
-          <OrderSummary
-            itemsPrice={cart.itemsPrice}
-            shippingPrice={cart.shippingPrice}
-            taxPrice={cart.taxPrice}
-            tipsTotal={tipsTotal}
-            totalPrice={totalPriceWithTips}
-            currency={currency}
-            onCheckout={handleCheckout}
-            isAddressProvided={!!savedAddress && Object.keys(savedAddress).length > 0}
-          />
+    <div className="flex flex-col xl:flex-row gap-8 mt-6 justify-evenly">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <h1 className="text-2xl md:text-3xl font-semibold mb-4 text-center">Checkout</h1>
+        {cart.cartItems && cart.cartItems.length > 0 ? (
+          <CartItems items={cart.cartItems} />
+        ) : (
+          <p className="text-center">Your cart is empty!</p>
+        )}
+        <div className="flex flex-col xl:flex-row gap-8 mt-6">
+          <div className="flex-1 p-6 bg-white shadow-lg rounded-lg">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4">Shipping Address</h2>
+            <p className="text-sm md:text-base mb-4">Enter your shipping address below:</p>
+            <AddressForm initialAddress={cart.shippingAddress} onSave={setSavedAddress} />
+          </div>
+          <div className="flex-1 p-6 bg-white shadow-lg rounded-lg">
+            <OrderSummary
+              itemsPrice={cart.itemsPrice}
+              shippingPrice={cart.shippingPrice}
+              taxPrice={cart.taxPrice}
+              tipsTotal={tipsTotal}
+              totalPrice={totalPriceWithTips}
+              currency={currency}
+              onCheckout={handleCheckout}
+              isAddressProvided={!!savedAddress && Object.keys(savedAddress).length > 0}
+            />
+          </div>
         </div>
       </div>
       {showStatusModal && (
