@@ -23,6 +23,12 @@ const StatusModal = ({
             <p className="text-center mb-6">
               Your order has been placed successfully!
             </p>
+            <button
+          onClick={onClose}
+          className="m-4 px-3 py-2 bg-gray-700 text-white rounded w-full sm:w-auto"
+        >
+          Back
+        </button>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {savedAddress && (
                 <div className="space-y-2">
@@ -76,12 +82,6 @@ const StatusModal = ({
             </p>
           </div>
         )}
-        <button
-          onClick={onClose}
-          className="mt-6 px-4 py-2 bg-gray-700 text-white rounded w-full sm:w-auto"
-        >
-          Back
-        </button>
       </div>
     </div>
   );
